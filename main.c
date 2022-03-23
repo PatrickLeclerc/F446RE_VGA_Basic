@@ -9,4 +9,19 @@ int main(){
 	while(1){}
 }
 
+void TIM2_IRQHandler(){
+	static uint16_t counter = 0U;
+	if(TIM2->SR & TIM_SR_UIF){
+		//ClearTC & THC flags from DMA chxx streamxx
+		//Set MOAR
+		//Set NDTR??
+		DMA1_Stream4->CR |= DMA_SxCR_EN;
+		counter++;
+		if(counter==625U){
+			counter=0U;
+		}
+		//Reset UIF
+		TIM2->SR &= ~TIM_SR_UIF;
+	}
+}
 
