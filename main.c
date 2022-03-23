@@ -12,7 +12,7 @@ int main(){
 void TIM2_IRQHandler(){
 	static uint16_t counter = 0U;
 	if(TIM2->SR & TIM_SR_UIF){
-		//ClearTC & THC flags from DMA chxx streamxx
+		DMA1->HIFCR |= DMA_HIFCR_CTCIF4 | DMA_HIFCR_CHTIF4;
 		//Set MOAR
 		//Set NDTR??
 		DMA1_Stream4->CR |= DMA_SxCR_EN;
