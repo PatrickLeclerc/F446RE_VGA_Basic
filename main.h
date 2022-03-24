@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include "drivers.h"
-
+//#include "vga.h"
 /*////////////////Defines////////////////*/
 #define BUFFER_SIZE (uint32_t) 24U
 
@@ -13,58 +13,27 @@ extern uint16_t*  vgaBuffNext;
 /*////////////////Functions////////////////*/
 /*Declarations*/
 void TIM2_IRQHandler(void);
-void initTable(uint16_t* table, uint32_t tableSize, uint16_t value);
-void updateBuffer(uint16_t* table, uint32_t tableSize, uint32_t line);
 /*Definitions*/
-void updateBuffer(uint16_t* table, uint32_t tableSize, uint32_t line){
-	initTable(table,tableSize,0);
-	switch(line-2){
-		case 0:
-			table[2] |= 0x22;
-			table[3] |= 0x3E3E;
-			table[4] |= 0x3C00;
-			break;
-		case 1:
-			table[2] |= 0x22;
-			table[3] |= 0x2020;
-			table[4] |= 0x2200;
-			break;
-		case 2:
-			table[2] |= 0x22;
-			table[3] |= 0x2020;
-			table[4] |= 0x2200;
-			break;
-		case 3:
-			table[2] |= 0x2A;
-			table[3] |= 0x3C3C;
-			table[4] |= 0x2200;
-			break;
-		case 4:
-			table[2] |= 0x2A;
-			table[3] |= 0x2020;
-			table[4] |= 0x2200;
-			break;
-		case 5:
-			table[2] |= 0x2A;
-			table[3] |= 0x2020;
-			table[4] |= 0x2200;
-			break;
-		case 6:
-			table[2] |= 0x14;
-			table[3] |= 0x3E3E;
-			table[4] |= 0x3C00;
-			break;
-		default:
-			break;
+void TIM2_IRQHandler(){
+	static uint32_t line = 0U;
+	if(TIM2->SR & TIM_SR_UIF){
+		/*Handling DMA1_STREAM4_CH0 stuff*/
+		DMA1->HIFCR |= DMA_HIFCR_CTCIF4 | DMA_HIFCR_CHTIF4;
+		DMA1_Stream4->M0AR = (uint32_t)vgaBuffNext;
+		DMA1_Stream4->CR |= DMA_SxCR_EN;/*Start*/
+		/*Evaluate next line*/
+		line++;
+		if(line==625U){
+			line=0U;
+		}
+		/*Calculate next buffer once every two lines*/
+		if((line&1)==0){
+			if(vgaBuffNext==vgaBuffA) vgaBuffNext = vgaBuffB;
+			else vgaBuffNext = vgaBuffA;
+			updateBuffer(vgaBuffNext, BUFFER_SIZE, line>>1);
+		}
+		/*Reset UIF*/
+		TIM2->SR &= ~TIM_SR_UIF;
 	}
 }
-
-void initTable(uint16_t* table, uint32_t tableSize, uint16_t value){
-	table[0]=0x5550U;
-	for(int i=1;i<(int)tableSize-1;i++){
-		table[i]=value;
-	}
-	table[tableSize-1]=0x0555U;
-}
-
 #endif
