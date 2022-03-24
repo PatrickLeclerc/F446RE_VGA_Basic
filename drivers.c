@@ -1,9 +1,9 @@
 #include "drivers.h"
-void startup(uint16_t* buffer0, uint32_t buffSize){
+void startup(uint32_t buffSize){
 	/*General Initialisation*/
 	initClock();
 	/*VGA Initialisation*/
-	initSPI2(buffer0,buffSize);/*VGAColor1*/
+	initSPI2(buffSize);/*VGAColor1*/
 	initVSYNC();/*TIM2*/
 	initHSYNC();/*TIM3*/
 }
@@ -103,7 +103,7 @@ void initVSYNC(){/*TIM3*/
 	TIM3->CR1 |= TIM_CR1_CEN;
 }
 
-void initSPI2(uint16_t* buffer0, uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
+void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	/*RCC*/
 	RCC->APB1ENR |= RCC_APB1ENR_SPI2EN;
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN|RCC_AHB1ENR_DMA1EN;
@@ -124,11 +124,10 @@ void initSPI2(uint16_t* buffer0, uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	DMA1_Stream4->CR = 0U;
 	while(DMA1_Stream4->CR != 0U){}
 	DMA1_Stream4->PAR = (uint32_t)&(SPI2->DR);
-	DMA1_Stream4->M0AR = (uint32_t)buffer0;
 	DMA1_Stream4->NDTR = buffSize;
-	DMA1_Stream4->CR |= (0U<<DMA_SxCR_CHSEL_Pos) | DMA_SxCR_PL_Msk | DMA_SxCR_DIR_0 | DMA_SxCR_MSIZE_0 | DMA_SxCR_PSIZE_0;
+	DMA1_Stream4->CR |= (0U<<DMA_SxCR_CHSEL_Pos) | DMA_SxCR_PL_Msk | DMA_SxCR_DIR_0 | DMA_SxCR_MSIZE_0 | DMA_SxCR_PSIZE_0 | DMA_SxCR_MINC;
 	DMA1_Stream4->FCR = 0U;
-	DMA1_Stream4->CR |= DMA_SxCR_EN;
+	//DMA1_Stream4->CR |= DMA_SxCR_EN;
 	/*Enable*/
 	SPI2->CR2 = SPI_CR2_TXDMAEN;
 	SPI2->CR1 |= SPI_CR1_SPE; 

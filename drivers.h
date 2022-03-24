@@ -2,7 +2,7 @@
 #ifndef DRIVERS_H
 #define DRIVERS_H
 /*Inits ALL*/
-void startup(uint16_t* buffer0, uint32_t buffSize);
+void startup(uint32_t buffSize);
 /*180MHz*/
 void initClock(void);
 	/*TIM2
@@ -16,5 +16,5 @@ void initHSYNC(void);
 */
 void initVSYNC(void); 
 /*18MHz-GPIOC3AF5-DMA1Ch0Stream4*/
-void initSPI2(uint16_t* buffer0, uint32_t buffSize);
+void initSPI2(uint32_t buffSize);
 #endif
