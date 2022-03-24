@@ -118,7 +118,7 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL3_Pos;
 	
 	/*SPI2: Internal slave management (master) */
-	SPI2->CR1 = SPI_CR1_DFF | SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_MSTR | (0U<<SPI_CR1_BR_Pos); //90MHz
+	SPI2->CR1 = SPI_CR1_DFF | SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_MSTR | (0U<<SPI_CR1_BR_Pos); //18MHz
 	
 	/*DMA*/
 	DMA1_Stream4->CR = 0U;
