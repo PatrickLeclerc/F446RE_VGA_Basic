@@ -423,6 +423,11 @@
               <FileType>5</FileType>
               <FilePath>.\vga.h</FilePath>
             </File>
+            <File>
+              <FileName>vga_char.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\vga_char.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
