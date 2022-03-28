@@ -7,7 +7,7 @@ void startup(uint32_t buffSize){
 	initVSYNC();/*TIM2*/
 	initHSYNC();/*TIM3*/
 }
-/*180MHz*/
+/*144MHz*/
 void initClock(){
 	/*APB1 45MHz Max*/
 	RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
@@ -23,7 +23,7 @@ void initClock(){
 	RCC->PLLCFGR |= (4U<<RCC_PLLCFGR_PLLM_Pos);
 	/*PLLN*/
 	RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLN_Msk;
-	RCC->PLLCFGR |= (180U<<RCC_PLLCFGR_PLLN_Pos);
+	RCC->PLLCFGR |= (144U<<RCC_PLLCFGR_PLLN_Pos);
 	/*PLLP*/
 	RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP_Msk;
 	/*FLASHMEM*/
@@ -118,14 +118,14 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL3_Pos;
 	
 	/*SPI2: Internal slave management (master) */
-	SPI2->CR1 = SPI_CR1_DFF | SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_MSTR | (0U<<SPI_CR1_BR_Pos); //18MHz
+	SPI2->CR1 = SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_MSTR | (0U<<SPI_CR1_BR_Pos);//|SPI_CR1_DFF  //18MHz
 	
 	/*DMA*/
 	DMA1_Stream4->CR = 0U;
 	while(DMA1_Stream4->CR != 0U){}
 	DMA1_Stream4->PAR = (uint32_t)&(SPI2->DR);
 	DMA1_Stream4->NDTR = buffSize;
-	DMA1_Stream4->CR |= (0U<<DMA_SxCR_CHSEL_Pos) | DMA_SxCR_PL_Msk | DMA_SxCR_DIR_0 | DMA_SxCR_MSIZE_0 | DMA_SxCR_PSIZE_0 | DMA_SxCR_MINC;
+	DMA1_Stream4->CR |= (0U<<DMA_SxCR_CHSEL_Pos) | DMA_SxCR_PL_Msk | DMA_SxCR_DIR_0 | DMA_SxCR_MINC;//| DMA_SxCR_MSIZE_0 | DMA_SxCR_PSIZE_0
 	DMA1_Stream4->FCR = 0U;
 	//DMA1_Stream4->CR |= DMA_SxCR_EN;
 	/*Enable*/

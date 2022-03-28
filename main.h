@@ -3,12 +3,12 @@
 #include "drivers.h"
 //#include "vga.h"
 /*////////////////Defines////////////////*/
-#define BUFFER_SIZE (uint32_t) 24U
+#define BUFFER_SIZE (uint32_t) 48U
 
 /*////////////////Variables////////////////*/
-extern uint16_t* vgaBuffA;
-extern uint16_t* vgaBuffB;
-extern uint16_t*  vgaBuffNext;
+extern uint8_t* vgaBuffA;
+extern uint8_t* vgaBuffB;
+extern uint8_t*  vgaBuffNext;
 
 /*////////////////Functions////////////////*/
 /*Declarations*/
@@ -21,6 +21,8 @@ void TIM2_IRQHandler(){
 		DMA1->HIFCR |= DMA_HIFCR_CTCIF4 | DMA_HIFCR_CHTIF4;
 		DMA1_Stream4->M0AR = (uint32_t)vgaBuffNext;
 		DMA1_Stream4->CR |= DMA_SxCR_EN;/*Start*/
+		/*Reset UIF*/
+		TIM2->SR &= ~TIM_SR_UIF;
 		/*Evaluate next line*/
 		line++;
 		if(line==625U){
@@ -30,10 +32,16 @@ void TIM2_IRQHandler(){
 		if((line&1)==0){
 			if(vgaBuffNext==vgaBuffA) vgaBuffNext = vgaBuffB;
 			else vgaBuffNext = vgaBuffA;
-			updateBuffer(vgaBuffNext, BUFFER_SIZE, line>>1);
+			uint32_t newLine = line >>1;
+			switch(line>>4){
+				case 6:{updateBuffer(vgaBuffNext, BUFFER_SIZE, newLine,	"Study hard what interests you the most in the ");break;}
+				case 7:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	" most undisciplined, irreverent and original ");break;}
+				case 8:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	" manner possible. ");break;}
+				case 12:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	"    -Richard Feynmann");break;}
+				default: {updateBuffer(vgaBuffNext, BUFFER_SIZE, newLine, "");break;}
+			}
 		}
-		/*Reset UIF*/
-		TIM2->SR &= ~TIM_SR_UIF;
+
 	}
 }
 #endif
