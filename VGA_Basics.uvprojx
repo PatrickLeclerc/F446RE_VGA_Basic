@@ -431,6 +431,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Tetris</GroupName>
+          <Files>
+            <File>
+              <FileName>tetris.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\tetris.c</FilePath>
+            </File>
+            <File>
+              <FileName>tetris.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\tetris.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>

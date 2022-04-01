@@ -1,7 +1,7 @@
 Dependencies for Project 'VGA_Basics', Target 'F446re': (DO NOT MODIFY !)
 CompilerVersion: 6160000::V6.16::ARMCLANG
 F (.\main.c)(0x623D3442)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__RTX -D__EVAL -gdwarf-4 -O3 -ffunction-sections -w-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/main.o -MD)
-I (main.h)(0x62414493)
+I (main.h)(0x62464516)
 I (drivers.h)(0x623BBB0A)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x5F6B7A96)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h)(0x60D491A2)
@@ -11,7 +11,7 @@ I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cms
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armclang.h)(0x60D491A2)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x60D491A2)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6B7A96)
-F (.\main.h)(0x62414493)()
+F (.\main.h)(0x62464516)()
 F (.\drivers.c)(0x62413772)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__RTX -D__EVAL -gdwarf-4 -O3 -ffunction-sections -w-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/drivers.o -MD)
 I (drivers.h)(0x623BBB0A)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h)(0x5F6B7A96)
@@ -23,13 +23,16 @@ I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cms
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h)(0x60D491A2)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6B7A96)
 F (.\drivers.h)(0x623BBB0A)()
-F (.\vga.c)(0x624144A5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__RTX -D__EVAL -gdwarf-4 -O3 -ffunction-sections -w-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/vga.o -MD)
-I (vga.h)(0x624134FA)
+F (.\vga.c)(0x62464AEF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__RTX -D__EVAL -gdwarf-4 -O3 -ffunction-sections -w-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/vga.o -MD)
+I (vga.h)(0x62464686)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6035B090)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6035B090)
 I (vga_char.h)(0x62414470)
-F (.\vga.h)(0x624134FA)()
+F (.\vga.h)(0x62464686)()
 F (.\vga_char.h)(0x62414470)()
+F (.\tetris.c)(0x6246478D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__RTX -D__EVAL -gdwarf-4 -O3 -ffunction-sections -w-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/tetris.o -MD)
+I (tetris.h)(0x6246490B)
+F (.\tetris.h)(0x6246490B)()
 F (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\Source\GCC\irq_armv7m.S)(0x60D491A2)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c-gdwarf-3 -D__RTX -D__EVAL-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION=535 -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/irq_armv7m.o)
 F (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\Source\rtx_delay.c)(0x60D491A2)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__RTX -D__EVAL -gdwarf-4 -O3 -ffunction-sections -w-I./RTE/CMSIS-I./RTE/_F446re-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/Core/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/ARM/CMSIS/5.8.0/CMSIS/RTOS2/RTX/Include-IC:/Users/pa-tr/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.15.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F446xx -D_RTE_-o ./objects/rtx_delay.o -MD)
 I (C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\Source\rtx_lib.h)(0x60D491A2)
