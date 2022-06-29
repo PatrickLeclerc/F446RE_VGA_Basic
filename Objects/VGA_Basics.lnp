@@ -2,7 +2,6 @@
 ".\objects\main.o"
 ".\objects\drivers.o"
 ".\objects\vga.o"
-".\objects\tetris.o"
 ".\objects\irq_armv7m.o"
 ".\objects\rtx_delay.o"
 ".\objects\rtx_evflags.o"

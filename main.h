@@ -1,7 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include "drivers.h"
-//#include "vga.h"
+#include "vga.h"
+
 /*////////////////Defines////////////////*/
 #define BUFFER_SIZE (uint32_t) 48U
 

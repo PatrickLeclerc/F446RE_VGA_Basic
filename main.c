@@ -8,8 +8,6 @@ int main(){
 	uint8_t buffB[BUFFER_SIZE];
 	vgaBuffA = buffA;
 	vgaBuffB = buffB;
-	initTable(buffA,BUFFER_SIZE,0);
-	initTable(buffB,BUFFER_SIZE,0);
 	/*Stm32 initialisation*/
 	startup(BUFFER_SIZE);
 	while(1){}

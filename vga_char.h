@@ -916,5 +916,4 @@ uint8_t* vgaChar[95]={
 	vgaChar_bar,
 	vgaChar_accolade2,
 	vgaChar_neg};
-
 #endif

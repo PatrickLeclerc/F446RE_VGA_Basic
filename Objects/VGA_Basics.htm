@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\VGA_Basics.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\VGA_Basics.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Thu Mar 31 20:44:32 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Tue Jun 28 23:44:47 2022
 <BR><P>
-<H3>Maximum Stack Usage =        116 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; startup
 <P>
@@ -28,7 +28,7 @@ Mutually Recursive functions
  <LI><a href="#[5]">UsageFault_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[5]">UsageFault_Handler</a><BR>
  <LI><a href="#[7]">DebugMon_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7]">DebugMon_Handler</a><BR>
  <LI><a href="#[1c]">ADC_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1c]">ADC_IRQHandler</a><BR>
- <LI><a href="#[ae]">osRtxErrorNotify</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[ae]">osRtxErrorNotify</a><BR>
+ <LI><a href="#[ac]">osRtxErrorNotify</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[ac]">osRtxErrorNotify</a><BR>
 </UL>
 <P>
 <H3>
@@ -267,7 +267,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7f]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 116 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; startup
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -617,9 +617,9 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[a1]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<P><STRONG><a name="[9f]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
@@ -631,10 +631,9 @@ Global Symbols
 
 <P><STRONG><a name="[103]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
 
-<P><STRONG><a name="[97]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<P><STRONG><a name="[d9]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;updateBuffer
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initTable
 </UL>
 
 <P><STRONG><a name="[104]"></a>__rt_memclr</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
@@ -704,130 +703,130 @@ Global Symbols
 
 <P><STRONG><a name="[111]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[c5]"></a>EvrRtxDelayCompleted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxDelayCompleted))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<P><STRONG><a name="[c3]"></a>EvrRtxDelayCompleted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxDelayCompleted))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
-<P><STRONG><a name="[c7]"></a>EvrRtxEventFlagsWaitTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxEventFlagsWaitTimeout))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<P><STRONG><a name="[c5]"></a>EvrRtxEventFlagsWaitTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxEventFlagsWaitTimeout))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
-<P><STRONG><a name="[9c]"></a>EvrRtxKernelError</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelError))
+<P><STRONG><a name="[9a]"></a>EvrRtxKernelError</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelError))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxKernelInitialize
 </UL>
 
-<P><STRONG><a name="[af]"></a>EvrRtxKernelErrorNotify</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelErrorNotify))
+<P><STRONG><a name="[ad]"></a>EvrRtxKernelErrorNotify</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelErrorNotify))
 <BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelErrorNotify
 </UL>
 
-<P><STRONG><a name="[99]"></a>EvrRtxKernelGetState</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelGetState))
+<P><STRONG><a name="[97]"></a>EvrRtxKernelGetState</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelGetState))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelGetState
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxKernelGetState
 </UL>
 
-<P><STRONG><a name="[9b]"></a>EvrRtxKernelInitialize</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelInitialize))
+<P><STRONG><a name="[99]"></a>EvrRtxKernelInitialize</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelInitialize))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
 </UL>
 
-<P><STRONG><a name="[d7]"></a>EvrRtxKernelInitialized</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelInitialized))
+<P><STRONG><a name="[d6]"></a>EvrRtxKernelInitialized</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxKernelInitialized))
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxKernelInitialize
 </UL>
 
-<P><STRONG><a name="[b1]"></a>EvrRtxMemoryAlloc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryAlloc))
-<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryAlloc
+<P><STRONG><a name="[af]"></a>EvrRtxMemoryAlloc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryAlloc))
+<BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryAlloc
 </UL>
 
-<P><STRONG><a name="[b6]"></a>EvrRtxMemoryBlockAlloc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryBlockAlloc))
-<BR><BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<P><STRONG><a name="[b4]"></a>EvrRtxMemoryBlockAlloc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryBlockAlloc))
+<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
 </UL>
 
-<P><STRONG><a name="[b8]"></a>EvrRtxMemoryBlockFree</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryBlockFree))
-<BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
+<P><STRONG><a name="[b6]"></a>EvrRtxMemoryBlockFree</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryBlockFree))
+<BR><BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
 </UL>
 
-<P><STRONG><a name="[ba]"></a>EvrRtxMemoryBlockInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryBlockInit))
-<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolInit
+<P><STRONG><a name="[b8]"></a>EvrRtxMemoryBlockInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryBlockInit))
+<BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolInit
 </UL>
 
-<P><STRONG><a name="[b3]"></a>EvrRtxMemoryFree</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryFree))
-<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryFree
+<P><STRONG><a name="[b1]"></a>EvrRtxMemoryFree</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryFree))
+<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryFree
 </UL>
 
-<P><STRONG><a name="[b5]"></a>EvrRtxMemoryInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryInit))
-<BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryInit
+<P><STRONG><a name="[b3]"></a>EvrRtxMemoryInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryInit))
+<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryInit
 </UL>
 
-<P><STRONG><a name="[ca]"></a>EvrRtxMemoryPoolAllocTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryPoolAllocTimeout))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<P><STRONG><a name="[c8]"></a>EvrRtxMemoryPoolAllocTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMemoryPoolAllocTimeout))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
 <P><STRONG><a name="[da]"></a>EvrRtxMessageQueueCreated</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueCreated))
-<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 </UL>
 
-<P><STRONG><a name="[a0]"></a>EvrRtxMessageQueueError</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueError))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<P><STRONG><a name="[9e]"></a>EvrRtxMessageQueueError</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueError))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[9e]"></a>EvrRtxMessageQueueGet</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueGet))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<P><STRONG><a name="[9c]"></a>EvrRtxMessageQueueGet</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueGet))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[d8]"></a>EvrRtxMessageQueueGetPending</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueGetPending))
+<P><STRONG><a name="[d7]"></a>EvrRtxMessageQueueGetPending</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueGetPending))
 <BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[cb]"></a>EvrRtxMessageQueueGetTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueGetTimeout))
+<P><STRONG><a name="[c9]"></a>EvrRtxMessageQueueGetTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueGetTimeout))
 <BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
-<P><STRONG><a name="[a7]"></a>EvrRtxMessageQueueInsertPending</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueInsertPending))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<P><STRONG><a name="[a5]"></a>EvrRtxMessageQueueInsertPending</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueInsertPending))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 </UL>
 
-<P><STRONG><a name="[be]"></a>EvrRtxMessageQueueInserted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueInserted))
+<P><STRONG><a name="[bc]"></a>EvrRtxMessageQueueInserted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueInserted))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
 </UL>
 
-<P><STRONG><a name="[a8]"></a>EvrRtxMessageQueueNotInserted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueNotInserted))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<P><STRONG><a name="[a6]"></a>EvrRtxMessageQueueNotInserted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueNotInserted))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 </UL>
 
-<P><STRONG><a name="[9f]"></a>EvrRtxMessageQueueNotRetrieved</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueNotRetrieved))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<P><STRONG><a name="[9d]"></a>EvrRtxMessageQueueNotRetrieved</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueNotRetrieved))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[a5]"></a>EvrRtxMessageQueuePut</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueuePut))
-<BR><BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<P><STRONG><a name="[a3]"></a>EvrRtxMessageQueuePut</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueuePut))
+<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 </UL>
 
 <P><STRONG><a name="[db]"></a>EvrRtxMessageQueuePutPending</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueuePutPending))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 </UL>
 
-<P><STRONG><a name="[cc]"></a>EvrRtxMessageQueuePutTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueuePutTimeout))
+<P><STRONG><a name="[ca]"></a>EvrRtxMessageQueuePutTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueuePutTimeout))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
-<P><STRONG><a name="[a3]"></a>EvrRtxMessageQueueRetrieved</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueRetrieved))
-<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<P><STRONG><a name="[a1]"></a>EvrRtxMessageQueueRetrieved</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMessageQueueRetrieved))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
 </UL>
 
-<P><STRONG><a name="[a9]"></a>EvrRtxMutexAcquire</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexAcquire), UNUSED, KEPT)
+<P><STRONG><a name="[a7]"></a>EvrRtxMutexAcquire</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexAcquire), UNUSED, KEPT)
 <BR><BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexAcquire
 </UL>
 
@@ -835,9 +834,9 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexAcquire
 </UL>
 
-<P><STRONG><a name="[c8]"></a>EvrRtxMutexAcquireTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexAcquireTimeout))
+<P><STRONG><a name="[c6]"></a>EvrRtxMutexAcquireTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexAcquireTimeout))
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexAcquire
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
 <P><STRONG><a name="[dd]"></a>EvrRtxMutexAcquired</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexAcquired))
@@ -849,7 +848,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexNew
 </UL>
 
-<P><STRONG><a name="[ab]"></a>EvrRtxMutexDelete</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexDelete), UNUSED, KEPT)
+<P><STRONG><a name="[a9]"></a>EvrRtxMutexDelete</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexDelete), UNUSED, KEPT)
 <BR><BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexDelete
 </UL>
 
@@ -857,7 +856,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
 </UL>
 
-<P><STRONG><a name="[aa]"></a>EvrRtxMutexError</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexError))
+<P><STRONG><a name="[a8]"></a>EvrRtxMutexError</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexError))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexRelease
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexNew
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
@@ -868,7 +867,7 @@ Global Symbols
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexAcquire
 </UL>
 
-<P><STRONG><a name="[ac]"></a>EvrRtxMutexNew</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexNew), UNUSED, KEPT)
+<P><STRONG><a name="[aa]"></a>EvrRtxMutexNew</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexNew), UNUSED, KEPT)
 <BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexNew
 </UL>
 
@@ -876,7 +875,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexAcquire
 </UL>
 
-<P><STRONG><a name="[ad]"></a>EvrRtxMutexRelease</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexRelease), UNUSED, KEPT)
+<P><STRONG><a name="[ab]"></a>EvrRtxMutexRelease</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxMutexRelease), UNUSED, KEPT)
 <BR><BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMutexRelease
 </UL>
 
@@ -884,40 +883,44 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexRelease
 </UL>
 
-<P><STRONG><a name="[c9]"></a>EvrRtxSemaphoreAcquireTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxSemaphoreAcquireTimeout))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<P><STRONG><a name="[c7]"></a>EvrRtxSemaphoreAcquireTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxSemaphoreAcquireTimeout))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
-<P><STRONG><a name="[d2]"></a>EvrRtxThreadBlocked</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadBlocked))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
+<P><STRONG><a name="[d0]"></a>EvrRtxThreadBlocked</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadBlocked))
+<BR><BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
 </UL>
 
-<P><STRONG><a name="[c6]"></a>EvrRtxThreadFlagsWaitTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadFlagsWaitTimeout))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<P><STRONG><a name="[c4]"></a>EvrRtxThreadFlagsWaitTimeout</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadFlagsWaitTimeout))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
-<P><STRONG><a name="[ce]"></a>EvrRtxThreadPreempted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadPreempted))
-<BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<P><STRONG><a name="[cc]"></a>EvrRtxThreadPreempted</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadPreempted))
+<BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
 </UL>
 
-<P><STRONG><a name="[cf]"></a>EvrRtxThreadSwitched</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadSwitched))
-<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadSwitch
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
+<P><STRONG><a name="[cd]"></a>EvrRtxThreadSwitched</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadSwitched))
+<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadSwitch
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
 </UL>
 
-<P><STRONG><a name="[cd]"></a>EvrRtxThreadUnblocked</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadUnblocked))
-<BR><BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<P><STRONG><a name="[cb]"></a>EvrRtxThreadUnblocked</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxThreadUnblocked))
+<BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
 </UL>
 
-<P><STRONG><a name="[d6]"></a>EvrRtxTimerCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxTimerCallback))
+<P><STRONG><a name="[d4]"></a>EvrRtxTimerCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxTimerCallback))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTimerThread
 </UL>
 
-<P><STRONG><a name="[d3]"></a>OS_Tick_AcknowledgeIRQ</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, os_systick.o(.text.OS_Tick_AcknowledgeIRQ))
+<P><STRONG><a name="[d1]"></a>OS_Tick_AcknowledgeIRQ</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, os_systick.o(.text.OS_Tick_AcknowledgeIRQ))
 <BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
+</UL>
+
+<P><STRONG><a name="[d5]"></a>SystemCoreClockUpdate</STRONG> (Thumb, 124 bytes, Stack size 0 bytes, system_stm32f4xx.o(.text.SystemCoreClockUpdate))
+<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startup
 </UL>
 
 <P><STRONG><a name="[60]"></a>SystemInit</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, system_stm32f4xx.o(.text.SystemInit))
@@ -966,21 +969,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_postsh_1
 </UL>
 
-<P><STRONG><a name="[96]"></a>initTable</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, vga.o(.text.initTable))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
-<LI>Call Chain = initTable
+<P><STRONG><a name="[80]"></a>main</STRONG> (Thumb, 26 bytes, Stack size 96 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; startup
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-</UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[80]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 96 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 116 + Unknown Stack Size
-<LI>Call Chain = main &rArr; startup
-</UL>
-<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startup
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initTable
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startup
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -988,7 +980,7 @@ Global Symbols
 <P><STRONG><a name="[8f]"></a>osKernelGetState</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, rtx_kernel.o(.text.osKernelGetState), UNUSED, KEPT)
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osKernelGetState
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelGetState
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelGetState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_release
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_acquire
@@ -997,36 +989,36 @@ Global Symbols
 <P><STRONG><a name="[95]"></a>osKernelInitialize</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, rtx_kernel.o(.text.osKernelInitialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osKernelInitialize
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelPreInit
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelInitialize
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelError
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelPreInit
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelInitialize
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelError
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_platform_post_stackheap_init
 </UL>
 
-<P><STRONG><a name="[9d]"></a>osMessageQueueGet</STRONG> (Thumb, 220 bytes, Stack size 24 bytes, rtx_msgqueue.o(.text.osMessageQueueGet))
+<P><STRONG><a name="[9b]"></a>osMessageQueueGet</STRONG> (Thumb, 220 bytes, Stack size 24 bytes, rtx_msgqueue.o(.text.osMessageQueueGet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = osMessageQueueGet &rArr; osRtxPostProcess &rArr; osRtxKernelErrorNotify
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotRetrieved
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGet
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotRetrieved
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGet
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTimerThread
 </UL>
 
-<P><STRONG><a name="[a4]"></a>osMessageQueuePut</STRONG> (Thumb, 166 bytes, Stack size 24 bytes, rtx_msgqueue.o(.text.osMessageQueuePut))
+<P><STRONG><a name="[a2]"></a>osMessageQueuePut</STRONG> (Thumb, 166 bytes, Stack size 24 bytes, rtx_msgqueue.o(.text.osMessageQueuePut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = osMessageQueuePut &rArr; osRtxPostProcess &rArr; osRtxKernelErrorNotify
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePut
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotInserted
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInsertPending
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePut
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotInserted
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInsertPending
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTimerTick
 </UL>
@@ -1034,8 +1026,8 @@ Global Symbols
 <P><STRONG><a name="[90]"></a>osMutexAcquire</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, rtx_mutex.o(.text.osMutexAcquire), UNUSED, KEPT)
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = osMutexAcquire
 </UL>
-<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquire
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquire
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_acquire
 </UL>
@@ -1043,8 +1035,8 @@ Global Symbols
 <P><STRONG><a name="[91]"></a>osMutexDelete</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, rtx_mutex.o(.text.osMutexDelete), UNUSED, KEPT)
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osMutexDelete
 </UL>
-<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexDelete
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexDelete
 </UL>
 <BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_free
 </UL>
@@ -1052,8 +1044,8 @@ Global Symbols
 <P><STRONG><a name="[92]"></a>osMutexNew</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, rtx_mutex.o(.text.osMutexNew), UNUSED, KEPT)
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osMutexNew
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexNew
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexNew
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_initialize
 </UL>
@@ -1061,158 +1053,158 @@ Global Symbols
 <P><STRONG><a name="[94]"></a>osMutexRelease</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, rtx_mutex.o(.text.osMutexRelease), UNUSED, KEPT)
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osMutexRelease
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexRelease
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexRelease
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
 </UL>
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_release
 </UL>
 
-<P><STRONG><a name="[ae]"></a>osRtxErrorNotify</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_config.o(.text.osRtxErrorNotify))
-<BR><BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxErrorNotify
+<P><STRONG><a name="[ac]"></a>osRtxErrorNotify</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_config.o(.text.osRtxErrorNotify))
+<BR><BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxErrorNotify
 </UL>
 <BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelErrorNotify
-<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxErrorNotify
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxErrorNotify
 </UL>
 
 <P><STRONG><a name="[93]"></a>osRtxKernelErrorNotify</STRONG> (Thumb, 22 bytes, Stack size 16 bytes, rtx_kernel.o(.text.osRtxKernelErrorNotify))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = osRtxKernelErrorNotify
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxErrorNotify
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelErrorNotify
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxErrorNotify
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelErrorNotify
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_initialize
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPostProcess
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTimerTick
 </UL>
 
-<P><STRONG><a name="[9a]"></a>osRtxKernelPreInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_kernel.o(.text.osRtxKernelPreInit))
+<P><STRONG><a name="[98]"></a>osRtxKernelPreInit</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_kernel.o(.text.osRtxKernelPreInit))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
 </UL>
 
-<P><STRONG><a name="[b0]"></a>osRtxMemoryAlloc</STRONG> (Thumb, 214 bytes, Stack size 24 bytes, rtx_memory.o(.text.osRtxMemoryAlloc))
+<P><STRONG><a name="[ae]"></a>osRtxMemoryAlloc</STRONG> (Thumb, 214 bytes, Stack size 24 bytes, rtx_memory.o(.text.osRtxMemoryAlloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = osRtxMemoryAlloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryAlloc
+<BR>[Calls]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryAlloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexNew
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 </UL>
 
-<P><STRONG><a name="[b2]"></a>osRtxMemoryFree</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, rtx_memory.o(.text.osRtxMemoryFree))
+<P><STRONG><a name="[b0]"></a>osRtxMemoryFree</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, rtx_memory.o(.text.osRtxMemoryFree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osRtxMemoryFree
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryFree
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryFree
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 </UL>
 
-<P><STRONG><a name="[b4]"></a>osRtxMemoryInit</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, rtx_memory.o(.text.osRtxMemoryInit))
+<P><STRONG><a name="[b2]"></a>osRtxMemoryInit</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, rtx_memory.o(.text.osRtxMemoryInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osRtxMemoryInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryInit
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxKernelInitialize
 </UL>
 
-<P><STRONG><a name="[a6]"></a>osRtxMemoryPoolAlloc</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, rtx_mempool.o(.text.osRtxMemoryPoolAlloc))
+<P><STRONG><a name="[a4]"></a>osRtxMemoryPoolAlloc</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, rtx_mempool.o(.text.osRtxMemoryPoolAlloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = osRtxMemoryPoolAlloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryBlockAlloc
+<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryBlockAlloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexNew
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
 </UL>
 
-<P><STRONG><a name="[b7]"></a>osRtxMemoryPoolFree</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, rtx_mempool.o(.text.osRtxMemoryPoolFree))
+<P><STRONG><a name="[b5]"></a>osRtxMemoryPoolFree</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, rtx_mempool.o(.text.osRtxMemoryPoolFree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = osRtxMemoryPoolFree
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryBlockFree
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryBlockFree
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
 </UL>
 
-<P><STRONG><a name="[b9]"></a>osRtxMemoryPoolInit</STRONG> (Thumb, 180 bytes, Stack size 24 bytes, rtx_mempool.o(.text.osRtxMemoryPoolInit))
+<P><STRONG><a name="[b7]"></a>osRtxMemoryPoolInit</STRONG> (Thumb, 180 bytes, Stack size 24 bytes, rtx_mempool.o(.text.osRtxMemoryPoolInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = osRtxMemoryPoolInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryBlockInit
+<BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryBlockInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxKernelInitialize
 </UL>
 
-<P><STRONG><a name="[bf]"></a>osRtxMessageQueueTimerSetup</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, rtx_msgqueue.o(.text.osRtxMessageQueueTimerSetup))
+<P><STRONG><a name="[bd]"></a>osRtxMessageQueueTimerSetup</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, rtx_msgqueue.o(.text.osRtxMessageQueueTimerSetup))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = osRtxMessageQueueTimerSetup &rArr; svcRtxMessageQueueNew &rArr; osRtxMemoryPoolInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueNew
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTimerSetup
 </UL>
 
-<P><STRONG><a name="[c1]"></a>osRtxMutexOwnerRestore</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, rtx_mutex.o(.text.osRtxMutexOwnerRestore))
+<P><STRONG><a name="[bf]"></a>osRtxMutexOwnerRestore</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, rtx_mutex.o(.text.osRtxMutexOwnerRestore))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = osRtxMutexOwnerRestore
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListSort
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListSort
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
 </UL>
 
 <P><STRONG><a name="[86]"></a>osRtxPendSV_Handler</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, rtx_system.o(.text.osRtxPendSV_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = osRtxPendSV_Handler &rArr; osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PendSV_Handler
 </UL>
 
-<P><STRONG><a name="[a2]"></a>osRtxPostProcess</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, rtx_system.o(.text.osRtxPostProcess))
+<P><STRONG><a name="[a0]"></a>osRtxPostProcess</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, rtx_system.o(.text.osRtxPostProcess))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = osRtxPostProcess &rArr; osRtxKernelErrorNotify
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelErrorNotify
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[c4]"></a>osRtxThreadDelayTick</STRONG> (Thumb, 614 bytes, Stack size 32 bytes, rtx_thread.o(.text.osRtxThreadDelayTick))
+<P><STRONG><a name="[c2]"></a>osRtxThreadDelayTick</STRONG> (Thumb, 614 bytes, Stack size 32 bytes, rtx_thread.o(.text.osRtxThreadDelayTick))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = osRtxThreadDelayTick &rArr; osRtxMutexOwnerRestore
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMutexOwnerRestore
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadUnblocked
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadFlagsWaitTimeout
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxSemaphoreAcquireTimeout
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquireTimeout
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePutTimeout
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGetTimeout
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryPoolAllocTimeout
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxDelayCompleted
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxEventFlagsWaitTimeout
+<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMutexOwnerRestore
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadUnblocked
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadFlagsWaitTimeout
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxSemaphoreAcquireTimeout
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquireTimeout
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePutTimeout
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGetTimeout
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryPoolAllocTimeout
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxDelayCompleted
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxEventFlagsWaitTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
 </UL>
 
-<P><STRONG><a name="[c3]"></a>osRtxThreadDispatch</STRONG> (Thumb, 438 bytes, Stack size 16 bytes, rtx_thread.o(.text.osRtxThreadDispatch))
+<P><STRONG><a name="[c1]"></a>osRtxThreadDispatch</STRONG> (Thumb, 438 bytes, Stack size 16 bytes, rtx_thread.o(.text.osRtxThreadDispatch))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadSwitched
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadPreempted
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadSwitched
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadPreempted
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexRelease
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxPendSV_Handler
 </UL>
 
-<P><STRONG><a name="[bb]"></a>osRtxThreadListGet</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListGet))
+<P><STRONG><a name="[b9]"></a>osRtxThreadListGet</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListGet))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexRelease
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
@@ -1220,54 +1212,54 @@ Global Symbols
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
 </UL>
 
-<P><STRONG><a name="[d9]"></a>osRtxThreadListPut</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListPut))
+<P><STRONG><a name="[d8]"></a>osRtxThreadListPut</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListPut))
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexAcquire
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[d4]"></a>osRtxThreadListRemove</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListRemove))
+<P><STRONG><a name="[d2]"></a>osRtxThreadListRemove</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListRemove))
 <BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
 </UL>
 
-<P><STRONG><a name="[c2]"></a>osRtxThreadListSort</STRONG> (Thumb, 180 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListSort))
-<BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMutexOwnerRestore
+<P><STRONG><a name="[c0]"></a>osRtxThreadListSort</STRONG> (Thumb, 180 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadListSort))
+<BR><BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMutexOwnerRestore
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexAcquire
 </UL>
 
-<P><STRONG><a name="[d5]"></a>osRtxThreadReadyPut</STRONG> (Thumb, 116 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadReadyPut))
+<P><STRONG><a name="[d3]"></a>osRtxThreadReadyPut</STRONG> (Thumb, 116 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadReadyPut))
 <BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
 </UL>
 
-<P><STRONG><a name="[bd]"></a>osRtxThreadRegPtr</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadRegPtr))
+<P><STRONG><a name="[bb]"></a>osRtxThreadRegPtr</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadRegPtr))
 <BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueuePostProcess
 </UL>
 
-<P><STRONG><a name="[d0]"></a>osRtxThreadSwitch</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadSwitch))
-<BR><BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadSwitched
+<P><STRONG><a name="[ce]"></a>osRtxThreadSwitch</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, rtx_thread.o(.text.osRtxThreadSwitch))
+<BR><BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadSwitched
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxTick_Handler
 </UL>
 
-<P><STRONG><a name="[d1]"></a>osRtxThreadWaitEnter</STRONG> (Thumb, 320 bytes, Stack size 32 bytes, rtx_thread.o(.text.osRtxThreadWaitEnter))
+<P><STRONG><a name="[cf]"></a>osRtxThreadWaitEnter</STRONG> (Thumb, 320 bytes, Stack size 32 bytes, rtx_thread.o(.text.osRtxThreadWaitEnter))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = osRtxThreadWaitEnter
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadSwitched
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadBlocked
+<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadSwitched
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadBlocked
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexAcquire
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueuePut
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 </UL>
 
-<P><STRONG><a name="[bc]"></a>osRtxThreadWaitExit</STRONG> (Thumb, 256 bytes, Stack size 16 bytes, rtx_thread.o(.text.osRtxThreadWaitExit))
+<P><STRONG><a name="[ba]"></a>osRtxThreadWaitExit</STRONG> (Thumb, 256 bytes, Stack size 16 bytes, rtx_thread.o(.text.osRtxThreadWaitExit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = osRtxThreadWaitExit &rArr; osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadUnblocked
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadUnblocked
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexRelease
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMutexDelete
@@ -1279,13 +1271,13 @@ Global Symbols
 <P><STRONG><a name="[87]"></a>osRtxTick_Handler</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, rtx_system.o(.text.osRtxTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = osRtxTick_Handler &rArr; osRtxThreadDelayTick &rArr; osRtxMutexOwnerRestore
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadReadyPut
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Tick_AcknowledgeIRQ
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadSwitch
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadPreempted
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListRemove
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadReadyPut
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OS_Tick_AcknowledgeIRQ
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadSwitch
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDelayTick
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxThreadPreempted
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListRemove
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
@@ -1294,29 +1286,31 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
 <LI>Call Chain = osRtxTimerSetup &rArr; osRtxMessageQueueTimerSetup &rArr; svcRtxMessageQueueNew &rArr; osRtxMemoryPoolInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueueTimerSetup
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueueTimerSetup
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_lib.o(.rodata)
 </UL>
 <P><STRONG><a name="[6c]"></a>osRtxTimerThread</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, rtx_timer.o(.text.osRtxTimerThread))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = osRtxTimerThread &rArr; osMessageQueueGet &rArr; osRtxPostProcess &rArr; osRtxKernelErrorNotify
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxTimerCallback
+<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxTimerCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_lib.o(.rodata)
 </UL>
-<P><STRONG><a name="[98]"></a>startup</STRONG> (Thumb, 714 bytes, Stack size 20 bytes, drivers.o(.text.startup))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = startup
+<P><STRONG><a name="[96]"></a>startup</STRONG> (Thumb, 746 bytes, Stack size 24 bytes, drivers.o(.text.startup))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = startup
+</UL>
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockUpdate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8e]"></a>updateBuffer</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, vga.o(.text.updateBuffer))
+<P><STRONG><a name="[8e]"></a>updateBuffer</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, vga.o(.text.updateBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
 <LI>Call Chain = updateBuffer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
+<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
@@ -1335,124 +1329,124 @@ Local Symbols
 <P><STRONG><a name="[62]"></a>svcRtxKernelGetState</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, rtx_kernel.o(.text.svcRtxKernelGetState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = svcRtxKernelGetState
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelGetState
+<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelGetState
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_kernel.o(.text.osKernelGetState)
 </UL>
 <P><STRONG><a name="[63]"></a>svcRtxKernelInitialize</STRONG> (Thumb, 338 bytes, Stack size 24 bytes, rtx_kernel.o(.text.svcRtxKernelInitialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = svcRtxKernelInitialize &rArr; osRtxMemoryPoolInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolInit
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryInit
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelInitialized
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelError
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolInit
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryInit
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelInitialized
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxKernelError
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_kernel.o(.text.osKernelInitialize)
 </UL>
 <P><STRONG><a name="[6b]"></a>osRtxMessageQueuePostProcess</STRONG> (Thumb, 544 bytes, Stack size 24 bytes, rtx_msgqueue.o(.text.osRtxMessageQueuePostProcess))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = osRtxMessageQueuePostProcess &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadRegPtr
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInserted
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadRegPtr
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInserted
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_msgqueue.o(.text.svcRtxMessageQueueNew)
 </UL>
 <P><STRONG><a name="[64]"></a>svcRtxMessageQueueGet</STRONG> (Thumb, 502 bytes, Stack size 32 bytes, rtx_msgqueue.o(.text.svcRtxMessageQueueGet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = svcRtxMessageQueueGet &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadRegPtr
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotRetrieved
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInserted
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGetTimeout
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGetPending
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadRegPtr
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotRetrieved
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInserted
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGetTimeout
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueGetPending
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_msgqueue.o(.text.osMessageQueueGet)
 </UL>
-<P><STRONG><a name="[c0]"></a>svcRtxMessageQueueNew</STRONG> (Thumb, 382 bytes, Stack size 40 bytes, rtx_msgqueue.o(.text.svcRtxMessageQueueNew))
+<P><STRONG><a name="[be]"></a>svcRtxMessageQueueNew</STRONG> (Thumb, 382 bytes, Stack size 40 bytes, rtx_msgqueue.o(.text.svcRtxMessageQueueNew))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
 <LI>Call Chain = svcRtxMessageQueueNew &rArr; osRtxMemoryPoolInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolInit
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolInit
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueCreated
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryFree
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryAlloc
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryFree
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryAlloc
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueueTimerSetup
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMessageQueueTimerSetup
 </UL>
 
 <P><STRONG><a name="[65]"></a>svcRtxMessageQueuePut</STRONG> (Thumb, 392 bytes, Stack size 24 bytes, rtx_msgqueue.o(.text.svcRtxMessageQueuePut))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = svcRtxMessageQueuePut &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadRegPtr
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePutTimeout
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadRegPtr
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueRetrieved
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePutTimeout
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueuePutPending
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotInserted
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInserted
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueNotInserted
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueInserted
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMessageQueueError
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_msgqueue.o(.text.osMessageQueuePut)
 </UL>
 <P><STRONG><a name="[66]"></a>svcRtxMutexAcquire</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, rtx_mutex.o(.text.svcRtxMutexAcquire))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = svcRtxMutexAcquire &rArr; osRtxThreadWaitEnter
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListSort
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListSort
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexNotAcquired
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquired
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquireTimeout
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquireTimeout
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquirePending
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListPut
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitEnter
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_mutex.o(.text.osMutexAcquire)
 </UL>
 <P><STRONG><a name="[67]"></a>svcRtxMutexDelete</STRONG> (Thumb, 212 bytes, Stack size 8 bytes, rtx_mutex.o(.text.svcRtxMutexDelete))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = svcRtxMutexDelete &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListSort
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListSort
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexDestroyed
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryFree
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolFree
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryFree
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_mutex.o(.text.osMutexDelete)
 </UL>
 <P><STRONG><a name="[68]"></a>svcRtxMutexNew</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, rtx_mutex.o(.text.svcRtxMutexNew))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = svcRtxMutexNew &rArr; osRtxMemoryAlloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexCreated
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryAlloc
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryPoolAlloc
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxMemoryAlloc
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_mutex.o(.text.osMutexNew)
 </UL>
@@ -1460,18 +1454,18 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = svcRtxMutexRelease &rArr; osRtxThreadWaitExit &rArr; osRtxThreadDispatch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexReleased
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexError
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMutexAcquired
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadWaitExit
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadListGet
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxThreadDispatch
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_mutex.o(.text.osMutexRelease)
 </UL>
 <P><STRONG><a name="[6a]"></a>osRtxTimerTick</STRONG> (Thumb, 272 bytes, Stack size 32 bytes, rtx_timer.o(.text.osRtxTimerTick))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = osRtxTimerTick &rArr; osMessageQueuePut &rArr; osRtxPostProcess &rArr; osRtxKernelErrorNotify
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osRtxKernelErrorNotify
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> rtx_timer.o(.text.osRtxTimerSetup)

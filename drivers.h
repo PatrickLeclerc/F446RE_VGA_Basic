@@ -1,6 +1,6 @@
-#include "stm32f446xx.h"
 #ifndef DRIVERS_H
 #define DRIVERS_H
+#include "stm32f446xx.h"
 /*Inits ALL*/
 void startup(uint32_t buffSize);
 /*180MHz*/
