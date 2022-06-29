@@ -7,6 +7,7 @@ void startup(uint32_t buffSize){
 	initVSYNC();/*TIM2*/
 	initHSYNC();/*TIM3*/
 }
+
 /*144MHz*/
 void initClock(){
 	/*APB1 45MHz Max*/
@@ -41,6 +42,7 @@ void initHSYNC(){/*TIM2*/ // GPIOA0 is pulled up
 		GPIO A0,A1 for ch1,2
 		GPIO B10 for ch3
 	*/
+	
 	/* GPIO */
 	//RCC
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOBEN;
@@ -48,8 +50,7 @@ void initHSYNC(){/*TIM2*/ // GPIOA0 is pulled up
 	//HSYNC PWM
 	GPIOA->MODER |= GPIO_MODER_MODE0_1 | GPIO_MODER_MODE1_1;
 	GPIOA->OTYPER |= GPIO_OTYPER_OT0_Msk | GPIO_OTYPER_OT1_Msk;
-#warning should the pin be pulled-up exernaly?
-	GPIOA->PUPDR |= GPIO_PUPDR_PUPD0_0; 
+	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD0_0; 
 	GPIOA->AFR[0] |= GPIO_AFRL_AFRL0_0 | GPIO_AFRL_AFRL1_0;
 	
 	//HSYNC Visible area
@@ -101,8 +102,7 @@ void initVSYNC(){/*TIM3*/ // GPIOA6 is pulled up
 	//VSYNC
 	GPIOA->MODER |= GPIO_MODER_MODE6_1 | GPIO_MODER_MODE7_1;
 	GPIOA->OTYPER |= GPIO_OTYPER_OT6_Msk | GPIO_OTYPER_OT7_Msk;
-#warning should the pin be pulled-up exernaly?
-	GPIOA->PUPDR |= GPIO_PUPDR_PUPD6_0; 
+	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD6_0; 
 	GPIOA->AFR[0] |= GPIO_AFRL_AFRL6_1 | GPIO_AFRL_AFRL7_1;
 	
 	//VSYNC Visible area
@@ -151,8 +151,7 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	GPIOC->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED3_Msk;
 	GPIOC->OSPEEDR |= GPIO_OSPEEDR_OSPEED3_0;
 	GPIOC->OTYPER |= GPIO_OTYPER_OT3_Msk;
-#warning should the pin be pulled-up exernaly?
-	GPIOC->PUPDR 	|= GPIO_PUPDR_PUPD3_0;
+	//GPIOC->PUPDR 	|= GPIO_PUPDR_PUPD3_0;
 	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL3_Pos;
 	
 	/*SPI2: Internal slave management (master) */
