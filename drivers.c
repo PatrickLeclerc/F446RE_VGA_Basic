@@ -3,7 +3,7 @@ void startup(uint32_t buffSize){
 	/*General Initialisation*/
 	initClock();
 	/*VGA Initialisation*/
-	initSPI2(buffSize);/*VGAColor1*/
+	initSPI2(buffSize);/*VGAColor*/
 	initVSYNC();/*TIM2*/
 	initHSYNC();/*TIM3*/
 }
@@ -37,7 +37,7 @@ void initClock(){
 	SystemCoreClockUpdate();
 }
 
-void initHSYNC(){/*TIM2*/ // GPIOA0 is pulled up
+void initHSYNC(){/*TIM2*/
 	/*
 		GPIO A0,A1 for ch1,2
 		GPIO B10 for ch3
@@ -50,8 +50,8 @@ void initHSYNC(){/*TIM2*/ // GPIOA0 is pulled up
 	//HSYNC PWM
 	GPIOA->MODER |= GPIO_MODER_MODE0_1 | GPIO_MODER_MODE1_1;
 	GPIOA->OTYPER |= GPIO_OTYPER_OT0_Msk | GPIO_OTYPER_OT1_Msk;
-	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD0_0; 
 	GPIOA->AFR[0] |= GPIO_AFRL_AFRL0_0 | GPIO_AFRL_AFRL1_0;
+	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD0_0;//A0 PU
 	
 	//HSYNC Visible area
 	GPIOB->MODER |= GPIO_MODER_MODE10_1;
@@ -67,16 +67,16 @@ void initHSYNC(){/*TIM2*/ // GPIOA0 is pulled up
 	TIM2->CNT = 0U;
 	
 	/* PWM */
-	//* CH1 for positive pulse (NOR) */
-	TIM2->CCMR1 = (7U<<TIM_CCMR1_OC1M_Pos)|TIM_CCMR1_OC1PE;
-	TIM2->CCR1 = 800U+24U+72U;
-	
 	//* CH2 for positive pulse (NOR) */
-	TIM2->CCMR1 |= (6U<<TIM_CCMR1_OC2M_Pos)|TIM_CCMR1_OC2PE;
+	TIM2->CCMR1 |= (7U<<TIM_CCMR1_OC2M_Pos)|TIM_CCMR1_OC2PE;
 	TIM2->CCR2 = 800U+24U;
 	
+	//* CH1 for positive pulse (NOR) */
+	TIM2->CCMR1 |= (6U<<TIM_CCMR1_OC1M_Pos)|TIM_CCMR1_OC1PE;
+	TIM2->CCR1 = 800U+24U+72U;
+	
 	//* CH3 visible area : SPI AND CH1 */
-	TIM2->CCMR2 = (7U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
+	TIM2->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
 	TIM2->CCR3 = 800U;
 	
 	//* Update preloaded registers and enable pwm outputs */
@@ -91,7 +91,7 @@ void initHSYNC(){/*TIM2*/ // GPIOA0 is pulled up
 	TIM2->CR1 |= TIM_CR1_CEN;
 }
 
-void initVSYNC(){/*TIM3*/ // GPIOA6 is pulled up
+void initVSYNC(){/*TIM3*/
 	/*
 		GPIO A6,A7 for ch1,2
 		GPIO B0 for ch3
@@ -102,8 +102,8 @@ void initVSYNC(){/*TIM3*/ // GPIOA6 is pulled up
 	//VSYNC
 	GPIOA->MODER |= GPIO_MODER_MODE6_1 | GPIO_MODER_MODE7_1;
 	GPIOA->OTYPER |= GPIO_OTYPER_OT6_Msk | GPIO_OTYPER_OT7_Msk;
-	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD6_0; 
 	GPIOA->AFR[0] |= GPIO_AFRL_AFRL6_1 | GPIO_AFRL_AFRL7_1;
+	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD6_0;//A6 PU
 	
 	//VSYNC Visible area
 	GPIOB->MODER |= GPIO_MODER_MODE0_1;
@@ -119,16 +119,16 @@ void initVSYNC(){/*TIM3*/ // GPIOA6 is pulled up
 	TIM3->CNT = 0U;
 	
 	/* PWM */
-	//*CH1 for positive pulse (NOR)*/
-	TIM3->CCMR1 = (7U<<TIM_CCMR1_OC1M_Pos)|TIM_CCMR1_OC1PE;
-	TIM3->CCR1 = 600U+1U+2U;
-	
 	//*CH2 for positive pulse (NOR)*/
-	TIM3->CCMR1 |= (6U<<TIM_CCMR1_OC2M_Pos)|TIM_CCMR1_OC2PE;
+	TIM3->CCMR1 |= (7U<<TIM_CCMR1_OC2M_Pos)|TIM_CCMR1_OC2PE;
 	TIM3->CCR2 = 600U+1U;
 	
+	//*CH1 for positive pulse (NOR)*/
+	TIM3->CCMR1 |= (6U<<TIM_CCMR1_OC1M_Pos)|TIM_CCMR1_OC1PE;
+	TIM3->CCR1 = 600U+1U+2U;
+	
 	//*CH3 visible area : SPI AND CH1*/
-	TIM3->CCMR2 = (7U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
+	TIM3->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
 	TIM3->CCR3 = 600U;
 	
 	//*Update preloaded registers and enable timer*/
@@ -151,7 +151,6 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	GPIOC->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED3_Msk;
 	GPIOC->OSPEEDR |= GPIO_OSPEEDR_OSPEED3_0;
 	GPIOC->OTYPER |= GPIO_OTYPER_OT3_Msk;
-	//GPIOC->PUPDR 	|= GPIO_PUPDR_PUPD3_0;
 	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL3_Pos;
 	
 	/*SPI2: Internal slave management (master) */
