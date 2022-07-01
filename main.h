@@ -7,6 +7,7 @@
 #define BUFFER_SIZE (uint32_t) 48U
 
 /*////////////////Variables////////////////*/
+uint8_t vgaScreenBuff[300][48] = {};
 extern uint8_t* vgaBuffA;
 extern uint8_t* vgaBuffB;
 extern uint8_t*  vgaBuffNext;
