@@ -5,6 +5,6 @@
 
 /* Functions declaration */
 uint8_t* charToVga(char val);
-void updateBuffer(uint8_t* table, uint32_t tableSize, uint32_t line,char* sentence);
+void VGAcreateFrame(uint8_t* table, uint32_t tableSize, uint32_t line,char* sentence);
 
 #endif

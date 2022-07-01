@@ -34,12 +34,13 @@ void TIM2_IRQHandler(){
 			if(vgaBuffNext==vgaBuffA) vgaBuffNext = vgaBuffB;
 			else vgaBuffNext = vgaBuffA;
 			uint32_t newLine = line >>1;
-			switch(line>>4){
-				case 7:{updateBuffer(vgaBuffNext, BUFFER_SIZE, newLine,	" Study hard what interests you the most in the ");break;}
-				case 8:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	"  most undisciplined, irreverent and original ");break;}
-				case 9:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	"  manner possible.          -Richard Feynmann");break;}
-				default: {updateBuffer(vgaBuffNext, BUFFER_SIZE, newLine, "");break;}
-			}
+			VGAcreateFrame(vgaBuffNext, BUFFER_SIZE, newLine,	" Study hard what interests you the most in the ");
+			//switch(line>>4){
+			//	case 7:{updateBuffer(vgaBuffNext, BUFFER_SIZE, newLine,	" Study hard what interests you the most in the ");break;}
+			//	case 8:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	"  most undisciplined, irreverent and original ");break;}
+			//	case 9:{updateBuffer(vgaBuffNext, BUFFER_SIZE,newLine,	"  manner possible.          -Richard Feynmann");break;}
+			//	default: {updateBuffer(vgaBuffNext, BUFFER_SIZE, newLine, "");break;}
+			//}
 		}
 
 	}
