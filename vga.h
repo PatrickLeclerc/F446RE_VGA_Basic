@@ -13,4 +13,5 @@ uint8_t* charToVga(char val);
 void VGACreateFrame(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X]);
 void VGADrawCircle(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int x,int y,int r, int full);
 void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int x,int y,int r, int full);
+void VGAPutChar(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,char alpha);
 #endif

@@ -86,3 +86,18 @@ void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int R,
 		}
 	}
 }
+
+void VGAPutChar(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,char alpha){
+	uint8_t* character = charToVga(alpha);
+	for(int y = 0; y < 8; y++){
+		for(int x = 0; x < 8; x++){
+			/* Pixel value */
+			int px = (character[y] >> x)&1;
+			
+			/* Pixel position */
+			int xPx = (X+x)/8;
+			//int smallPxPos = x;
+			table[Y+y][xPx] |= (px<<x);
+		}
+	}
+}
