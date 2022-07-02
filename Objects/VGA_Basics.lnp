@@ -3,7 +3,7 @@
 ".\objects\drivers.o"
 ".\objects\vga.o"
 ".\objects\comport.o"
-"..\..\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM4F.lib"
+"..\..\..\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM4F.lib"
 ".\objects\rtx_lib.o"
 ".\objects\rtx_config.o"
 ".\objects\startup_stm32f446xx.o"

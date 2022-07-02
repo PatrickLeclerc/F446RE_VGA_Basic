@@ -1,15 +1,10 @@
 #include "main.h"
 int main(){
-	/*Tables initialisation*/
-	//uint8_t buffA[BUFFER_SIZE_X];
-	//uint8_t buffB[BUFFER_SIZE_X];
-	//vgaBuffA = buffA;
-	//vgaBuffB = buffB;
-	
 	/* Create basic frame */
 	VGACreateFrame(vgaScreenBuff);
-	VGADrawCircle(vgaScreenBuff, 8*(48>>1),150,64,0);
-	//VGADrawRect(vgaScreenBuff,posX,posY-1,strlen(message)*8+1,0);
+	VGACreateFrame(vgaScreenBuff2);
+	VGADrawCircle(vgaScreenBuff,48<<2,300>>1,64,0);
+	VGADrawRect(vgaScreenBuff2,48<<2,300>>1,64,0);
 	/*Stm32 initialisation*/
 	startup(BUFFER_SIZE_X);
 	while(1){
@@ -28,6 +23,9 @@ int main(){
 			/* Clear the buffer */
 			memset(uartBuff,0,UARTBUFFSIZE);
 		}
-
+		if(vgaFlag){
+			vgaFlag = 0;
+			
+		}
 	}
 }

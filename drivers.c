@@ -138,6 +138,10 @@ void initVSYNC(){/*TIM3*/
 	TIM3->EGR |= TIM_EGR_UG;
 	TIM3->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E | TIM_CCER_CC3E;
 	
+	//NVIC
+	TIM3->CR1 |= TIM_DIER_UIE;
+	NVIC_SetPriority(TIM3_IRQn,2);
+	NVIC_EnableIRQ(TIM3_IRQn);
 	/* Enable */
 	TIM3->CR1 |= TIM_CR1_CEN;
 }

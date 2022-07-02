@@ -6,15 +6,15 @@
 
 /*////////////////Variables////////////////*/
 volatile uint8_t uartRxFlag=0;
+volatile uint8_t vgaFlag=0;
 volatile uint8_t vgaScreenBuff[300][48] = {};
 volatile uint8_t vgaScreenBuff2[300][48] = {};
-volatile uint8_t* vgaBuffA;
-volatile uint8_t* vgaBuffB;
-volatile uint8_t*  vgaBuffNext;
+volatile uint8_t* vgaBuffNext;
 
 /*////////////////Functions////////////////*/
 /*Declarations*/
 void TIM2_IRQHandler(void);
+void TIM3_IRQHandler(void);
 void USART2_IRQHandler(void);
 	
 /*Definitions*/
@@ -38,6 +38,23 @@ void TIM2_IRQHandler(){
 			vgaBuffNext = vgaScreenBuff[newLine];
 		}
 
+	}
+}
+
+void TIM3_IRQHandler(){
+	static uint32_t psc = 0U;
+	if(TIM3->SR & TIM_SR_UIF){
+		/*Reset UIF*/
+		TIM3->SR &= ~TIM_SR_UIF;
+		
+		/*Evaluate next line*/
+		psc++;
+		if(psc==3U){
+			psc=0U;
+			vgaFlag = 1;
+			if(vgaBuffNext==vgaScreenBuff) vgaBuffNext = vgaScreenBuff2;
+			else vgaBuffNext = vgaScreenBuff;
+		}
 	}
 }
 
