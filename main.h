@@ -6,11 +6,11 @@
 
 /*////////////////Variables////////////////*/
 volatile uint8_t uartRxFlag=0;
-uint8_t vgaScreenBuff[300][48] = {};
-uint8_t vgaScreenBuff2[300][48] = {};
-uint8_t* vgaBuffA;
-uint8_t* vgaBuffB;
-extern uint8_t*  vgaBuffNext;
+volatile uint8_t vgaScreenBuff[300][48] = {};
+volatile uint8_t vgaScreenBuff2[300][48] = {};
+volatile uint8_t* vgaBuffA;
+volatile uint8_t* vgaBuffB;
+volatile uint8_t*  vgaBuffNext;
 
 /*////////////////Functions////////////////*/
 /*Declarations*/

@@ -89,7 +89,7 @@ void initHSYNC(){/*TIM2*/
 	/* NVIC */
 	TIM2->DIER |= TIM_DIER_UIE;
 	NVIC_EnableIRQ(TIM2_IRQn);
-	
+	NVIC_SetPriority(TIM2_IRQn,1);
 	/* Enable */
 	TIM2->CR1 |= TIM_CR1_CEN;
 }
@@ -189,7 +189,6 @@ void initUart2(uint32_t baudrate){
 	/* IRQ */
 	USART2->CR1 |= USART_CR1_RXNEIE;
 	NVIC_EnableIRQ(USART2_IRQn);
-	
 	/* Enable */
 	USART2->CR1 |= USART_CR1_UE;
 }
