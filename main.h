@@ -2,10 +2,10 @@
 #define MAIN_H
 #include "drivers.h"
 #include "vga.h"
-
-
+#include "comport.h"
 
 /*////////////////Variables////////////////*/
+volatile uint8_t uartRxFlag=0;
 uint8_t vgaScreenBuff[300][48] = {};
 uint8_t vgaScreenBuff2[300][48] = {};
 uint8_t* vgaBuffA;
@@ -15,6 +15,8 @@ extern uint8_t*  vgaBuffNext;
 /*////////////////Functions////////////////*/
 /*Declarations*/
 void TIM2_IRQHandler(void);
+void USART2_IRQHandler(void);
+	
 /*Definitions*/
 void TIM2_IRQHandler(){
 	static uint32_t line = 0U;
@@ -36,6 +38,29 @@ void TIM2_IRQHandler(){
 			vgaBuffNext = vgaScreenBuff[newLine];
 		}
 
+	}
+}
+
+void USART2_IRQHandler(){
+	static uint32_t len = 0;
+	/* RX */
+	if(USART2->SR & USART_SR_RXNE){
+		USART2->SR &= ~USART_SR_RXNE;
+		if(len < UARTBUFFSIZE){
+			uartBuff[len] = (uint8_t)USART2->DR;
+			if(uartBuff[len] == '\n'){
+				uartRxFlag = 1;
+				len = 0;
+			}
+			else{
+				len++;
+			}
+		}
+		else{
+			uartBuff[UARTBUFFSIZE-1] = (uint8_t)'\n';
+			uartRxFlag = 1;
+			len = 0;
+		}
 	}
 }
 #endif

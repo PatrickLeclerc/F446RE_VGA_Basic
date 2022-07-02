@@ -15,6 +15,9 @@ void initHSYNC(void);
 		GPIO B0 for ch3
 */
 void initVSYNC(void); 
-/*18MHz-GPIOC3AF5-DMA1Ch0Stream4*/
+/*Color*/
 void initSPI2(uint32_t buffSize);
+/*USART2*/
+void initUart2(uint32_t baudrate);
+
 #endif

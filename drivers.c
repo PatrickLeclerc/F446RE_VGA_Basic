@@ -2,6 +2,8 @@
 void startup(uint32_t buffSize){
 	/*General Initialisation*/
 	initClock();
+	/*Comport*/
+	initUart2(115200);
 	/*VGA Initialisation*/
 	initSPI2(buffSize);/*VGAColor*/
 	initVSYNC();/*TIM2*/
@@ -37,6 +39,7 @@ void initClock(){
 	SystemCoreClockUpdate();
 }
 
+/* VGA */
 void initHSYNC(){/*TIM2*/
 	/*
 		GPIO A0,A1 for ch1,2
@@ -167,4 +170,26 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	/*Enable*/
 	SPI2->CR2 = SPI_CR2_TXDMAEN;
 	SPI2->CR1 |= SPI_CR1_SPE; 
+}
+/* COMPORT */
+void initUart2(uint32_t baudrate){
+	/* RCC */
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+	RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
+	
+	/* GPIO */
+	GPIOA->MODER |= GPIO_MODER_MODER2_1 | GPIO_MODER_MODER3_1;
+	GPIOA->AFR[0] |= (7 << GPIO_AFRL_AFSEL2_Pos) | (7 << GPIO_AFRL_AFSEL3_Pos);
+	GPIOA->OSPEEDR |= (3U<<GPIO_OSPEEDR_OSPEED2_Pos) | (3U<<GPIO_OSPEEDR_OSPEED3_Pos);
+	
+	/* Usart @ 115200 */
+	USART2->CR1 = USART_CR1_TE | USART_CR1_RE;
+	USART2->BRR = (SystemCoreClock>>2U) / (baudrate);
+	
+	/* IRQ */
+	USART2->CR1 |= USART_CR1_RXNEIE;
+	NVIC_EnableIRQ(USART2_IRQn);
+	
+	/* Enable */
+	USART2->CR1 |= USART_CR1_UE;
 }
