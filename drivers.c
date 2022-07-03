@@ -1,7 +1,7 @@
 #include "drivers.h"
 void startup(uint32_t buffSize){
 	/*General Initialisation*/
-	initClock();
+	initClock(144);
 	/*Comport*/
 	initUart2(115200);
 	/*VGA Initialisation*/
@@ -11,7 +11,7 @@ void startup(uint32_t buffSize){
 }
 
 /*144MHz*/
-void initClock(){
+void initClock(uint32_t fPclk){
 	/*APB1 45MHz Max*/
 	RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
 	/*APB2 90MHz Max*/
@@ -26,7 +26,7 @@ void initClock(){
 	RCC->PLLCFGR |= (4U<<RCC_PLLCFGR_PLLM_Pos);
 	/*PLLN*/
 	RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLN_Msk;
-	RCC->PLLCFGR |= (144U<<RCC_PLLCFGR_PLLN_Pos);
+	RCC->PLLCFGR |= (fPclk<<RCC_PLLCFGR_PLLN_Pos);
 	/*PLLP*/
 	RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLP_Msk;
 	/*FLASHMEM*/
@@ -88,8 +88,9 @@ void initHSYNC(){/*TIM2*/
 	
 	/* NVIC */
 	TIM2->DIER |= TIM_DIER_UIE;
-	NVIC_EnableIRQ(TIM2_IRQn);
 	NVIC_SetPriority(TIM2_IRQn,1);
+	NVIC_EnableIRQ(TIM2_IRQn);
+	
 	/* Enable */
 	TIM2->CR1 |= TIM_CR1_CEN;
 }
@@ -139,8 +140,7 @@ void initVSYNC(){/*TIM3*/
 	TIM3->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E | TIM_CCER_CC3E;
 	
 	//NVIC
-	TIM3->CR1 |= TIM_DIER_UIE;
-	NVIC_SetPriority(TIM3_IRQn,2);
+	TIM3->DIER |= TIM_DIER_UIE;
 	NVIC_EnableIRQ(TIM3_IRQn);
 	/* Enable */
 	TIM3->CR1 |= TIM_CR1_CEN;

@@ -7,9 +7,11 @@
 /*////////////////Variables////////////////*/
 volatile uint8_t uartRxFlag=0;
 volatile uint8_t vgaFlag=0;
-volatile uint8_t vgaScreenBuff[300][48] = {};
-volatile uint8_t vgaScreenBuff2[300][48] = {};
-volatile uint8_t* vgaBuffNext;
+volatile uint8_t vgaScreenBuff[BUFFER_SIZE_Y][BUFFER_SIZE_X] = {};
+volatile uint8_t vgaScreenBuff2[BUFFER_SIZE_Y][BUFFER_SIZE_X] = {};
+volatile uint8_t* vgaCurrentScreenBuff = vgaScreenBuff;
+volatile uint8_t* vgaNextScreenBuff = vgaScreenBuff2;
+volatile uint8_t* vgaBuffNext = vgaScreenBuff;
 
 /*////////////////Functions////////////////*/
 /*Declarations*/
@@ -35,7 +37,12 @@ void TIM2_IRQHandler(){
 		/*Calculate next buffer once every two lines*/
 		if((line&1)==0){
 			uint32_t newLine = line >>1;
-			vgaBuffNext = vgaScreenBuff[newLine];
+			if(newLine<BUFFER_SIZE_Y) {
+				if(vgaCurrentScreenBuff==vgaScreenBuff) vgaBuffNext = vgaScreenBuff[newLine];
+				else vgaBuffNext = vgaScreenBuff2[newLine];
+			}
+			else vgaBuffNext = vgaCurrentScreenBuff[0];
+			
 		}
 
 	}
@@ -46,15 +53,21 @@ void TIM3_IRQHandler(){
 	if(TIM3->SR & TIM_SR_UIF){
 		/*Reset UIF*/
 		TIM3->SR &= ~TIM_SR_UIF;
-		
-		/*Evaluate next line*/
 		psc++;
-		if(psc==3U){
+		/*Evaluate next line*/
+		if(psc==1U){
 			psc=0U;
 			vgaFlag = 1;
-			if(vgaBuffNext==vgaScreenBuff) vgaBuffNext = vgaScreenBuff2;
-			else vgaBuffNext = vgaScreenBuff;
+			if(vgaCurrentScreenBuff==vgaScreenBuff) {
+				vgaCurrentScreenBuff = vgaScreenBuff2;
+				vgaNextScreenBuff = vgaScreenBuff;
+			}
+			else {
+				vgaCurrentScreenBuff = vgaScreenBuff;
+				vgaNextScreenBuff = vgaScreenBuff2;
+			}
 		}
+		
 	}
 }
 

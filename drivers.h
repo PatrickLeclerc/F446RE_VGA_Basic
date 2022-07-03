@@ -4,7 +4,7 @@
 /*Inits ALL*/
 void startup(uint32_t buffSize);
 /*180MHz*/
-void initClock(void);
+void initClock(uint32_t fPclk);
 	/*TIM2
 			GPIO A0,A1 for ch1,2
 			GPIO B10 for ch3
