@@ -55,7 +55,7 @@ void TIM3_IRQHandler(){
 		TIM3->SR &= ~TIM_SR_UIF;
 		psc++;
 		/*Evaluate next line*/
-		if(psc==1U){
+		if(psc>=1U){
 			psc=0U;
 			vgaFlag = 1;
 			if(vgaCurrentScreenBuff==vgaScreenBuff) {
