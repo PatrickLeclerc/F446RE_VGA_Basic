@@ -1,6 +1,6 @@
 --cpu=Cortex-M4.fp.sp
-".\objects\isr.o"
 ".\objects\main.o"
+".\objects\isr.o"
 ".\objects\drivers.o"
 ".\objects\vga.o"
 ".\objects\comport.o"

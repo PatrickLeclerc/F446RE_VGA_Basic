@@ -76,6 +76,40 @@ void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int RX
 	}
 }
 
+void VGADrawLine(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int x1,int y1,int x2,int y2){
+	int xa = x1;
+	int xb = x2;
+	int ya = y1;
+	int yb = y2;
+	
+	if(x1>x2){
+		xa = x2;
+		xb = x1;
+		ya = y2;
+		yb = y1;
+	}
+	if(x1==x2){
+		int x = x1/8; 
+		int modX = x1%8;
+		for(int y = y1; y <= y2; y++){
+		if(x<BUFFER_SIZE_X && y<BUFFER_SIZE_Y)
+			table[y][x] ^= (1 << (7-modX));
+		}
+	}
+	else{
+		for(int x = xa; x < xb/8; x++){
+			for(int modX = 0; modX < 8; modX++){
+				int realX = x*8+modX;
+				int y = (yb-ya)*realX;
+				y /= xb-xa;
+				y += ya;
+				if(x<BUFFER_SIZE_X && y<BUFFER_SIZE_Y)
+					table[y][x] ^= (1 << (7-modX));
+			}
+		}
+	}
+}
+
 void VGAPutChar(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,char alpha){
 	uint8_t* character = charToVga(alpha);
 	for(int y = 0; y < 8; y++){

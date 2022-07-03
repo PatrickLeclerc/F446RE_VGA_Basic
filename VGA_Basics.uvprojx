@@ -384,9 +384,9 @@
           <GroupName>App</GroupName>
           <Files>
             <File>
-              <FileName>main.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\main.cpp</FilePath>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
             </File>
             <File>
               <FileName>main.h</FileName>
@@ -424,9 +424,9 @@
           <GroupName>Vga</GroupName>
           <Files>
             <File>
-              <FileName>vga.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\vga.cpp</FilePath>
+              <FileName>vga.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\vga.c</FilePath>
             </File>
             <File>
               <FileName>vga.h</FileName>
