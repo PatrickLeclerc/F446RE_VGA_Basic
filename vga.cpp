@@ -5,7 +5,8 @@ uint8_t* charToVga(char val){
 	if(val<32) 	return vgaChar[' '-32];
 	else				return vgaChar[val-32];
 }
-void VGACreateFrame(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X]){//48*300
+
+void VGACreateFrame(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X]){
 	for(int y = 0; y < BUFFER_SIZE_Y; y++)
 		for(int x = 0; x < BUFFER_SIZE_X; x++)
 			table[y][x] = 0;

@@ -384,14 +384,24 @@
           <GroupName>App</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\main.cpp</FilePath>
             </File>
             <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>isr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\isr.c</FilePath>
+            </File>
+            <File>
+              <FileName>isr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\isr.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -414,9 +424,9 @@
           <GroupName>Vga</GroupName>
           <Files>
             <File>
-              <FileName>vga.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\vga.c</FilePath>
+              <FileName>vga.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\vga.cpp</FilePath>
             </File>
             <File>
               <FileName>vga.h</FileName>
