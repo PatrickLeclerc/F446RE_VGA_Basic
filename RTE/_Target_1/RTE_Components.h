@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'VGA_Basics' 
+ * Project: 'f446Vga' 
  * Target:  'Target 1' 
  */
 

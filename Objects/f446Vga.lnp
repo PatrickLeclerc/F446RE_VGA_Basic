@@ -1,14 +1,11 @@
 --cpu=Cortex-M4.fp.sp
 ".\objects\main.o"
 ".\objects\isr.o"
+".\objects\comport.o"
 ".\objects\drivers.o"
 ".\objects\vga.o"
-".\objects\comport.o"
-"..\..\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\RTOS2\RTX\Library\ARM\RTX_CM4F.lib"
-".\objects\rtx_lib.o"
-".\objects\rtx_config.o"
 ".\objects\startup_stm32f446xx.o"
 ".\objects\system_stm32f4xx.o"
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\Listings\VGA_Basics.map" -o .\Objects\VGA_Basics.axf
+--list ".\Listings\f446Vga.map" -o .\Objects\f446Vga.axf
