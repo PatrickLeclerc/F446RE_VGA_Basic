@@ -27,10 +27,81 @@ Project File Date:  07/05/2022
 <h2>Output:</h2>
 *** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-compiling drivers.c...
+main.c(1): warning: In file included from...
+./main.h(9): warning: no previous extern declaration for non-static variable 'uartRxFlag' [-Wmissing-variable-declarations]
+volatile uint8_t uartRxFlag=0;
+                 ^
+./main.h(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t uartRxFlag=0;
+         ^
+./main.h(10): warning: no previous extern declaration for non-static variable 'vgaFlag' [-Wmissing-variable-declarations]
+volatile uint8_t vgaFlag=0;
+                 ^
+./main.h(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t vgaFlag=0;
+         ^
+./main.h(11): warning: use of GNU empty initializer extension [-Wgnu-empty-initializer]
+uint8_t vgaScreenBuff[BUFFER_SIZE_Y*BUFFER_SIZE_X] = {};
+                                                     ^
+./main.h(11): warning: no previous extern declaration for non-static variable 'vgaScreenBuff' [-Wmissing-variable-declarations]
+uint8_t vgaScreenBuff[BUFFER_SIZE_Y*BUFFER_SIZE_X] = {};
+        ^
+./main.h(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t vgaScreenBuff[BUFFER_SIZE_Y*BUFFER_SIZE_X] = {};
+^
+./main.h(12): warning: use of GNU empty initializer extension [-Wgnu-empty-initializer]
+uint8_t vgaScreenBuff2[BUFFER_SIZE_Y*BUFFER_SIZE_X] = {};
+                                                      ^
+./main.h(12): warning: no previous extern declaration for non-static variable 'vgaScreenBuff2' [-Wmissing-variable-declarations]
+uint8_t vgaScreenBuff2[BUFFER_SIZE_Y*BUFFER_SIZE_X] = {};
+        ^
+./main.h(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t vgaScreenBuff2[BUFFER_SIZE_Y*BUFFER_SIZE_X] = {};
+^
+./main.h(13): warning: no previous extern declaration for non-static variable 'vgaCurrentScreenBuff' [-Wmissing-variable-declarations]
+uint8_t* vgaCurrentScreenBuff = vgaScreenBuff;
+         ^
+./main.h(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t* vgaCurrentScreenBuff = vgaScreenBuff;
+^
+./main.h(14): warning: no previous extern declaration for non-static variable 'vgaNextScreenBuff' [-Wmissing-variable-declarations]
+uint8_t* vgaNextScreenBuff = vgaScreenBuff2;
+         ^
+./main.h(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t* vgaNextScreenBuff = vgaScreenBuff2;
+^
+./main.h(15): warning: no previous extern declaration for non-static variable 'vgaBuffNext' [-Wmissing-variable-declarations]
+volatile uint8_t* vgaBuffNext = vgaScreenBuff;
+                  ^
+./main.h(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+volatile uint8_t* vgaBuffNext = vgaScreenBuff;
+         ^
+main.c(20): warning: passing 'uint8_t [128]' to parameter of type 'const char *' converts between pointers to integer types where one is of the unique plain 'char' type and the other is not [-Wpointer-sign]
+                        for(unsigned int i=0;i<strlen(uartBuff);i++){
+                                                      ^~~~~~~~
+C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h(335): note: passing argument to parameter here
+extern _ARMABI size_t strlen(const char * /*s*/) __attribute__((__nonnull__(1)));
+                                               ^
+main.c(21): warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+                                VGAPutChar(vgaScreenBuff, posX+8*i,posY,uartBuff[i]);
+                                ~~~~~~~~~~                ~~~~^~~~
+main.c(21): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                                VGAPutChar(vgaScreenBuff, posX+8*i,posY,uartBuff[i]);
+                                                          ^~~~~
+main.c(22): warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+                                VGAPutChar(vgaScreenBuff2, posX+8*i,posY,uartBuff[i]);
+                                ~~~~~~~~~~                 ~~~~^~~~
+main.c(22): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                                VGAPutChar(vgaScreenBuff2, posX+8*i,posY,uartBuff[i]);
+                                                           ^~~~~
+main.c(70): warning: implicit conversion changes signedness: 'unsigned int' to 'int' [-Wsign-conversion]
+                                VGAPutChar(vgaNextScreenBuff, 191U+8U*i,150U,message[i]);
+                                ~~~~~~~~~~                    ~~~~^~~~~
+15 warnings generated.
+compiling main.c...
 linking...
 Program Size: Code=5138 RO-data=502 RW-data=1156 ZI-data=31784  
-".\Objects\f446Vga.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\f446Vga.axf" - 0 Error(s), 15 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -56,12 +127,12 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.5.0
 
    * Component: Keil::Device:Startup:2.6.3
-      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
       Source file:   MDK\Device\Source\ARM\STM32F446xx_OPT.s
-      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f446xx.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

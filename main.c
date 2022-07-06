@@ -17,7 +17,7 @@ int main(){
 			VGACreateFrame(vgaNextScreenBuff);
 			int posX = 0;
 			int posY = 5;
-			for(int i=0;i<strlen(uartBuff);i++){
+			for(unsigned int i=0;i<strlen(uartBuff);i++){
 				VGAPutChar(vgaScreenBuff, posX+8*i,posY,uartBuff[i]);
 				VGAPutChar(vgaScreenBuff2, posX+8*i,posY,uartBuff[i]);
 			}
@@ -66,8 +66,8 @@ int main(){
 			
 			/*Write text*/
 			char message[] = "Bouncing balls";
-			for(int i=0;i<strlen(message);i++){
-				VGAPutChar(vgaNextScreenBuff, 191+8*i,150,message[i]);
+			for(unsigned int i=0;i<strlen(message);i++){
+				VGAPutChar(vgaNextScreenBuff, 191U+8U*i,150U,message[i]);
 			}
 
 		}
