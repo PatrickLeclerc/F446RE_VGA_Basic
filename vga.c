@@ -6,14 +6,14 @@ uint8_t* charToVga(char val){
 	else				return vgaChar[val-32];
 }
 
-void VGACreateFrame(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X]){
+void VGACreateFrame(uint8_t* table){
 	for(int y = 0; y < BUFFER_SIZE_Y; y++)
 		for(int x = 0; x < BUFFER_SIZE_X; x++)
-			table[y][x] = 0;
+			table[y*BUFFER_SIZE_X+x] = 0;
 	VGADrawRect(table,0,0,BUFFER_SIZE_X*8-2,BUFFER_SIZE_Y-2,0);
 }
 
-void VGADrawCircle(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int R, int full){
+void VGADrawCircle(uint8_t* table, int X,int Y,int R, int full){
 	int R2 = R-1;
 	for(int y = Y-R; y < Y+R; y++){
 		for(int x = ((X-R)/8); x <= ((X+R)/8); x++){
@@ -27,14 +27,14 @@ void VGADrawCircle(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int 
 					condR = condR && (condLeft > R2*R2);
 				}
 				if(condR){
-					table[y][x] ^= (1 << (7-modX));
+					table[y*BUFFER_SIZE_X+x] ^= (1 << (7-modX));
 				}
 			}
 		}
 	}
 }
 
-void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int RX, int RY, int full){
+void VGADrawRect(uint8_t* table, int X,int Y,int RX, int RY, int full){
 	if(!full){
 		/* Horizontal */
 		for(int x = 0; x < BUFFER_SIZE_X; x++){
@@ -42,8 +42,8 @@ void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int RX
 				int realX = x*8+modX;
 				int condX = (realX>X) && (realX<=(X+RX));
 				if(condX){
-					table[Y][x] |= (1 << (7-modX));
-					table[Y+RY][x] |= (1 << (7-modX));
+					table[Y*BUFFER_SIZE_X+x] |= (1 << (7-modX));
+					table[(Y+RY)*BUFFER_SIZE_X+x] |= (1 << (7-modX));
 				}
 			}
 		}
@@ -55,8 +55,8 @@ void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int RX
 		for(int y = 0; y < BUFFER_SIZE_Y; y++){
 				int condY = (y>Y) && (y<=(Y+RY));
 				if(condY){
-					table[y][X1] |= (1 << (7-modX1));
-					table[y][X2] |= (1 << (7-modX2));
+					table[y*BUFFER_SIZE_X+X1] |= (1 << (7-modX1));
+					table[y*BUFFER_SIZE_X+X2] |= (1 << (7-modX2));
 				}
 		}
 	}
@@ -68,7 +68,7 @@ void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int RX
 					int realX = x*8+modX;
 					int condX = (realX>X) && (realX<=(X+RX));
 					if(condX && condY){
-						table[y][x] |= (1 << (7-modX));
+						table[y*BUFFER_SIZE_X+x] |= (1 << (7-modX));
 					}
 				}
 			}
@@ -76,7 +76,7 @@ void VGADrawRect(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,int RX
 	}
 }
 
-void VGADrawLine(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int x1,int y1,int x2,int y2){
+void VGADrawLine(uint8_t* table, int x1,int y1,int x2,int y2){
 	int xa = x1;
 	int xb = x2;
 	int ya = y1;
@@ -93,7 +93,7 @@ void VGADrawLine(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int x1,int y1,int 
 		int modX = x1%8;
 		for(int y = y1; y <= y2; y++){
 		if(x<BUFFER_SIZE_X && y<BUFFER_SIZE_Y)
-			table[y][x] ^= (1 << (7-modX));
+			table[y*BUFFER_SIZE_X+x] ^= (1 << (7-modX));
 		}
 	}
 	else{
@@ -104,11 +104,11 @@ void VGADrawLine(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int x1,int y1,int 
 			y /= xb-xa;
 			y+= ya;	
 			if(realX<BUFFER_BITSIZE_X && y<BUFFER_SIZE_Y)
-				table[y][realX/8] ^= (1 << (7-(realX%8)));
+				table[y*BUFFER_SIZE_X+realX/8] ^= (1 << (7-(realX%8)));
 		}
 	}
 }
-void VGAPutChar(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,char alpha){
+void VGAPutChar(uint8_t* table, int X,int Y,char alpha){
 	uint8_t* character = charToVga(alpha);
 	for(int y = 0; y < 8; y++){
 		for(int x = 0; x < 8; x++){
@@ -118,7 +118,7 @@ void VGAPutChar(uint8_t table[BUFFER_SIZE_Y][BUFFER_SIZE_X], int X,int Y,char al
 			/* Pixel position */
 			int xPx = (X+x)/8;
 			//int smallPxPos = x;
-			table[Y+y][xPx] |= (px<<x);
+			table[(Y+y)*BUFFER_SIZE_X+xPx] |= (px<<x);
 		}
 	}
 }

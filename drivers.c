@@ -80,7 +80,7 @@ void initHSYNC(){/*TIM2*/
 	
 	//* CH3 visible area : SPI AND CH1 */
 	TIM2->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
-	TIM2->CCR3 = 800U;
+	TIM2->CCR3 = 800U+24;
 	
 	//* Update preloaded registers and enable pwm outputs */
 	TIM2->EGR |= TIM_EGR_UG;
@@ -133,7 +133,7 @@ void initVSYNC(){/*TIM3*/
 	
 	//*CH3 visible area : SPI AND CH1*/
 	TIM3->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
-	TIM3->CCR3 = 600U;
+	TIM3->CCR3 = 600U+1;
 	
 	//*Update preloaded registers and enable timer*/
 	TIM3->EGR |= TIM_EGR_UG;

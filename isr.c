@@ -5,8 +5,8 @@
 /* Extern */
 extern volatile uint8_t uartRxFlag;
 extern volatile uint8_t vgaFlag;
-extern volatile uint8_t vgaScreenBuff[BUFFER_SIZE_Y][BUFFER_SIZE_X];
-extern volatile uint8_t vgaScreenBuff2[BUFFER_SIZE_Y][BUFFER_SIZE_X];
+extern volatile uint8_t vgaScreenBuff[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern volatile uint8_t vgaScreenBuff2[BUFFER_SIZE_Y*BUFFER_SIZE_X];
 extern volatile uint8_t* vgaCurrentScreenBuff;
 extern volatile uint8_t* vgaNextScreenBuff;
 extern volatile uint8_t* vgaBuffNext;
@@ -30,10 +30,10 @@ void TIM2_IRQHandler(){
 		if((line&1)==0){
 			uint32_t newLine = line >>1;
 			if(newLine<BUFFER_SIZE_Y) {
-				if(vgaCurrentScreenBuff==vgaScreenBuff) vgaBuffNext = vgaScreenBuff[newLine];
-				else vgaBuffNext = vgaScreenBuff2[newLine];
+				if(vgaCurrentScreenBuff==vgaScreenBuff) vgaBuffNext = &vgaScreenBuff[newLine*BUFFER_SIZE_X];
+				else vgaBuffNext = &vgaScreenBuff2[newLine*BUFFER_SIZE_X];
 			}
-			else vgaBuffNext = vgaCurrentScreenBuff[0];
+			else vgaBuffNext = &vgaCurrentScreenBuff[0];
 			
 		}
 
