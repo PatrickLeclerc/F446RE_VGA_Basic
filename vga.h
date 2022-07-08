@@ -4,12 +4,14 @@
 #include "string.h"
 
 /* Defines */
-#define BUFFER_SIZE_Y  (int)300
-#define BUFFER_SIZE_X  (int)50
-#define BUFFER_BITSIZE_X  ((int)BUFFER_SIZE_X*8)
+#define BUFFER_SIZE_Y  300
+#define BUFFER_SIZE_X  50
+#define BUFFER_BITSIZE_X  (BUFFER_SIZE_X*8)
 
 /* Functions declaration */
 uint8_t* charToVga(char val);
+void VGABlankScreen(uint8_t* table);
+void VGApx(uint8_t* table, int x,int y);
 void VGACreateFrame(uint8_t* table);
 void VGADrawCircle(uint8_t* table, int x,int y,int r, int full);
 void VGADrawRect(uint8_t* table, int x,int y,int RX, int RY, int full);

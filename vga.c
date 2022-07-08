@@ -6,10 +6,18 @@ uint8_t* charToVga(char val){
 	else				return vgaChar[val-32];
 }
 
-void VGACreateFrame(uint8_t* table){
+void VGABlankScreen(uint8_t* table){
 	for(int y = 0; y < BUFFER_SIZE_Y; y++)
 		for(int x = 0; x < BUFFER_SIZE_X; x++)
 			table[y*BUFFER_SIZE_X+x] = 0;
+}
+
+void VGApx(uint8_t* table, int x,int y){
+	if(x>=0 && x<BUFFER_BITSIZE_X && y>=0 && y<BUFFER_SIZE_Y)
+		table[y*BUFFER_SIZE_X + (x/8)] ^= (1 << (7-(x%8)));
+}
+
+void VGACreateFrame(uint8_t* table){
 	VGADrawRect(table,0,0,BUFFER_SIZE_X*8-2,BUFFER_SIZE_Y-2,0);
 }
 
@@ -42,8 +50,8 @@ void VGADrawRect(uint8_t* table, int X,int Y,int RX, int RY, int full){
 				int realX = x*8+modX;
 				int condX = (realX>X) && (realX<=(X+RX));
 				if(condX){
-					table[Y*BUFFER_SIZE_X+x] |= (1 << (7-modX));
-					table[(Y+RY)*BUFFER_SIZE_X+x] |= (1 << (7-modX));
+					table[Y*BUFFER_SIZE_X+x] ^= (1 << (7-modX));
+					table[(Y+RY)*BUFFER_SIZE_X+x] ^= (1 << (7-modX));
 				}
 			}
 		}
@@ -55,8 +63,8 @@ void VGADrawRect(uint8_t* table, int X,int Y,int RX, int RY, int full){
 		for(int y = 0; y < BUFFER_SIZE_Y; y++){
 				int condY = (y>Y) && (y<=(Y+RY));
 				if(condY){
-					table[y*BUFFER_SIZE_X+X1] |= (1 << (7-modX1));
-					table[y*BUFFER_SIZE_X+X2] |= (1 << (7-modX2));
+					table[y*BUFFER_SIZE_X+X1] ^= (1 << (7-modX1));
+					table[y*BUFFER_SIZE_X+X2] ^= (1 << (7-modX2));
 				}
 		}
 	}
@@ -68,7 +76,7 @@ void VGADrawRect(uint8_t* table, int X,int Y,int RX, int RY, int full){
 					int realX = x*8+modX;
 					int condX = (realX>X) && (realX<=(X+RX));
 					if(condX && condY){
-						table[y*BUFFER_SIZE_X+x] |= (1 << (7-modX));
+						table[y*BUFFER_SIZE_X+x] ^= (1 << (7-modX));
 					}
 				}
 			}
@@ -108,6 +116,7 @@ void VGADrawLine(uint8_t* table, int x1,int y1,int x2,int y2){
 		}
 	}
 }
+
 void VGAPutChar(uint8_t* table, int X,int Y,char alpha){
 	uint8_t* character = charToVga(alpha);
 	for(int y = 0; y < 8; y++){
@@ -118,7 +127,7 @@ void VGAPutChar(uint8_t* table, int X,int Y,char alpha){
 			/* Pixel position */
 			int xPx = (X+x)/8;
 			//int smallPxPos = x;
-			table[(Y+y)*BUFFER_SIZE_X+xPx] |= (px<<x);
+			table[(Y+y)*BUFFER_SIZE_X+xPx] ^= (px<<x);
 		}
 	}
 }

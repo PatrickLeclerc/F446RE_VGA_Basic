@@ -45,7 +45,7 @@ void TIM3_IRQHandler(){
 	if(TIM3->SR & TIM_SR_UIF){
 		/*Reset UIF*/
 		TIM3->SR &= ~TIM_SR_UIF;
-		psc++;
+		
 		/*Evaluate next line*/
 		if(psc>=1U){
 			psc=0U;
@@ -59,7 +59,7 @@ void TIM3_IRQHandler(){
 				vgaNextScreenBuff = vgaScreenBuff2;
 			}
 		}
-		
+		psc++;
 	}
 }
 

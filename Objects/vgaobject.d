@@ -1,16 +1,6 @@
-./objects/main.o: main.cpp main.h drivers.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f446xx.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\core_cm4.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__config \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_version.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_compiler.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\cmsis_armclang.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include\mpu_armv7.h \
-  C:\Users\pa-tr\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
-  comport.h vgaObject.h \
+./objects/vgaobject.o: vgaObject.cpp vgaObject.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\utility \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__config \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__tuple \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cstddef \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\version \
@@ -22,6 +12,8 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cstdint \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__debug \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\iosfwd \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\wchar.h \
@@ -49,19 +41,4 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\algorithm \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\functional \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\bit \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__bits vga.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string_view \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__string \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cstdio \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cwchar \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cwctype \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cctype \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\ctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\ctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\wctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\math.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__bits vga.h
