@@ -21,9 +21,9 @@ int main(){
 			VGABlankScreen(vgaNextScreenBuff);
 			VGACreateFrame(vgaNextScreenBuff);
 			#if 1//Time
-			drawTime(200,150);
+			drawTime(BUFFER_BITSIZE_X/2-32,BUFFER_SIZE_Y/16);
 			#endif
-			#if 0 //RotatingClock
+			#if 1 //RotatingClock
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,8,0);
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,4,1);
 			const int N = 5;
@@ -38,7 +38,7 @@ int main(){
 			
 			/* Hour pin */
 			{
-			a = 2.0;	
+			a = 4.0;	
 			b = 125.0;	
 			pts[0].x = 0;
 			pts[0].y = -b;
@@ -130,7 +130,7 @@ int main(){
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,125,0);
 			
 			/* Increment time */
-			const static float tVerySlowpp = 1.0f/(56.0f*60.0f*60.0f);
+			const static float tVerySlowpp = 1.0f/(56.0f*60.0f*60.0f*24.0f);
 			const static float tSlowpp = 1.0f/(56.0f*60.0f);
 			const static float tFastpp = 1.0/56.0f;
 			tVerySlow -= tVerySlowpp;
