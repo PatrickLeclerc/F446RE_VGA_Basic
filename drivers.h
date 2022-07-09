@@ -22,6 +22,6 @@ void initUart2(uint32_t baudrate);
 /*RTC*/
 
 void initRTC(void);
-void getTime(char* time); // HH.MM.SS
-
+void getTimeBcd(char* time); // HH.MM.SS
+void getTimeNum(int* time); // H.M.S
 #endif

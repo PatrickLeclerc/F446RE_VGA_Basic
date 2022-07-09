@@ -122,12 +122,11 @@ void VGAPutChar(uint8_t* table, int X,int Y,char alpha){
 	for(int y = 0; y < 8; y++){
 		for(int x = 0; x < 8; x++){
 			/* Pixel value */
-			int px = (character[y] >> x)&1;
+			int px = (character[y] >>(7-x))&1;
 			
 			/* Pixel position */
-			int xPx = (X+x)/8;
-			//int smallPxPos = x;
-			table[(Y+y)*BUFFER_SIZE_X+xPx] ^= (px<<x);
+			int realX = (X+x);
+			table[(Y+y)*BUFFER_SIZE_X+realX/8] ^= (px<<(7-(realX%8)));
 		}
 	}
 }

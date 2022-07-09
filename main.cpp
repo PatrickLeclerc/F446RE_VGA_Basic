@@ -3,7 +3,6 @@
 
 
 int main(){
-	const float pi = 3.14159265359;
 	/* Create basic frame */
 	vgaBuffNext = vgaScreenBuff;
 	VGACreateFrame(vgaScreenBuff);
@@ -12,18 +11,21 @@ int main(){
 	/*Stm32 initialisation*/
 	startup(BUFFER_SIZE_X);
 	
-	
-	
 	while(1){
 		if(vgaFlag){
 			/* Basics */
 			vgaFlag = 0;
 			VGABlankScreen(vgaNextScreenBuff);
 			VGACreateFrame(vgaNextScreenBuff);
-			#if 1//Time
-			drawTime(BUFFER_BITSIZE_X/2-32,BUFFER_SIZE_Y/16);
+			#if 1//SmallClock
+			int r = 32;
+			drawSmallClock(BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/4);
 			#endif
-			#if 1 //RotatingClock
+			#if 1//Time
+			drawTime(BUFFER_BITSIZE_X-64,0,false);
+			VGADrawRect(vgaNextScreenBuff,BUFFER_BITSIZE_X-66,0,64,8,0);
+			#endif
+			#if 0 //RotatingClock
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,8,0);
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,4,1);
 			const int N = 5;
@@ -38,7 +40,7 @@ int main(){
 			
 			/* Hour pin */
 			{
-			a = 4.0;	
+			a = -4.0;	
 			b = 125.0;	
 			pts[0].x = 0;
 			pts[0].y = -b;
@@ -162,7 +164,7 @@ int main(){
 			t+=0.75;
 			#endif
 			
-			#if 1 //Text
+			#if 1//Text
 			std::string message = "GIT::F446RE_VGA_Basic -- CPP";
 			for(unsigned int i=0;i<message.length();i++){
 				VGAPutChar(vgaNextScreenBuff, (BUFFER_BITSIZE_X>>1)+i*8U-message.length()*4,0,message[i]);
@@ -183,9 +185,9 @@ int main(){
 			}
 			t1+=0.01;
 			#endif
-			#if 0 //Balls
+			#if 1 //Balls
 			/* Space */
-			static const int r = 16; 
+			static const int rBalls = 16; 
 			static int x = 64;
 			static int y = 64;
 			
@@ -195,24 +197,24 @@ int main(){
 			/* X */
 			static int vX = 3;
 			x += dT*vX;
-			if( ( x>(BUFFER_BITSIZE_X-r) ) || (x<=r) ) vX *= -1;
+			if( ( x>(BUFFER_BITSIZE_X-rBalls) ) || (x<=rBalls) ) vX *= -1;
 			
 			/*Y*/
 			static int vY = 11;
 			vY+=2;
 			y += dT*vY;
-			if( y>(BUFFER_SIZE_Y-r) ) {
+			if( y>(BUFFER_SIZE_Y-rBalls) ) {
 				vY *= -1;
-				y=BUFFER_SIZE_Y-r;
+				y=BUFFER_SIZE_Y-rBalls;
 			}
-			else if(y<=r){
+			else if(y<=rBalls){
 				vY *= -1;
 				y=0;
 			}
 			
 			/* Place circle */
-			VGADrawCircle(vgaNextScreenBuff,x,y,r,1);
-			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X-x-1,y,r,1);
+			VGADrawCircle(vgaNextScreenBuff,x,y,rBalls,1);
+			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X-x-1,y,rBalls,1);
 			#endif
 
 

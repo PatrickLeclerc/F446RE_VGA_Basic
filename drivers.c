@@ -251,11 +251,17 @@ void initRTC(){
 	RTC->WPR = 0x00;
 }
 
-void getTime(char* time){
+void getTimeBcd(char* time){
 	time[0] = ((RTC->TR & RTC_TR_HT_Msk) >> RTC_TR_HT_Pos);
 	time[1] = ((RTC->TR & RTC_TR_HU_Msk) >> RTC_TR_HU_Pos);
 	time[2] = ((RTC->TR & RTC_TR_MNT_Msk) >> RTC_TR_MNT_Pos);
 	time[3] = ((RTC->TR & RTC_TR_MNU_Msk) >> RTC_TR_MNU_Pos);
 	time[4] = ((RTC->TR & RTC_TR_ST_Msk) >> RTC_TR_ST_Pos);
 	time[5] = ((RTC->TR & RTC_TR_SU_Msk) >> RTC_TR_SU_Pos);
+}
+
+void getTimeNum(int* time){
+	time[0] = ((RTC->TR & RTC_TR_HT_Msk) >> RTC_TR_HT_Pos)*10 + ((RTC->TR & RTC_TR_HU_Msk) >> RTC_TR_HU_Pos);
+	time[1] = ((RTC->TR & RTC_TR_MNT_Msk) >> RTC_TR_MNT_Pos)*10 + ((RTC->TR & RTC_TR_MNU_Msk) >> RTC_TR_MNU_Pos);
+	time[2] = ((RTC->TR & RTC_TR_ST_Msk) >> RTC_TR_ST_Pos)*10 + ((RTC->TR & RTC_TR_SU_Msk) >> RTC_TR_SU_Pos);
 }
