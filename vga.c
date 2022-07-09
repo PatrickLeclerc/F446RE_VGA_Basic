@@ -7,9 +7,10 @@ uint8_t* charToVga(char val){
 }
 
 void VGABlankScreen(uint8_t* table){
-	for(int y = 0; y < BUFFER_SIZE_Y; y++)
-		for(int x = 0; x < BUFFER_SIZE_X; x++)
-			table[y*BUFFER_SIZE_X+x] = 0;
+	memset(table,0,BUFFER_SIZE_X*BUFFER_SIZE_Y);
+	//for(int y = 0; y < BUFFER_SIZE_Y; y++)
+	//	for(int x = 0; x < BUFFER_SIZE_X; x++)
+	//		table[y*BUFFER_SIZE_X+x] = 0;
 }
 
 void VGApx(uint8_t* table, int x,int y){
