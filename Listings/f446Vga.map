@@ -10,17 +10,18 @@ Section Cross References
     main.o(.text._Z13applyRotation4Pt_tf) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
     main.o(.text._Z13applyRotation4Pt_tf) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
     main.o(.ARM.exidx.text._Z13applyRotation4Pt_tf) refers to main.o(.text._Z13applyRotation4Pt_tf) for [Anonymous Symbol]
+    main.o(.text._Z8drawTimeii) refers to drivers.o(.text.getTime) for getTime
+    main.o(.text._Z8drawTimeii) refers to main.o(.data..L_MergedGlobals) for .L_MergedGlobals
+    main.o(.text._Z8drawTimeii) refers to vga.o(.text.VGAPutChar) for VGAPutChar
+    main.o(.ARM.exidx.text._Z8drawTimeii) refers to main.o(.text._Z8drawTimeii) for [Anonymous Symbol]
     main.o(.text.main) refers to main.o(.data..L_MergedGlobals) for .L_MergedGlobals
     main.o(.text.main) refers to main.o(.bss.vgaScreenBuff) for vgaScreenBuff
     main.o(.text.main) refers to vga.o(.text.VGACreateFrame) for VGACreateFrame
     main.o(.text.main) refers to main.o(.bss.vgaScreenBuff2) for vgaScreenBuff2
     main.o(.text.main) refers to drivers.o(.text.startup) for startup
-    main.o(.text.main) refers to main.o(.bss..L_MergedGlobals.2) for .L_MergedGlobals.2
+    main.o(.text.main) refers to main.o(.bss.vgaFlag) for vgaFlag
     main.o(.text.main) refers to vga.o(.text.VGABlankScreen) for VGABlankScreen
-    main.o(.text.main) refers to vga.o(.text.VGADrawCircle) for VGADrawCircle
-    main.o(.text.main) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
-    main.o(.text.main) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
-    main.o(.text.main) refers to vga.o(.text.VGADrawLine) for VGADrawLine
+    main.o(.text.main) refers to main.o(.text._Z8drawTimeii) for drawTime(int, int)
     main.o(.text.main) refers to new.cpp.o(.text._Znwj) for operator new(unsigned int)
     main.o(.text.main) refers to rt_memcpy_v6.o(.text) for __aeabi_memcpy
     main.o(.text.main) refers to vga.o(.text.VGAPutChar) for VGAPutChar
@@ -39,9 +40,11 @@ Section Cross References
     drivers.o(.ARM.exidx.text.initClock) refers to drivers.o(.text.initClock) for [Anonymous Symbol]
     drivers.o(.text.initUart2) refers to system_stm32f4xx.o(.data.SystemCoreClock) for SystemCoreClock
     drivers.o(.ARM.exidx.text.initUart2) refers to drivers.o(.text.initUart2) for [Anonymous Symbol]
+    drivers.o(.ARM.exidx.text.initRTC) refers to drivers.o(.text.initRTC) for [Anonymous Symbol]
     drivers.o(.ARM.exidx.text.initSPI2) refers to drivers.o(.text.initSPI2) for [Anonymous Symbol]
     drivers.o(.ARM.exidx.text.initVSYNC) refers to drivers.o(.text.initVSYNC) for [Anonymous Symbol]
     drivers.o(.ARM.exidx.text.initHSYNC) refers to drivers.o(.text.initHSYNC) for [Anonymous Symbol]
+    drivers.o(.ARM.exidx.text.getTime) refers to drivers.o(.text.getTime) for [Anonymous Symbol]
     vga.o(.text.charToVga) refers to vga.o(.data.vgaChar) for vgaChar
     vga.o(.ARM.exidx.text.charToVga) refers to vga.o(.text.charToVga) for [Anonymous Symbol]
     vga.o(.text.VGABlankScreen) refers to rt_memclr.o(.text) for __aeabi_memclr
@@ -155,7 +158,7 @@ Section Cross References
     isr.o(.text.TIM2_IRQHandler) refers to main.o(.bss.vgaScreenBuff2) for vgaScreenBuff2
     isr.o(.ARM.exidx.text.TIM2_IRQHandler) refers to isr.o(.text.TIM2_IRQHandler) for [Anonymous Symbol]
     isr.o(.text.TIM3_IRQHandler) refers to isr.o(.bss.TIM3_IRQHandler.psc) for TIM3_IRQHandler.psc
-    isr.o(.text.TIM3_IRQHandler) refers to main.o(.bss..L_MergedGlobals.2) for vgaFlag
+    isr.o(.text.TIM3_IRQHandler) refers to main.o(.bss.vgaFlag) for vgaFlag
     isr.o(.text.TIM3_IRQHandler) refers to main.o(.data.vgaCurrentScreenBuff) for vgaCurrentScreenBuff
     isr.o(.text.TIM3_IRQHandler) refers to main.o(.bss.vgaScreenBuff) for vgaScreenBuff
     isr.o(.text.TIM3_IRQHandler) refers to main.o(.bss.vgaScreenBuff2) for vgaScreenBuff2
@@ -501,6 +504,7 @@ Removing Unused input sections from the image.
     Removing main.o(.ARM.exidx.text._Z9drawShapeP4Pt_ti), (8 bytes).
     Removing main.o(.text._Z13applyRotation4Pt_tf), (88 bytes).
     Removing main.o(.ARM.exidx.text._Z13applyRotation4Pt_tf), (8 bytes).
+    Removing main.o(.ARM.exidx.text._Z8drawTimeii), (8 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing comport.o(.text), (0 bytes).
@@ -512,12 +516,15 @@ Removing Unused input sections from the image.
     Removing drivers.o(.ARM.exidx.text.initClock), (8 bytes).
     Removing drivers.o(.text.initUart2), (116 bytes).
     Removing drivers.o(.ARM.exidx.text.initUart2), (8 bytes).
+    Removing drivers.o(.text.initRTC), (196 bytes).
+    Removing drivers.o(.ARM.exidx.text.initRTC), (8 bytes).
     Removing drivers.o(.text.initSPI2), (174 bytes).
     Removing drivers.o(.ARM.exidx.text.initSPI2), (8 bytes).
     Removing drivers.o(.text.initVSYNC), (218 bytes).
     Removing drivers.o(.ARM.exidx.text.initVSYNC), (8 bytes).
     Removing drivers.o(.text.initHSYNC), (222 bytes).
     Removing drivers.o(.ARM.exidx.text.initHSYNC), (8 bytes).
+    Removing drivers.o(.ARM.exidx.text.getTime), (8 bytes).
     Removing vga.o(.text), (0 bytes).
     Removing vga.o(.text.charToVga), (20 bytes).
     Removing vga.o(.ARM.exidx.text.charToVga), (8 bytes).
@@ -526,7 +533,9 @@ Removing Unused input sections from the image.
     Removing vga.o(.ARM.exidx.text.VGApx), (8 bytes).
     Removing vga.o(.ARM.exidx.text.VGACreateFrame), (8 bytes).
     Removing vga.o(.ARM.exidx.text.VGADrawRect), (8 bytes).
+    Removing vga.o(.text.VGADrawCircle), (490 bytes).
     Removing vga.o(.ARM.exidx.text.VGADrawCircle), (8 bytes).
+    Removing vga.o(.text.VGADrawLine), (846 bytes).
     Removing vga.o(.ARM.exidx.text.VGADrawLine), (8 bytes).
     Removing vga.o(.ARM.exidx.text.VGAPutChar), (8 bytes).
     Removing vgaobject.o(.text), (0 bytes).
@@ -607,7 +616,7 @@ Removing Unused input sections from the image.
     Removing abort_message.cpp.o(.text.abort_message), (4 bytes).
     Removing abort_message.cpp.o(.ARM.exidx.text.abort_message), (8 bytes).
 
-110 unused section(s) (total 2289 bytes) removed from the image.
+116 unused section(s) (total 3845 bytes) removed from the image.
 
 ==============================================================================
 
@@ -780,79 +789,57 @@ Image Symbol Table
     .text                                    0x080003ba   Section        0  heapauxi.o(.text)
     .text                                    0x080003c0   Section        0  h1_alloc.o(.text)
     .text                                    0x0800041e   Section        0  h1_free.o(.text)
-    .text                                    0x0800046c   Section        0  _rserrno.o(.text)
-    .text                                    0x08000482   Section      100  rt_memcpy_w.o(.text)
-    .text                                    0x080004e6   Section       78  rt_memclr_w.o(.text)
-    .text                                    0x08000534   Section        0  sys_exit.o(.text)
-    .text                                    0x08000540   Section        8  rt_heap_descriptor_intlibspace.o(.text)
-    .text                                    0x08000548   Section        8  rt_errno_addr_intlibspace.o(.text)
-    .text                                    0x08000550   Section        0  hguard.o(.text)
-    .text                                    0x08000554   Section        0  init_alloc.o(.text)
-    .text                                    0x080005de   Section        0  h1_init.o(.text)
-    .text                                    0x080005ec   Section        8  libspace.o(.text)
-    .text                                    0x080005f4   Section        2  use_no_semi.o(.text)
-    .text                                    0x080005f6   Section        0  indicate_semi.o(.text)
-    .text                                    0x080005f6   Section       74  sys_stackheap_outer.o(.text)
-    .text                                    0x08000640   Section        0  maybetermalloc1.o(.text)
-    .text                                    0x08000640   Section        0  h1_extend.o(.text)
-    .text                                    0x08000674   Section        0  exit.o(.text)
-    .text                                    0x08000686   Section        0  defsig_exit.o(.text)
-    .text                                    0x08000690   Section        0  defsig_rtmem_outer.o(.text)
-    .text                                    0x0800069e   Section        0  defsig_general.o(.text)
-    .text                                    0x080006d0   Section        0  defsig_rtmem_inner.o(.text)
-    .text                                    0x08000720   Section        0  sys_wrch.o(.text)
-    [Anonymous Symbol]                       0x08000730   Section        0  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
-    [Anonymous Symbol]                       0x080007ac   Section        0  system_stm32f4xx.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x080007c0   Section        0  isr.o(.text.TIM2_IRQHandler)
-    [Anonymous Symbol]                       0x08000850   Section        0  isr.o(.text.TIM3_IRQHandler)
-    [Anonymous Symbol]                       0x080008bc   Section        0  isr.o(.text.USART2_IRQHandler)
-    [Anonymous Symbol]                       0x0800091c   Section        0  vga.o(.text.VGABlankScreen)
-    [Anonymous Symbol]                       0x08000928   Section        0  vga.o(.text.VGACreateFrame)
-    [Anonymous Symbol]                       0x0800094c   Section        0  vga.o(.text.VGADrawCircle)
-    [Anonymous Symbol]                       0x08000b38   Section        0  vga.o(.text.VGADrawLine)
-    [Anonymous Symbol]                       0x08000e88   Section        0  vga.o(.text.VGADrawRect)
-    [Anonymous Symbol]                       0x08001168   Section        0  vga.o(.text.VGAPutChar)
-    [Anonymous Symbol]                       0x08001340   Section        0  cxa_handlers.cpp.o(.text._ZSt15get_new_handlerv)
-    [Anonymous Symbol]                       0x0800134c   Section        0  new.cpp.o(.text._ZdlPv)
-    [Anonymous Symbol]                       0x08001350   Section        0  new.cpp.o(.text._Znwj)
-    [Anonymous Symbol]                       0x08001378   Section        0  main.o(.text.main)
-    __arm_cp.2_9                             0x080013e0   Number         4  main.o(.text.main)
-    __arm_cp.2_10                            0x080013e4   Number         4  main.o(.text.main)
-    __arm_cp.2_11                            0x080013e8   Number         4  main.o(.text.main)
-    __arm_cp.2_12                            0x080013ec   Number         4  main.o(.text.main)
-    __arm_cp.2_13                            0x080013f0   Number         4  main.o(.text.main)
-    __arm_cp.2_14                            0x080013f4   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x080018a0   Section        0  drivers.o(.text.startup)
-    i.__ARM_fpclassifyf                      0x08001c04   Section        0  fpclassifyf.o(i.__ARM_fpclassifyf)
-    i.__hardfp_cosf                          0x08001c2c   Section        0  cosf.o(i.__hardfp_cosf)
-    i.__hardfp_sinf                          0x08001d7c   Section        0  sinf.o(i.__hardfp_sinf)
-    i.__mathlib_flt_infnan                   0x08001f0c   Section        0  funder.o(i.__mathlib_flt_infnan)
-    i.__mathlib_flt_invalid                  0x08001f14   Section        0  funder.o(i.__mathlib_flt_invalid)
-    i.__mathlib_flt_underflow                0x08001f24   Section        0  funder.o(i.__mathlib_flt_underflow)
-    i.__mathlib_rredf2                       0x08001f34   Section        0  rredf.o(i.__mathlib_rredf2)
-    $v0                                      0x08002088   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fpinit                             0x08002088   Section       26  fpinit.o(x$fpl$fpinit)
-    x$fpl$usenofp                            0x080020a2   Section        0  usenofp.o(x$fpl$usenofp)
-    twooverpi                                0x080020a4   Data          32  rredf.o(.constdata)
-    .constdata                               0x080020a4   Section       32  rredf.o(.constdata)
+    .text                                    0x0800046c   Section      100  rt_memcpy_w.o(.text)
+    .text                                    0x080004d0   Section       78  rt_memclr_w.o(.text)
+    .text                                    0x08000520   Section        0  sys_exit.o(.text)
+    .text                                    0x0800052c   Section        8  rt_heap_descriptor_intlibspace.o(.text)
+    .text                                    0x08000534   Section        0  hguard.o(.text)
+    .text                                    0x08000538   Section        0  init_alloc.o(.text)
+    .text                                    0x080005c2   Section        0  h1_init.o(.text)
+    .text                                    0x080005d0   Section        8  libspace.o(.text)
+    .text                                    0x080005d8   Section        2  use_no_semi.o(.text)
+    .text                                    0x080005da   Section        0  indicate_semi.o(.text)
+    .text                                    0x080005da   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x08000624   Section        0  maybetermalloc1.o(.text)
+    .text                                    0x08000624   Section        0  h1_extend.o(.text)
+    .text                                    0x08000658   Section        0  exit.o(.text)
+    .text                                    0x0800066a   Section        0  defsig_exit.o(.text)
+    .text                                    0x08000674   Section        0  defsig_rtmem_outer.o(.text)
+    .text                                    0x08000682   Section        0  defsig_general.o(.text)
+    .text                                    0x080006b4   Section        0  defsig_rtmem_inner.o(.text)
+    .text                                    0x08000704   Section        0  sys_wrch.o(.text)
+    [Anonymous Symbol]                       0x08000714   Section        0  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
+    [Anonymous Symbol]                       0x08000790   Section        0  system_stm32f4xx.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x080007a4   Section        0  isr.o(.text.TIM2_IRQHandler)
+    [Anonymous Symbol]                       0x08000834   Section        0  isr.o(.text.TIM3_IRQHandler)
+    [Anonymous Symbol]                       0x080008a0   Section        0  isr.o(.text.USART2_IRQHandler)
+    [Anonymous Symbol]                       0x08000900   Section        0  vga.o(.text.VGABlankScreen)
+    [Anonymous Symbol]                       0x0800090c   Section        0  vga.o(.text.VGACreateFrame)
+    [Anonymous Symbol]                       0x08000930   Section        0  vga.o(.text.VGADrawRect)
+    [Anonymous Symbol]                       0x08000c10   Section        0  vga.o(.text.VGAPutChar)
+    [Anonymous Symbol]                       0x08000de8   Section        0  main.o(.text._Z8drawTimeii)
+    [Anonymous Symbol]                       0x08000e9c   Section        0  cxa_handlers.cpp.o(.text._ZSt15get_new_handlerv)
+    [Anonymous Symbol]                       0x08000ea8   Section        0  new.cpp.o(.text._ZdlPv)
+    [Anonymous Symbol]                       0x08000eac   Section        0  new.cpp.o(.text._Znwj)
+    [Anonymous Symbol]                       0x08000ed4   Section        0  drivers.o(.text.getTime)
+    [Anonymous Symbol]                       0x08000f10   Section        0  main.o(.text.main)
+    [Anonymous Symbol]                       0x08001114   Section        0  drivers.o(.text.startup)
+    $v0                                      0x0800166c   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x0800166c   Section       26  fpinit.o(x$fpl$fpinit)
     .L_MergedGlobals                         0x20000000   Data           8  main.o(.data..L_MergedGlobals)
     [Anonymous Symbol]                       0x20000000   Section        0  main.o(.data..L_MergedGlobals)
     .bss                                     0x20000478   Section       96  libspace.o(.bss)
-    .L_MergedGlobals.2                       0x200004d8   Data          12  main.o(.bss..L_MergedGlobals.2)
-    [Anonymous Symbol]                       0x200004d8   Section        0  main.o(.bss..L_MergedGlobals.2)
-    main::tFast                              0x200004dc   Data           4  main.o(.bss..L_MergedGlobals.2)
-    main::tSlow                              0x200004e0   Data           4  main.o(.bss..L_MergedGlobals.2)
-    TIM2_IRQHandler.line                     0x200004e4   Data           4  isr.o(.bss.TIM2_IRQHandler.line)
-    [Anonymous Symbol]                       0x200004e4   Section        0  isr.o(.bss.TIM2_IRQHandler.line)
-    TIM3_IRQHandler.psc                      0x200004e8   Data           1  isr.o(.bss.TIM3_IRQHandler.psc)
-    [Anonymous Symbol]                       0x200004e8   Section        0  isr.o(.bss.TIM3_IRQHandler.psc)
-    USART2_IRQHandler.len                    0x200004ec   Data           4  isr.o(.bss.USART2_IRQHandler.len)
-    [Anonymous Symbol]                       0x200004ec   Section        0  isr.o(.bss.USART2_IRQHandler.len)
-    Heap_Mem                                 0x20007ab0   Data         512  startup_stm32f446xx.o(HEAP)
-    HEAP                                     0x20007ab0   Section      512  startup_stm32f446xx.o(HEAP)
-    Stack_Mem                                0x20007cb0   Data        1024  startup_stm32f446xx.o(STACK)
-    STACK                                    0x20007cb0   Section     1024  startup_stm32f446xx.o(STACK)
-    __initial_sp                             0x200080b0   Data           0  startup_stm32f446xx.o(STACK)
+    TIM2_IRQHandler.line                     0x200004d8   Data           4  isr.o(.bss.TIM2_IRQHandler.line)
+    [Anonymous Symbol]                       0x200004d8   Section        0  isr.o(.bss.TIM2_IRQHandler.line)
+    TIM3_IRQHandler.psc                      0x200004dc   Data           1  isr.o(.bss.TIM3_IRQHandler.psc)
+    [Anonymous Symbol]                       0x200004dc   Section        0  isr.o(.bss.TIM3_IRQHandler.psc)
+    USART2_IRQHandler.len                    0x200004e0   Data           4  isr.o(.bss.USART2_IRQHandler.len)
+    [Anonymous Symbol]                       0x200004e0   Section        0  isr.o(.bss.USART2_IRQHandler.len)
+    Heap_Mem                                 0x20007aa8   Data         512  startup_stm32f446xx.o(HEAP)
+    HEAP                                     0x20007aa8   Section      512  startup_stm32f446xx.o(HEAP)
+    Stack_Mem                                0x20007ca8   Data        1024  startup_stm32f446xx.o(STACK)
+    STACK                                    0x20007ca8   Section     1024  startup_stm32f446xx.o(STACK)
+    __initial_sp                             0x200080a8   Data           0  startup_stm32f446xx.o(STACK)
 
     Global Symbols
 
@@ -1045,75 +1032,62 @@ Image Symbol Table
     __rt_heap_expand                         0x080003bf   Thumb Code     2  heapauxi.o(.text)
     malloc                                   0x080003c1   Thumb Code    94  h1_alloc.o(.text)
     free                                     0x0800041f   Thumb Code    78  h1_free.o(.text)
-    __read_errno                             0x0800046d   Thumb Code    10  _rserrno.o(.text)
-    __set_errno                              0x08000477   Thumb Code    12  _rserrno.o(.text)
-    __aeabi_memcpy4                          0x08000483   Thumb Code     0  rt_memcpy_w.o(.text)
-    __aeabi_memcpy8                          0x08000483   Thumb Code     0  rt_memcpy_w.o(.text)
-    __rt_memcpy_w                            0x08000483   Thumb Code   100  rt_memcpy_w.o(.text)
-    _memcpy_lastbytes_aligned                0x080004cb   Thumb Code     0  rt_memcpy_w.o(.text)
-    __aeabi_memclr4                          0x080004e7   Thumb Code     0  rt_memclr_w.o(.text)
-    __aeabi_memclr8                          0x080004e7   Thumb Code     0  rt_memclr_w.o(.text)
-    __rt_memclr_w                            0x080004e7   Thumb Code     0  rt_memclr_w.o(.text)
-    _memset_w                                0x080004eb   Thumb Code    74  rt_memclr_w.o(.text)
-    _sys_exit                                0x08000535   Thumb Code     8  sys_exit.o(.text)
-    __rt_heap_descriptor                     0x08000541   Thumb Code     8  rt_heap_descriptor_intlibspace.o(.text)
-    __aeabi_errno_addr                       0x08000549   Thumb Code     8  rt_errno_addr_intlibspace.o(.text)
-    __errno$intlibspace                      0x08000549   Thumb Code     0  rt_errno_addr_intlibspace.o(.text)
-    __rt_errno_addr$intlibspace              0x08000549   Thumb Code     0  rt_errno_addr_intlibspace.o(.text)
-    __use_no_heap                            0x08000551   Thumb Code     2  hguard.o(.text)
-    __heap$guard                             0x08000553   Thumb Code     2  hguard.o(.text)
-    _terminate_user_alloc                    0x08000555   Thumb Code     2  init_alloc.o(.text)
-    _init_user_alloc                         0x08000557   Thumb Code     2  init_alloc.o(.text)
-    __Heap_Full                              0x08000559   Thumb Code    34  init_alloc.o(.text)
-    __Heap_Broken                            0x0800057b   Thumb Code     6  init_alloc.o(.text)
-    _init_alloc                              0x08000581   Thumb Code    94  init_alloc.o(.text)
-    __Heap_Initialize                        0x080005df   Thumb Code    10  h1_init.o(.text)
-    __Heap_DescSize                          0x080005e9   Thumb Code     4  h1_init.o(.text)
-    __user_libspace                          0x080005ed   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x080005ed   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x080005ed   Thumb Code     0  libspace.o(.text)
-    __I$use$semihosting                      0x080005f5   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x080005f5   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x080005f7   Thumb Code     0  indicate_semi.o(.text)
-    __user_setup_stackheap                   0x080005f7   Thumb Code    74  sys_stackheap_outer.o(.text)
-    __Heap_ProvideMemory                     0x08000641   Thumb Code    52  h1_extend.o(.text)
-    _maybe_terminate_alloc                   0x08000641   Thumb Code     0  maybetermalloc1.o(.text)
-    exit                                     0x08000675   Thumb Code    18  exit.o(.text)
-    __sig_exit                               0x08000687   Thumb Code    10  defsig_exit.o(.text)
-    __rt_SIGRTMEM                            0x08000691   Thumb Code    14  defsig_rtmem_outer.o(.text)
-    __default_signal_display                 0x0800069f   Thumb Code    50  defsig_general.o(.text)
-    __rt_SIGRTMEM_inner                      0x080006d1   Thumb Code    22  defsig_rtmem_inner.o(.text)
-    _ttywrch                                 0x08000721   Thumb Code    14  sys_wrch.o(.text)
-    SystemCoreClockUpdate                    0x08000731   Thumb Code   124  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
-    SystemInit                               0x080007ad   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
-    TIM2_IRQHandler                          0x080007c1   Thumb Code   144  isr.o(.text.TIM2_IRQHandler)
-    TIM3_IRQHandler                          0x08000851   Thumb Code   106  isr.o(.text.TIM3_IRQHandler)
-    USART2_IRQHandler                        0x080008bd   Thumb Code    96  isr.o(.text.USART2_IRQHandler)
-    VGABlankScreen                           0x0800091d   Thumb Code    12  vga.o(.text.VGABlankScreen)
-    VGACreateFrame                           0x08000929   Thumb Code    34  vga.o(.text.VGACreateFrame)
-    VGADrawCircle                            0x0800094d   Thumb Code   490  vga.o(.text.VGADrawCircle)
-    VGADrawLine                              0x08000b39   Thumb Code   846  vga.o(.text.VGADrawLine)
-    VGADrawRect                              0x08000e89   Thumb Code   734  vga.o(.text.VGADrawRect)
-    VGAPutChar                               0x08001169   Thumb Code   472  vga.o(.text.VGAPutChar)
-    std::get_new_handler()                   0x08001341   Thumb Code    12  cxa_handlers.cpp.o(.text._ZSt15get_new_handlerv)
-    operator delete(void*)                   0x0800134d   Thumb Code     4  new.cpp.o(.text._ZdlPv)
-    operator new(unsigned int)               0x08001351   Thumb Code    38  new.cpp.o(.text._Znwj)
-    main                                     0x08001379   Thumb Code  1280  main.o(.text.main)
-    startup                                  0x080018a1   Thumb Code   868  drivers.o(.text.startup)
-    __ARM_fpclassifyf                        0x08001c05   Thumb Code    38  fpclassifyf.o(i.__ARM_fpclassifyf)
-    __hardfp_cosf                            0x08001c2d   Thumb Code   280  cosf.o(i.__hardfp_cosf)
-    __hardfp_sinf                            0x08001d7d   Thumb Code   344  sinf.o(i.__hardfp_sinf)
-    __mathlib_flt_infnan                     0x08001f0d   Thumb Code     6  funder.o(i.__mathlib_flt_infnan)
-    __mathlib_flt_invalid                    0x08001f15   Thumb Code    10  funder.o(i.__mathlib_flt_invalid)
-    __mathlib_flt_underflow                  0x08001f25   Thumb Code    10  funder.o(i.__mathlib_flt_underflow)
-    __mathlib_rredf2                         0x08001f35   Thumb Code   316  rredf.o(i.__mathlib_rredf2)
-    _fp_init                                 0x08002089   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x080020a1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x080020a1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __I$use$fp                               0x080020a2   Number         0  usenofp.o(x$fpl$usenofp)
-    AHBPrescTable                            0x080020c4   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
-    Region$$Table$$Base                      0x080020d4   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080020f4   Number         0  anon$$obj.o(Region$$Table)
+    __aeabi_memcpy4                          0x0800046d   Thumb Code     0  rt_memcpy_w.o(.text)
+    __aeabi_memcpy8                          0x0800046d   Thumb Code     0  rt_memcpy_w.o(.text)
+    __rt_memcpy_w                            0x0800046d   Thumb Code   100  rt_memcpy_w.o(.text)
+    _memcpy_lastbytes_aligned                0x080004b5   Thumb Code     0  rt_memcpy_w.o(.text)
+    __aeabi_memclr4                          0x080004d1   Thumb Code     0  rt_memclr_w.o(.text)
+    __aeabi_memclr8                          0x080004d1   Thumb Code     0  rt_memclr_w.o(.text)
+    __rt_memclr_w                            0x080004d1   Thumb Code     0  rt_memclr_w.o(.text)
+    _memset_w                                0x080004d5   Thumb Code    74  rt_memclr_w.o(.text)
+    _sys_exit                                0x08000521   Thumb Code     8  sys_exit.o(.text)
+    __rt_heap_descriptor                     0x0800052d   Thumb Code     8  rt_heap_descriptor_intlibspace.o(.text)
+    __use_no_heap                            0x08000535   Thumb Code     2  hguard.o(.text)
+    __heap$guard                             0x08000537   Thumb Code     2  hguard.o(.text)
+    _terminate_user_alloc                    0x08000539   Thumb Code     2  init_alloc.o(.text)
+    _init_user_alloc                         0x0800053b   Thumb Code     2  init_alloc.o(.text)
+    __Heap_Full                              0x0800053d   Thumb Code    34  init_alloc.o(.text)
+    __Heap_Broken                            0x0800055f   Thumb Code     6  init_alloc.o(.text)
+    _init_alloc                              0x08000565   Thumb Code    94  init_alloc.o(.text)
+    __Heap_Initialize                        0x080005c3   Thumb Code    10  h1_init.o(.text)
+    __Heap_DescSize                          0x080005cd   Thumb Code     4  h1_init.o(.text)
+    __user_libspace                          0x080005d1   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x080005d1   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x080005d1   Thumb Code     0  libspace.o(.text)
+    __I$use$semihosting                      0x080005d9   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x080005d9   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x080005db   Thumb Code     0  indicate_semi.o(.text)
+    __user_setup_stackheap                   0x080005db   Thumb Code    74  sys_stackheap_outer.o(.text)
+    __Heap_ProvideMemory                     0x08000625   Thumb Code    52  h1_extend.o(.text)
+    _maybe_terminate_alloc                   0x08000625   Thumb Code     0  maybetermalloc1.o(.text)
+    exit                                     0x08000659   Thumb Code    18  exit.o(.text)
+    __sig_exit                               0x0800066b   Thumb Code    10  defsig_exit.o(.text)
+    __rt_SIGRTMEM                            0x08000675   Thumb Code    14  defsig_rtmem_outer.o(.text)
+    __default_signal_display                 0x08000683   Thumb Code    50  defsig_general.o(.text)
+    __rt_SIGRTMEM_inner                      0x080006b5   Thumb Code    22  defsig_rtmem_inner.o(.text)
+    _ttywrch                                 0x08000705   Thumb Code    14  sys_wrch.o(.text)
+    SystemCoreClockUpdate                    0x08000715   Thumb Code   124  system_stm32f4xx.o(.text.SystemCoreClockUpdate)
+    SystemInit                               0x08000791   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
+    TIM2_IRQHandler                          0x080007a5   Thumb Code   144  isr.o(.text.TIM2_IRQHandler)
+    TIM3_IRQHandler                          0x08000835   Thumb Code   106  isr.o(.text.TIM3_IRQHandler)
+    USART2_IRQHandler                        0x080008a1   Thumb Code    96  isr.o(.text.USART2_IRQHandler)
+    VGABlankScreen                           0x08000901   Thumb Code    12  vga.o(.text.VGABlankScreen)
+    VGACreateFrame                           0x0800090d   Thumb Code    34  vga.o(.text.VGACreateFrame)
+    VGADrawRect                              0x08000931   Thumb Code   734  vga.o(.text.VGADrawRect)
+    VGAPutChar                               0x08000c11   Thumb Code   472  vga.o(.text.VGAPutChar)
+    drawTime(int, int)                       0x08000de9   Thumb Code   180  main.o(.text._Z8drawTimeii)
+    std::get_new_handler()                   0x08000e9d   Thumb Code    12  cxa_handlers.cpp.o(.text._ZSt15get_new_handlerv)
+    operator delete(void*)                   0x08000ea9   Thumb Code     4  new.cpp.o(.text._ZdlPv)
+    operator new(unsigned int)               0x08000ead   Thumb Code    38  new.cpp.o(.text._Znwj)
+    getTime                                  0x08000ed5   Thumb Code    58  drivers.o(.text.getTime)
+    main                                     0x08000f11   Thumb Code   484  main.o(.text.main)
+    startup                                  0x08001115   Thumb Code  1368  drivers.o(.text.startup)
+    _fp_init                                 0x0800166d   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08001685   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08001685   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    AHBPrescTable                            0x08001686   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
+    Region$$Table$$Base                      0x08001698   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080016b8   Number         0  anon$$obj.o(Region$$Table)
     vgaBuffNext                              0x20000000   Data           4  main.o(.data..L_MergedGlobals)
     vgaNextScreenBuff                        0x20000004   Data           4  main.o(.data..L_MergedGlobals)
     SystemCoreClock                          0x20000008   Data           4  system_stm32f4xx.o(.data.SystemCoreClock)
@@ -1214,13 +1188,13 @@ Image Symbol Table
     vgaCurrentScreenBuff                     0x20000470   Data           4  main.o(.data.vgaCurrentScreenBuff)
     __libspace_start                         0x20000478   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x200004d8   Data           0  libspace.o(.bss)
-    vgaFlag                                  0x200004d8   Data           1  main.o(.bss..L_MergedGlobals.2)
-    __cxa_new_handler                        0x200004f0   Data           4  cxa_handlers.cpp.o(.bss.__cxa_new_handler)
-    uartBuff                                 0x200004f4   Data         128  comport.o(.bss.uartBuff)
-    uartRxFlag                               0x20000574   Data           1  main.o(.bss.uartRxFlag)
-    vgaChar_space                            0x20000575   Data           8  vga.o(.bss.vgaChar_space)
-    vgaScreenBuff                            0x2000057d   Data       15000  main.o(.bss.vgaScreenBuff)
-    vgaScreenBuff2                           0x20004015   Data       15000  main.o(.bss.vgaScreenBuff2)
+    __cxa_new_handler                        0x200004e4   Data           4  cxa_handlers.cpp.o(.bss.__cxa_new_handler)
+    uartBuff                                 0x200004e8   Data         128  comport.o(.bss.uartBuff)
+    uartRxFlag                               0x20000568   Data           1  main.o(.bss.uartRxFlag)
+    vgaChar_space                            0x20000569   Data           8  vga.o(.bss.vgaChar_space)
+    vgaFlag                                  0x20000571   Data           1  main.o(.bss.vgaFlag)
+    vgaScreenBuff                            0x20000572   Data       15000  main.o(.bss.vgaScreenBuff)
+    vgaScreenBuff2                           0x2000400a   Data       15000  main.o(.bss.vgaScreenBuff2)
 
 
 
@@ -1230,251 +1204,238 @@ Memory Map of the image
 
   Image Entry point : 0x080002ad
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00002568, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00002408])
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00001b2c, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000019cc])
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000020f4, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000016b8, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000001c4   Data   RO          196    RESET               startup_stm32f446xx.o
-    0x080001c4   0x080001c4   0x00000008   Code   RO          228  * !!!main             c_w.l(__main.o)
-    0x080001cc   0x080001cc   0x00000034   Code   RO          626    !!!scatter          c_w.l(__scatter.o)
-    0x08000200   0x08000200   0x0000005a   Code   RO          624    !!dczerorl2         c_w.l(__dczerorl2.o)
+    0x08000000   0x08000000   0x000001c4   Data   RO          202    RESET               startup_stm32f446xx.o
+    0x080001c4   0x080001c4   0x00000008   Code   RO          234  * !!!main             c_w.l(__main.o)
+    0x080001cc   0x080001cc   0x00000034   Code   RO          632    !!!scatter          c_w.l(__scatter.o)
+    0x08000200   0x08000200   0x0000005a   Code   RO          630    !!dczerorl2         c_w.l(__dczerorl2.o)
     0x0800025a   0x0800025a   0x00000002   PAD
-    0x0800025c   0x0800025c   0x0000001c   Code   RO          628    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000278   0x08000278   0x00000002   Code   RO          555    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x0800027a   0x0800027a   0x00000004   Code   RO          456    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x0800027e   0x0800027e   0x00000000   Code   RO          459    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x0800027e   0x0800027e   0x00000008   Code   RO          460    .ARM.Collect$$libinit$$00000005  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          462    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          464    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          466    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          469    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          471    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          473    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          475    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          477    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          479    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          481    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          483    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          485    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          487    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          489    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          493    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          495    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          497    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000000   Code   RO          499    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x08000286   0x08000286   0x00000002   Code   RO          500    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x08000288   0x08000288   0x00000002   Code   RO          621    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x0800028a   0x0800028a   0x00000000   Code   RO          590    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x0800028a   0x0800028a   0x00000000   Code   RO          592    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x0800028a   0x0800028a   0x00000000   Code   RO          595    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x0800028a   0x0800028a   0x00000000   Code   RO          598    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x0800028a   0x0800028a   0x00000000   Code   RO          600    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x0800028a   0x0800028a   0x00000000   Code   RO          603    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x0800028a   0x0800028a   0x00000002   Code   RO          604    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x0800028c   0x0800028c   0x00000000   Code   RO          287    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x0800028c   0x0800028c   0x00000000   Code   RO          408    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x0800028c   0x0800028c   0x00000006   Code   RO          420    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x08000292   0x08000292   0x00000000   Code   RO          410    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x08000292   0x08000292   0x00000004   Code   RO          411    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x08000296   0x08000296   0x00000000   Code   RO          413    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x08000296   0x08000296   0x00000008   Code   RO          414    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0800029e   0x0800029e   0x00000002   Code   RO          558    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x080002a0   0x080002a0   0x00000000   Code   RO          577    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x080002a0   0x080002a0   0x00000004   Code   RO          578    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x080002a4   0x080002a4   0x00000006   Code   RO          579    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x0800025c   0x0800025c   0x0000001c   Code   RO          634    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000278   0x08000278   0x00000002   Code   RO          561    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x0800027a   0x0800027a   0x00000004   Code   RO          462    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x0800027e   0x0800027e   0x00000000   Code   RO          465    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x0800027e   0x0800027e   0x00000008   Code   RO          466    .ARM.Collect$$libinit$$00000005  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          468    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          470    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          472    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          475    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          477    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          479    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          481    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          483    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          485    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          487    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          489    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          491    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          493    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          495    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          499    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          501    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          503    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000000   Code   RO          505    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x08000286   0x08000286   0x00000002   Code   RO          506    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x08000288   0x08000288   0x00000002   Code   RO          627    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x0800028a   0x0800028a   0x00000000   Code   RO          596    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x0800028a   0x0800028a   0x00000000   Code   RO          598    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x0800028a   0x0800028a   0x00000000   Code   RO          601    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x0800028a   0x0800028a   0x00000000   Code   RO          604    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x0800028a   0x0800028a   0x00000000   Code   RO          606    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x0800028a   0x0800028a   0x00000000   Code   RO          609    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x0800028a   0x0800028a   0x00000002   Code   RO          610    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x0800028c   0x0800028c   0x00000000   Code   RO          293    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x0800028c   0x0800028c   0x00000000   Code   RO          414    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x0800028c   0x0800028c   0x00000006   Code   RO          426    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x08000292   0x08000292   0x00000000   Code   RO          416    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x08000292   0x08000292   0x00000004   Code   RO          417    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x08000296   0x08000296   0x00000000   Code   RO          419    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x08000296   0x08000296   0x00000008   Code   RO          420    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0800029e   0x0800029e   0x00000002   Code   RO          564    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x080002a0   0x080002a0   0x00000000   Code   RO          583    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x080002a0   0x080002a0   0x00000004   Code   RO          584    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x080002a4   0x080002a4   0x00000006   Code   RO          585    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x080002aa   0x080002aa   0x00000002   PAD
-    0x080002ac   0x080002ac   0x00000040   Code   RO          197  * .text               startup_stm32f446xx.o
-    0x080002ec   0x080002ec   0x0000008a   Code   RO          222    .text               c_w.l(rt_memcpy_v6.o)
-    0x08000376   0x08000376   0x00000044   Code   RO          224    .text               c_w.l(rt_memclr.o)
-    0x080003ba   0x080003ba   0x00000006   Code   RO          226    .text               c_w.l(heapauxi.o)
-    0x080003c0   0x080003c0   0x0000005e   Code   RO          292    .text               c_w.l(h1_alloc.o)
-    0x0800041e   0x0800041e   0x0000004e   Code   RO          294    .text               c_w.l(h1_free.o)
-    0x0800046c   0x0800046c   0x00000016   Code   RO          354    .text               c_w.l(_rserrno.o)
-    0x08000482   0x08000482   0x00000064   Code   RO          358    .text               c_w.l(rt_memcpy_w.o)
-    0x080004e6   0x080004e6   0x0000004e   Code   RO          360    .text               c_w.l(rt_memclr_w.o)
-    0x08000534   0x08000534   0x0000000c   Code   RO          401    .text               c_w.l(sys_exit.o)
-    0x08000540   0x08000540   0x00000008   Code   RO          425    .text               c_w.l(rt_heap_descriptor_intlibspace.o)
-    0x08000548   0x08000548   0x00000008   Code   RO          430    .text               c_w.l(rt_errno_addr_intlibspace.o)
-    0x08000550   0x08000550   0x00000004   Code   RO          432    .text               c_w.l(hguard.o)
-    0x08000554   0x08000554   0x0000008a   Code   RO          434    .text               c_w.l(init_alloc.o)
-    0x080005de   0x080005de   0x0000000e   Code   RO          438    .text               c_w.l(h1_init.o)
-    0x080005ec   0x080005ec   0x00000008   Code   RO          517    .text               c_w.l(libspace.o)
-    0x080005f4   0x080005f4   0x00000002   Code   RO          520    .text               c_w.l(use_no_semi.o)
-    0x080005f6   0x080005f6   0x00000000   Code   RO          522    .text               c_w.l(indicate_semi.o)
-    0x080005f6   0x080005f6   0x0000004a   Code   RO          523    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000640   0x08000640   0x00000000   Code   RO          529    .text               c_w.l(maybetermalloc1.o)
-    0x08000640   0x08000640   0x00000034   Code   RO          531    .text               c_w.l(h1_extend.o)
-    0x08000674   0x08000674   0x00000012   Code   RO          535    .text               c_w.l(exit.o)
-    0x08000686   0x08000686   0x0000000a   Code   RO          537    .text               c_w.l(defsig_exit.o)
-    0x08000690   0x08000690   0x0000000e   Code   RO          541    .text               c_w.l(defsig_rtmem_outer.o)
-    0x0800069e   0x0800069e   0x00000032   Code   RO          564    .text               c_w.l(defsig_general.o)
-    0x080006d0   0x080006d0   0x00000050   Code   RO          566    .text               c_w.l(defsig_rtmem_inner.o)
-    0x08000720   0x08000720   0x0000000e   Code   RO          572    .text               c_w.l(sys_wrch.o)
-    0x0800072e   0x0800072e   0x00000002   PAD
-    0x08000730   0x08000730   0x0000007c   Code   RO          206    .text.SystemCoreClockUpdate  system_stm32f4xx.o
-    0x080007ac   0x080007ac   0x00000012   Code   RO          204    .text.SystemInit    system_stm32f4xx.o
-    0x080007be   0x080007be   0x00000002   PAD
-    0x080007c0   0x080007c0   0x00000090   Code   RO          178    .text.TIM2_IRQHandler  isr.o
-    0x08000850   0x08000850   0x0000006a   Code   RO          180    .text.TIM3_IRQHandler  isr.o
-    0x080008ba   0x080008ba   0x00000002   PAD
-    0x080008bc   0x080008bc   0x00000060   Code   RO          182    .text.USART2_IRQHandler  isr.o
-    0x0800091c   0x0800091c   0x0000000c   Code   RO           56    .text.VGABlankScreen  vga.o
-    0x08000928   0x08000928   0x00000022   Code   RO           60    .text.VGACreateFrame  vga.o
-    0x0800094a   0x0800094a   0x00000002   PAD
-    0x0800094c   0x0800094c   0x000001ea   Code   RO           64    .text.VGADrawCircle  vga.o
-    0x08000b36   0x08000b36   0x00000002   PAD
-    0x08000b38   0x08000b38   0x0000034e   Code   RO           66    .text.VGADrawLine   vga.o
-    0x08000e86   0x08000e86   0x00000002   PAD
-    0x08000e88   0x08000e88   0x000002de   Code   RO           62    .text.VGADrawRect   vga.o
-    0x08001166   0x08001166   0x00000002   PAD
-    0x08001168   0x08001168   0x000001d8   Code   RO           68    .text.VGAPutChar    vga.o
-    0x08001340   0x08001340   0x0000000c   Code   RO          378    .text._ZSt15get_new_handlerv  libcppabi_w.l(cxa_handlers.cpp.o)
-    0x0800134c   0x0800134c   0x00000004   Code   RO          241    .text._ZdlPv        libcpp_w.l(new.cpp.o)
-    0x08001350   0x08001350   0x00000026   Code   RO          233    .text._Znwj         libcpp_w.l(new.cpp.o)
-    0x08001376   0x08001376   0x00000002   PAD
-    0x08001378   0x08001378   0x00000528   Code   RO            6    .text.main          main.o
-    0x080018a0   0x080018a0   0x00000364   Code   RO           34    .text.startup       drivers.o
-    0x08001c04   0x08001c04   0x00000026   Code   RO          382    i.__ARM_fpclassifyf  m_wm.l(fpclassifyf.o)
-    0x08001c2a   0x08001c2a   0x00000002   PAD
-    0x08001c2c   0x08001c2c   0x00000150   Code   RO          275    i.__hardfp_cosf     m_wm.l(cosf.o)
-    0x08001d7c   0x08001d7c   0x00000190   Code   RO          281    i.__hardfp_sinf     m_wm.l(sinf.o)
-    0x08001f0c   0x08001f0c   0x00000006   Code   RO          385    i.__mathlib_flt_infnan  m_wm.l(funder.o)
-    0x08001f12   0x08001f12   0x00000002   PAD
-    0x08001f14   0x08001f14   0x00000010   Code   RO          387    i.__mathlib_flt_invalid  m_wm.l(funder.o)
-    0x08001f24   0x08001f24   0x00000010   Code   RO          390    i.__mathlib_flt_underflow  m_wm.l(funder.o)
-    0x08001f34   0x08001f34   0x00000154   Code   RO          398    i.__mathlib_rredf2  m_wm.l(rredf.o)
-    0x08002088   0x08002088   0x0000001a   Code   RO          556    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x080020a2   0x080020a2   0x00000000   Code   RO          362    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x080020a2   0x080020a2   0x00000002   PAD
-    0x080020a4   0x080020a4   0x00000020   Data   RO          399    .constdata          m_wm.l(rredf.o)
-    0x080020c4   0x080020c4   0x00000010   Data   RO          209    .rodata.AHBPrescTable  system_stm32f4xx.o
-    0x080020d4   0x080020d4   0x00000020   Data   RO          623    Region$$Table       anon$$obj.o
+    0x080002ac   0x080002ac   0x00000040   Code   RO          203  * .text               startup_stm32f446xx.o
+    0x080002ec   0x080002ec   0x0000008a   Code   RO          228    .text               c_w.l(rt_memcpy_v6.o)
+    0x08000376   0x08000376   0x00000044   Code   RO          230    .text               c_w.l(rt_memclr.o)
+    0x080003ba   0x080003ba   0x00000006   Code   RO          232    .text               c_w.l(heapauxi.o)
+    0x080003c0   0x080003c0   0x0000005e   Code   RO          298    .text               c_w.l(h1_alloc.o)
+    0x0800041e   0x0800041e   0x0000004e   Code   RO          300    .text               c_w.l(h1_free.o)
+    0x0800046c   0x0800046c   0x00000064   Code   RO          364    .text               c_w.l(rt_memcpy_w.o)
+    0x080004d0   0x080004d0   0x0000004e   Code   RO          366    .text               c_w.l(rt_memclr_w.o)
+    0x0800051e   0x0800051e   0x00000002   PAD
+    0x08000520   0x08000520   0x0000000c   Code   RO          407    .text               c_w.l(sys_exit.o)
+    0x0800052c   0x0800052c   0x00000008   Code   RO          431    .text               c_w.l(rt_heap_descriptor_intlibspace.o)
+    0x08000534   0x08000534   0x00000004   Code   RO          438    .text               c_w.l(hguard.o)
+    0x08000538   0x08000538   0x0000008a   Code   RO          440    .text               c_w.l(init_alloc.o)
+    0x080005c2   0x080005c2   0x0000000e   Code   RO          444    .text               c_w.l(h1_init.o)
+    0x080005d0   0x080005d0   0x00000008   Code   RO          523    .text               c_w.l(libspace.o)
+    0x080005d8   0x080005d8   0x00000002   Code   RO          526    .text               c_w.l(use_no_semi.o)
+    0x080005da   0x080005da   0x00000000   Code   RO          528    .text               c_w.l(indicate_semi.o)
+    0x080005da   0x080005da   0x0000004a   Code   RO          529    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000624   0x08000624   0x00000000   Code   RO          535    .text               c_w.l(maybetermalloc1.o)
+    0x08000624   0x08000624   0x00000034   Code   RO          537    .text               c_w.l(h1_extend.o)
+    0x08000658   0x08000658   0x00000012   Code   RO          541    .text               c_w.l(exit.o)
+    0x0800066a   0x0800066a   0x0000000a   Code   RO          543    .text               c_w.l(defsig_exit.o)
+    0x08000674   0x08000674   0x0000000e   Code   RO          547    .text               c_w.l(defsig_rtmem_outer.o)
+    0x08000682   0x08000682   0x00000032   Code   RO          570    .text               c_w.l(defsig_general.o)
+    0x080006b4   0x080006b4   0x00000050   Code   RO          572    .text               c_w.l(defsig_rtmem_inner.o)
+    0x08000704   0x08000704   0x0000000e   Code   RO          578    .text               c_w.l(sys_wrch.o)
+    0x08000712   0x08000712   0x00000002   PAD
+    0x08000714   0x08000714   0x0000007c   Code   RO          212    .text.SystemCoreClockUpdate  system_stm32f4xx.o
+    0x08000790   0x08000790   0x00000012   Code   RO          210    .text.SystemInit    system_stm32f4xx.o
+    0x080007a2   0x080007a2   0x00000002   PAD
+    0x080007a4   0x080007a4   0x00000090   Code   RO          184    .text.TIM2_IRQHandler  isr.o
+    0x08000834   0x08000834   0x0000006a   Code   RO          186    .text.TIM3_IRQHandler  isr.o
+    0x0800089e   0x0800089e   0x00000002   PAD
+    0x080008a0   0x080008a0   0x00000060   Code   RO          188    .text.USART2_IRQHandler  isr.o
+    0x08000900   0x08000900   0x0000000c   Code   RO           62    .text.VGABlankScreen  vga.o
+    0x0800090c   0x0800090c   0x00000022   Code   RO           66    .text.VGACreateFrame  vga.o
+    0x0800092e   0x0800092e   0x00000002   PAD
+    0x08000930   0x08000930   0x000002de   Code   RO           68    .text.VGADrawRect   vga.o
+    0x08000c0e   0x08000c0e   0x00000002   PAD
+    0x08000c10   0x08000c10   0x000001d8   Code   RO           74    .text.VGAPutChar    vga.o
+    0x08000de8   0x08000de8   0x000000b4   Code   RO            6    .text._Z8drawTimeii  main.o
+    0x08000e9c   0x08000e9c   0x0000000c   Code   RO          384    .text._ZSt15get_new_handlerv  libcppabi_w.l(cxa_handlers.cpp.o)
+    0x08000ea8   0x08000ea8   0x00000004   Code   RO          247    .text._ZdlPv        libcpp_w.l(new.cpp.o)
+    0x08000eac   0x08000eac   0x00000026   Code   RO          239    .text._Znwj         libcpp_w.l(new.cpp.o)
+    0x08000ed2   0x08000ed2   0x00000002   PAD
+    0x08000ed4   0x08000ed4   0x0000003a   Code   RO           50    .text.getTime       drivers.o
+    0x08000f0e   0x08000f0e   0x00000002   PAD
+    0x08000f10   0x08000f10   0x00000204   Code   RO            8    .text.main          main.o
+    0x08001114   0x08001114   0x00000558   Code   RO           36    .text.startup       drivers.o
+    0x0800166c   0x0800166c   0x0000001a   Code   RO          562    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08001686   0x08001686   0x00000010   Data   RO          215    .rodata.AHBPrescTable  system_stm32f4xx.o
+    0x08001696   0x08001696   0x00000002   PAD
+    0x08001698   0x08001698   0x00000020   Data   RO          629    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x080020f4, Size: 0x00000474, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000314])
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x080016b8, Size: 0x00000474, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000314])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   COMPRESSED   0x00000008   Data   RW           13    .data..L_MergedGlobals  main.o
-    0x20000008   COMPRESSED   0x00000004   Data   RW          208    .data.SystemCoreClock  system_stm32f4xx.o
-    0x2000000c   COMPRESSED   0x0000017c   Data   RW          164    .data.vgaChar       vga.o
-    0x20000188   COMPRESSED   0x00000008   Data   RW          122    .data.vgaChar_0     vga.o
-    0x20000190   COMPRESSED   0x00000008   Data   RW          123    .data.vgaChar_1     vga.o
-    0x20000198   COMPRESSED   0x00000008   Data   RW          124    .data.vgaChar_2     vga.o
-    0x200001a0   COMPRESSED   0x00000008   Data   RW          125    .data.vgaChar_3     vga.o
-    0x200001a8   COMPRESSED   0x00000008   Data   RW          126    .data.vgaChar_4     vga.o
-    0x200001b0   COMPRESSED   0x00000008   Data   RW          127    .data.vgaChar_5     vga.o
-    0x200001b8   COMPRESSED   0x00000008   Data   RW          128    .data.vgaChar_6     vga.o
-    0x200001c0   COMPRESSED   0x00000008   Data   RW          129    .data.vgaChar_7     vga.o
-    0x200001c8   COMPRESSED   0x00000008   Data   RW          130    .data.vgaChar_8     vga.o
-    0x200001d0   COMPRESSED   0x00000008   Data   RW          131    .data.vgaChar_9     vga.o
-    0x200001d8   COMPRESSED   0x00000008   Data   RW           70    .data.vgaChar_A     vga.o
-    0x200001e0   COMPRESSED   0x00000008   Data   RW           71    .data.vgaChar_B     vga.o
-    0x200001e8   COMPRESSED   0x00000008   Data   RW           72    .data.vgaChar_C     vga.o
-    0x200001f0   COMPRESSED   0x00000008   Data   RW           73    .data.vgaChar_D     vga.o
-    0x200001f8   COMPRESSED   0x00000008   Data   RW           74    .data.vgaChar_E     vga.o
-    0x20000200   COMPRESSED   0x00000008   Data   RW           75    .data.vgaChar_F     vga.o
-    0x20000208   COMPRESSED   0x00000008   Data   RW           76    .data.vgaChar_G     vga.o
-    0x20000210   COMPRESSED   0x00000008   Data   RW           77    .data.vgaChar_H     vga.o
-    0x20000218   COMPRESSED   0x00000008   Data   RW           78    .data.vgaChar_I     vga.o
-    0x20000220   COMPRESSED   0x00000008   Data   RW           79    .data.vgaChar_J     vga.o
-    0x20000228   COMPRESSED   0x00000008   Data   RW           80    .data.vgaChar_K     vga.o
-    0x20000230   COMPRESSED   0x00000008   Data   RW           81    .data.vgaChar_L     vga.o
-    0x20000238   COMPRESSED   0x00000008   Data   RW           82    .data.vgaChar_M     vga.o
-    0x20000240   COMPRESSED   0x00000008   Data   RW           83    .data.vgaChar_N     vga.o
-    0x20000248   COMPRESSED   0x00000008   Data   RW           84    .data.vgaChar_O     vga.o
-    0x20000250   COMPRESSED   0x00000008   Data   RW           85    .data.vgaChar_P     vga.o
-    0x20000258   COMPRESSED   0x00000008   Data   RW           86    .data.vgaChar_Q     vga.o
-    0x20000260   COMPRESSED   0x00000008   Data   RW           87    .data.vgaChar_R     vga.o
-    0x20000268   COMPRESSED   0x00000008   Data   RW           88    .data.vgaChar_S     vga.o
-    0x20000270   COMPRESSED   0x00000008   Data   RW           89    .data.vgaChar_T     vga.o
-    0x20000278   COMPRESSED   0x00000008   Data   RW           90    .data.vgaChar_U     vga.o
-    0x20000280   COMPRESSED   0x00000008   Data   RW           91    .data.vgaChar_V     vga.o
-    0x20000288   COMPRESSED   0x00000008   Data   RW           92    .data.vgaChar_W     vga.o
-    0x20000290   COMPRESSED   0x00000008   Data   RW           93    .data.vgaChar_X     vga.o
-    0x20000298   COMPRESSED   0x00000008   Data   RW           94    .data.vgaChar_Y     vga.o
-    0x200002a0   COMPRESSED   0x00000008   Data   RW           95    .data.vgaChar_Z     vga.o
-    0x200002a8   COMPRESSED   0x00000008   Data   RW           96    .data.vgaChar_a     vga.o
-    0x200002b0   COMPRESSED   0x00000008   Data   RW          159    .data.vgaChar_accolade1  vga.o
-    0x200002b8   COMPRESSED   0x00000008   Data   RW          160    .data.vgaChar_accolade2  vga.o
-    0x200002c0   COMPRESSED   0x00000008   Data   RW          142    .data.vgaChar_appostrophe  vga.o
-    0x200002c8   COMPRESSED   0x00000008   Data   RW          151    .data.vgaChar_arobas  vga.o
-    0x200002d0   COMPRESSED   0x00000008   Data   RW          136    .data.vgaChar_asterix  vga.o
-    0x200002d8   COMPRESSED   0x00000008   Data   RW           97    .data.vgaChar_b     vga.o
-    0x200002e0   COMPRESSED   0x00000008   Data   RW          156    .data.vgaChar_backslash  vga.o
-    0x200002e8   COMPRESSED   0x00000008   Data   RW          155    .data.vgaChar_bar   vga.o
-    0x200002f0   COMPRESSED   0x00000008   Data   RW           98    .data.vgaChar_c     vga.o
-    0x200002f8   COMPRESSED   0x00000008   Data   RW          146    .data.vgaChar_circonflexe  vga.o
-    0x20000300   COMPRESSED   0x00000008   Data   RW          147    .data.vgaChar_colon  vga.o
-    0x20000308   COMPRESSED   0x00000008   Data   RW          133    .data.vgaChar_crochet  vga.o
-    0x20000310   COMPRESSED   0x00000008   Data   RW           99    .data.vgaChar_d     vga.o
-    0x20000318   COMPRESSED   0x00000008   Data   RW          144    .data.vgaChar_dollar  vga.o
-    0x20000320   COMPRESSED   0x00000008   Data   RW          140    .data.vgaChar_dot   vga.o
-    0x20000328   COMPRESSED   0x00000008   Data   RW          100    .data.vgaChar_e     vga.o
-    0x20000330   COMPRESSED   0x00000008   Data   RW          132    .data.vgaChar_eperlu  vga.o
-    0x20000338   COMPRESSED   0x00000008   Data   RW          139    .data.vgaChar_equal  vga.o
-    0x20000340   COMPRESSED   0x00000008   Data   RW          141    .data.vgaChar_exclamation  vga.o
-    0x20000348   COMPRESSED   0x00000008   Data   RW          101    .data.vgaChar_f     vga.o
-    0x20000350   COMPRESSED   0x00000008   Data   RW          102    .data.vgaChar_g     vga.o
-    0x20000358   COMPRESSED   0x00000008   Data   RW          103    .data.vgaChar_h     vga.o
-    0x20000360   COMPRESSED   0x00000008   Data   RW          143    .data.vgaChar_hash  vga.o
-    0x20000368   COMPRESSED   0x00000008   Data   RW          104    .data.vgaChar_i     vga.o
-    0x20000370   COMPRESSED   0x00000008   Data   RW          105    .data.vgaChar_j     vga.o
-    0x20000378   COMPRESSED   0x00000008   Data   RW          106    .data.vgaChar_k     vga.o
-    0x20000380   COMPRESSED   0x00000008   Data   RW          107    .data.vgaChar_l     vga.o
-    0x20000388   COMPRESSED   0x00000008   Data   RW          153    .data.vgaChar_less  vga.o
-    0x20000390   COMPRESSED   0x00000008   Data   RW          108    .data.vgaChar_m     vga.o
-    0x20000398   COMPRESSED   0x00000008   Data   RW          138    .data.vgaChar_minus  vga.o
-    0x200003a0   COMPRESSED   0x00000008   Data   RW          154    .data.vgaChar_more  vga.o
-    0x200003a8   COMPRESSED   0x00000008   Data   RW          109    .data.vgaChar_n     vga.o
-    0x200003b0   COMPRESSED   0x00000008   Data   RW          163    .data.vgaChar_neg   vga.o
-    0x200003b8   COMPRESSED   0x00000008   Data   RW          110    .data.vgaChar_o     vga.o
-    0x200003c0   COMPRESSED   0x00000008   Data   RW          111    .data.vgaChar_p     vga.o
-    0x200003c8   COMPRESSED   0x00000008   Data   RW          134    .data.vgaChar_par1  vga.o
-    0x200003d0   COMPRESSED   0x00000008   Data   RW          135    .data.vgaChar_par2  vga.o
-    0x200003d8   COMPRESSED   0x00000008   Data   RW          137    .data.vgaChar_plus  vga.o
-    0x200003e0   COMPRESSED   0x00000008   Data   RW          145    .data.vgaChar_purcent  vga.o
-    0x200003e8   COMPRESSED   0x00000008   Data   RW          112    .data.vgaChar_q     vga.o
-    0x200003f0   COMPRESSED   0x00000008   Data   RW          150    .data.vgaChar_question  vga.o
-    0x200003f8   COMPRESSED   0x00000008   Data   RW          113    .data.vgaChar_r     vga.o
-    0x20000400   COMPRESSED   0x00000008   Data   RW          114    .data.vgaChar_s     vga.o
-    0x20000408   COMPRESSED   0x00000008   Data   RW          149    .data.vgaChar_semicolon  vga.o
-    0x20000410   COMPRESSED   0x00000008   Data   RW          152    .data.vgaChar_slash  vga.o
-    0x20000418   COMPRESSED   0x00000008   Data   RW          157    .data.vgaChar_sqrt1  vga.o
-    0x20000420   COMPRESSED   0x00000008   Data   RW          158    .data.vgaChar_sqrt2  vga.o
-    0x20000428   COMPRESSED   0x00000008   Data   RW          115    .data.vgaChar_t     vga.o
-    0x20000430   COMPRESSED   0x00000008   Data   RW          148    .data.vgaChar_twoDots  vga.o
-    0x20000438   COMPRESSED   0x00000008   Data   RW          116    .data.vgaChar_u     vga.o
-    0x20000440   COMPRESSED   0x00000008   Data   RW          161    .data.vgaChar_underscore  vga.o
-    0x20000448   COMPRESSED   0x00000008   Data   RW          117    .data.vgaChar_v     vga.o
-    0x20000450   COMPRESSED   0x00000008   Data   RW          118    .data.vgaChar_w     vga.o
-    0x20000458   COMPRESSED   0x00000008   Data   RW          119    .data.vgaChar_x     vga.o
-    0x20000460   COMPRESSED   0x00000008   Data   RW          120    .data.vgaChar_y     vga.o
-    0x20000468   COMPRESSED   0x00000008   Data   RW          121    .data.vgaChar_z     vga.o
-    0x20000470   COMPRESSED   0x00000004   Data   RW           11    .data.vgaCurrentScreenBuff  main.o
+    0x20000000   COMPRESSED   0x00000008   Data   RW           16    .data..L_MergedGlobals  main.o
+    0x20000008   COMPRESSED   0x00000004   Data   RW          214    .data.SystemCoreClock  system_stm32f4xx.o
+    0x2000000c   COMPRESSED   0x0000017c   Data   RW          170    .data.vgaChar       vga.o
+    0x20000188   COMPRESSED   0x00000008   Data   RW          128    .data.vgaChar_0     vga.o
+    0x20000190   COMPRESSED   0x00000008   Data   RW          129    .data.vgaChar_1     vga.o
+    0x20000198   COMPRESSED   0x00000008   Data   RW          130    .data.vgaChar_2     vga.o
+    0x200001a0   COMPRESSED   0x00000008   Data   RW          131    .data.vgaChar_3     vga.o
+    0x200001a8   COMPRESSED   0x00000008   Data   RW          132    .data.vgaChar_4     vga.o
+    0x200001b0   COMPRESSED   0x00000008   Data   RW          133    .data.vgaChar_5     vga.o
+    0x200001b8   COMPRESSED   0x00000008   Data   RW          134    .data.vgaChar_6     vga.o
+    0x200001c0   COMPRESSED   0x00000008   Data   RW          135    .data.vgaChar_7     vga.o
+    0x200001c8   COMPRESSED   0x00000008   Data   RW          136    .data.vgaChar_8     vga.o
+    0x200001d0   COMPRESSED   0x00000008   Data   RW          137    .data.vgaChar_9     vga.o
+    0x200001d8   COMPRESSED   0x00000008   Data   RW           76    .data.vgaChar_A     vga.o
+    0x200001e0   COMPRESSED   0x00000008   Data   RW           77    .data.vgaChar_B     vga.o
+    0x200001e8   COMPRESSED   0x00000008   Data   RW           78    .data.vgaChar_C     vga.o
+    0x200001f0   COMPRESSED   0x00000008   Data   RW           79    .data.vgaChar_D     vga.o
+    0x200001f8   COMPRESSED   0x00000008   Data   RW           80    .data.vgaChar_E     vga.o
+    0x20000200   COMPRESSED   0x00000008   Data   RW           81    .data.vgaChar_F     vga.o
+    0x20000208   COMPRESSED   0x00000008   Data   RW           82    .data.vgaChar_G     vga.o
+    0x20000210   COMPRESSED   0x00000008   Data   RW           83    .data.vgaChar_H     vga.o
+    0x20000218   COMPRESSED   0x00000008   Data   RW           84    .data.vgaChar_I     vga.o
+    0x20000220   COMPRESSED   0x00000008   Data   RW           85    .data.vgaChar_J     vga.o
+    0x20000228   COMPRESSED   0x00000008   Data   RW           86    .data.vgaChar_K     vga.o
+    0x20000230   COMPRESSED   0x00000008   Data   RW           87    .data.vgaChar_L     vga.o
+    0x20000238   COMPRESSED   0x00000008   Data   RW           88    .data.vgaChar_M     vga.o
+    0x20000240   COMPRESSED   0x00000008   Data   RW           89    .data.vgaChar_N     vga.o
+    0x20000248   COMPRESSED   0x00000008   Data   RW           90    .data.vgaChar_O     vga.o
+    0x20000250   COMPRESSED   0x00000008   Data   RW           91    .data.vgaChar_P     vga.o
+    0x20000258   COMPRESSED   0x00000008   Data   RW           92    .data.vgaChar_Q     vga.o
+    0x20000260   COMPRESSED   0x00000008   Data   RW           93    .data.vgaChar_R     vga.o
+    0x20000268   COMPRESSED   0x00000008   Data   RW           94    .data.vgaChar_S     vga.o
+    0x20000270   COMPRESSED   0x00000008   Data   RW           95    .data.vgaChar_T     vga.o
+    0x20000278   COMPRESSED   0x00000008   Data   RW           96    .data.vgaChar_U     vga.o
+    0x20000280   COMPRESSED   0x00000008   Data   RW           97    .data.vgaChar_V     vga.o
+    0x20000288   COMPRESSED   0x00000008   Data   RW           98    .data.vgaChar_W     vga.o
+    0x20000290   COMPRESSED   0x00000008   Data   RW           99    .data.vgaChar_X     vga.o
+    0x20000298   COMPRESSED   0x00000008   Data   RW          100    .data.vgaChar_Y     vga.o
+    0x200002a0   COMPRESSED   0x00000008   Data   RW          101    .data.vgaChar_Z     vga.o
+    0x200002a8   COMPRESSED   0x00000008   Data   RW          102    .data.vgaChar_a     vga.o
+    0x200002b0   COMPRESSED   0x00000008   Data   RW          165    .data.vgaChar_accolade1  vga.o
+    0x200002b8   COMPRESSED   0x00000008   Data   RW          166    .data.vgaChar_accolade2  vga.o
+    0x200002c0   COMPRESSED   0x00000008   Data   RW          148    .data.vgaChar_appostrophe  vga.o
+    0x200002c8   COMPRESSED   0x00000008   Data   RW          157    .data.vgaChar_arobas  vga.o
+    0x200002d0   COMPRESSED   0x00000008   Data   RW          142    .data.vgaChar_asterix  vga.o
+    0x200002d8   COMPRESSED   0x00000008   Data   RW          103    .data.vgaChar_b     vga.o
+    0x200002e0   COMPRESSED   0x00000008   Data   RW          162    .data.vgaChar_backslash  vga.o
+    0x200002e8   COMPRESSED   0x00000008   Data   RW          161    .data.vgaChar_bar   vga.o
+    0x200002f0   COMPRESSED   0x00000008   Data   RW          104    .data.vgaChar_c     vga.o
+    0x200002f8   COMPRESSED   0x00000008   Data   RW          152    .data.vgaChar_circonflexe  vga.o
+    0x20000300   COMPRESSED   0x00000008   Data   RW          153    .data.vgaChar_colon  vga.o
+    0x20000308   COMPRESSED   0x00000008   Data   RW          139    .data.vgaChar_crochet  vga.o
+    0x20000310   COMPRESSED   0x00000008   Data   RW          105    .data.vgaChar_d     vga.o
+    0x20000318   COMPRESSED   0x00000008   Data   RW          150    .data.vgaChar_dollar  vga.o
+    0x20000320   COMPRESSED   0x00000008   Data   RW          146    .data.vgaChar_dot   vga.o
+    0x20000328   COMPRESSED   0x00000008   Data   RW          106    .data.vgaChar_e     vga.o
+    0x20000330   COMPRESSED   0x00000008   Data   RW          138    .data.vgaChar_eperlu  vga.o
+    0x20000338   COMPRESSED   0x00000008   Data   RW          145    .data.vgaChar_equal  vga.o
+    0x20000340   COMPRESSED   0x00000008   Data   RW          147    .data.vgaChar_exclamation  vga.o
+    0x20000348   COMPRESSED   0x00000008   Data   RW          107    .data.vgaChar_f     vga.o
+    0x20000350   COMPRESSED   0x00000008   Data   RW          108    .data.vgaChar_g     vga.o
+    0x20000358   COMPRESSED   0x00000008   Data   RW          109    .data.vgaChar_h     vga.o
+    0x20000360   COMPRESSED   0x00000008   Data   RW          149    .data.vgaChar_hash  vga.o
+    0x20000368   COMPRESSED   0x00000008   Data   RW          110    .data.vgaChar_i     vga.o
+    0x20000370   COMPRESSED   0x00000008   Data   RW          111    .data.vgaChar_j     vga.o
+    0x20000378   COMPRESSED   0x00000008   Data   RW          112    .data.vgaChar_k     vga.o
+    0x20000380   COMPRESSED   0x00000008   Data   RW          113    .data.vgaChar_l     vga.o
+    0x20000388   COMPRESSED   0x00000008   Data   RW          159    .data.vgaChar_less  vga.o
+    0x20000390   COMPRESSED   0x00000008   Data   RW          114    .data.vgaChar_m     vga.o
+    0x20000398   COMPRESSED   0x00000008   Data   RW          144    .data.vgaChar_minus  vga.o
+    0x200003a0   COMPRESSED   0x00000008   Data   RW          160    .data.vgaChar_more  vga.o
+    0x200003a8   COMPRESSED   0x00000008   Data   RW          115    .data.vgaChar_n     vga.o
+    0x200003b0   COMPRESSED   0x00000008   Data   RW          169    .data.vgaChar_neg   vga.o
+    0x200003b8   COMPRESSED   0x00000008   Data   RW          116    .data.vgaChar_o     vga.o
+    0x200003c0   COMPRESSED   0x00000008   Data   RW          117    .data.vgaChar_p     vga.o
+    0x200003c8   COMPRESSED   0x00000008   Data   RW          140    .data.vgaChar_par1  vga.o
+    0x200003d0   COMPRESSED   0x00000008   Data   RW          141    .data.vgaChar_par2  vga.o
+    0x200003d8   COMPRESSED   0x00000008   Data   RW          143    .data.vgaChar_plus  vga.o
+    0x200003e0   COMPRESSED   0x00000008   Data   RW          151    .data.vgaChar_purcent  vga.o
+    0x200003e8   COMPRESSED   0x00000008   Data   RW          118    .data.vgaChar_q     vga.o
+    0x200003f0   COMPRESSED   0x00000008   Data   RW          156    .data.vgaChar_question  vga.o
+    0x200003f8   COMPRESSED   0x00000008   Data   RW          119    .data.vgaChar_r     vga.o
+    0x20000400   COMPRESSED   0x00000008   Data   RW          120    .data.vgaChar_s     vga.o
+    0x20000408   COMPRESSED   0x00000008   Data   RW          155    .data.vgaChar_semicolon  vga.o
+    0x20000410   COMPRESSED   0x00000008   Data   RW          158    .data.vgaChar_slash  vga.o
+    0x20000418   COMPRESSED   0x00000008   Data   RW          163    .data.vgaChar_sqrt1  vga.o
+    0x20000420   COMPRESSED   0x00000008   Data   RW          164    .data.vgaChar_sqrt2  vga.o
+    0x20000428   COMPRESSED   0x00000008   Data   RW          121    .data.vgaChar_t     vga.o
+    0x20000430   COMPRESSED   0x00000008   Data   RW          154    .data.vgaChar_twoDots  vga.o
+    0x20000438   COMPRESSED   0x00000008   Data   RW          122    .data.vgaChar_u     vga.o
+    0x20000440   COMPRESSED   0x00000008   Data   RW          167    .data.vgaChar_underscore  vga.o
+    0x20000448   COMPRESSED   0x00000008   Data   RW          123    .data.vgaChar_v     vga.o
+    0x20000450   COMPRESSED   0x00000008   Data   RW          124    .data.vgaChar_w     vga.o
+    0x20000458   COMPRESSED   0x00000008   Data   RW          125    .data.vgaChar_x     vga.o
+    0x20000460   COMPRESSED   0x00000008   Data   RW          126    .data.vgaChar_y     vga.o
+    0x20000468   COMPRESSED   0x00000008   Data   RW          127    .data.vgaChar_z     vga.o
+    0x20000470   COMPRESSED   0x00000004   Data   RW           14    .data.vgaCurrentScreenBuff  main.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000478, Load base: 0x08002408, Size: 0x00007c38, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000478, Load base: 0x080019cc, Size: 0x00007c30, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000478        -       0x00000060   Zero   RW          518    .bss                c_w.l(libspace.o)
-    0x200004d8        -       0x0000000c   Zero   RW           14    .bss..L_MergedGlobals.2  main.o
-    0x200004e4        -       0x00000004   Zero   RW          184    .bss.TIM2_IRQHandler.line  isr.o
-    0x200004e8        -       0x00000001   Zero   RW          185    .bss.TIM3_IRQHandler.psc  isr.o
-    0x200004e9   0x08002408   0x00000003   PAD
-    0x200004ec        -       0x00000004   Zero   RW          186    .bss.USART2_IRQHandler.len  isr.o
-    0x200004f0        -       0x00000004   Zero   RW          380    .bss.__cxa_new_handler  libcppabi_w.l(cxa_handlers.cpp.o)
-    0x200004f4        -       0x00000080   Zero   RW           25    .bss.uartBuff       comport.o
-    0x20000574        -       0x00000001   Zero   RW            8    .bss.uartRxFlag     main.o
-    0x20000575        -       0x00000008   Zero   RW          162    .bss.vgaChar_space  vga.o
-    0x2000057d        -       0x00003a98   Zero   RW            9    .bss.vgaScreenBuff  main.o
-    0x20004015        -       0x00003a98   Zero   RW           10    .bss.vgaScreenBuff2  main.o
-    0x20007aad   0x08002408   0x00000003   PAD
-    0x20007ab0        -       0x00000200   Zero   RW          195    HEAP                startup_stm32f446xx.o
-    0x20007cb0        -       0x00000400   Zero   RW          194    STACK               startup_stm32f446xx.o
+    0x20000478        -       0x00000060   Zero   RW          524    .bss                c_w.l(libspace.o)
+    0x200004d8        -       0x00000004   Zero   RW          190    .bss.TIM2_IRQHandler.line  isr.o
+    0x200004dc        -       0x00000001   Zero   RW          191    .bss.TIM3_IRQHandler.psc  isr.o
+    0x200004dd   0x080019cc   0x00000003   PAD
+    0x200004e0        -       0x00000004   Zero   RW          192    .bss.USART2_IRQHandler.len  isr.o
+    0x200004e4        -       0x00000004   Zero   RW          386    .bss.__cxa_new_handler  libcppabi_w.l(cxa_handlers.cpp.o)
+    0x200004e8        -       0x00000080   Zero   RW           27    .bss.uartBuff       comport.o
+    0x20000568        -       0x00000001   Zero   RW           10    .bss.uartRxFlag     main.o
+    0x20000569        -       0x00000008   Zero   RW          168    .bss.vgaChar_space  vga.o
+    0x20000571        -       0x00000001   Zero   RW           11    .bss.vgaFlag        main.o
+    0x20000572        -       0x00003a98   Zero   RW           12    .bss.vgaScreenBuff  main.o
+    0x2000400a        -       0x00003a98   Zero   RW           13    .bss.vgaScreenBuff2  main.o
+    0x20007aa2   0x080019cc   0x00000006   PAD
+    0x20007aa8        -       0x00000200   Zero   RW          201    HEAP                startup_stm32f446xx.o
+    0x20007ca8        -       0x00000400   Zero   RW          200    STACK               startup_stm32f446xx.o
 
 
 ==============================================================================
@@ -1485,17 +1446,17 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0        128       1527   comport.o
-       868          0          0          0          0       7694   drivers.o
+      1426          0          0          0          0       9911   drivers.o
        346          0          0          0          9       2041   isr.o
-      1320         64          0         12      30013      65586   main.o
+       696         32          0         12      30002      62167   main.o
         64         26        452          0       1536        872   startup_stm32f446xx.o
        142          0         16          4          0       2815   system_stm32f4xx.o
-      2588          0          0       1124          8      10051   vga.o
+      1252          0          0       1124          8      10051   vga.o
 
     ----------------------------------------------------------------------
-      5340         90        500       1140      31700      90586   Object Totals
+      3936         58        502       1140      31692      89384   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        12          0          0          0          6          0   (incl. Padding)
+        10          0          2          0          9          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1508,7 +1469,6 @@ Image component sizes
          6          0          0          0          0          0   __rtentry4.o
         52          8          0          0          0          0   __scatter.o
         28          0          0          0          0          0   __scatter_zi.o
-        22          0          0          0          0        100   _rserrno.o
         10          0          0          0          0         68   defsig_exit.o
         50          0          0          0          0         88   defsig_general.o
         80         58          0          0          0         76   defsig_rtmem_inner.o
@@ -1528,7 +1488,6 @@ Image component sizes
          2          0          0          0          0          0   libshutdown2.o
          8          4          0          0         96         68   libspace.o
          0          0          0          0          0          0   maybetermalloc1.o
-         8          4          0          0          0         68   rt_errno_addr_intlibspace.o
          8          4          0          0          0         68   rt_heap_descriptor_intlibspace.o
         68          0          0          0          0         68   rt_memclr.o
         78          0          0          0          0         80   rt_memclr_w.o
@@ -1541,31 +1500,24 @@ Image component sizes
         14          0          0          0          0         76   sys_wrch.o
          2          0          0          0          0         68   use_no_semi.o
         26          0          0          0          0        116   fpinit.o
-         0          0          0          0          0          0   usenofp.o
         42          0          0          0          0        380   new.cpp.o
         12          0          0          0          4        148   cxa_handlers.cpp.o
-       336         56          0          0          0        136   cosf.o
-        38          0          0          0          0        116   fpclassifyf.o
-        38         12          0          0          0        348   funder.o
-       340         24         32          0          0        160   rredf.o
-       400         56          0          0          0        212   sinf.o
 
     ----------------------------------------------------------------------
-      2564        230         32          0        100       3736   Library Totals
-        14          0          0          0          0          0   (incl. Padding)
+      1378         78          0          0        100       2596   Library Totals
+        10          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-      1318         82          0          0         96       2120   c_w.l
+      1288         78          0          0         96       1952   c_w.l
         26          0          0          0          0        116   fz_wm.l
         42          0          0          0          0        380   libcpp_w.l
         12          0          0          0          4        148   libcppabi_w.l
-      1152        148         32          0          0        972   m_wm.l
 
     ----------------------------------------------------------------------
-      2564        230         32          0        100       3736   Library Totals
+      1378         78          0          0        100       2596   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1574,15 +1526,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      7904        320        532       1140      31800      92494   Grand Totals
-      7904        320        532        788      31800      92494   ELF Image Totals (compressed)
-      7904        320        532        788          0          0   ROM Totals
+      5314        136        502       1140      31792      90856   Grand Totals
+      5314        136        502        788      31792      90856   ELF Image Totals (compressed)
+      5314        136        502        788          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 8436 (   8.24kB)
-    Total RW  Size (RW Data + ZI Data)             32940 (  32.17kB)
-    Total ROM Size (Code + RO Data + RW Data)       9224 (   9.01kB)
+    Total RO  Size (Code + RO Data)                 5816 (   5.68kB)
+    Total RW  Size (RW Data + ZI Data)             32932 (  32.16kB)
+    Total ROM Size (Code + RO Data + RW Data)       6604 (   6.45kB)
 
 ==============================================================================
 

@@ -24,6 +24,7 @@ typedef struct{
 } Pt_t;	
 
 /* Functions */
+void drawTime(int x, int y);
 void drawShape(Pt_t *pts, int size);
 Pt_t applyRotation(Pt_t pt, float th);
 
@@ -38,4 +39,19 @@ Pt_t applyRotation(Pt_t pt, float th){
 	ret.y = int(float(pt.y) * cos(th) - float(pt.x) * sin(th));
 	return ret;
 }
+
+void drawTime(int x, int y){
+	char timeChar[6] = {};
+	getTime(timeChar);
+	int j = 0;
+	for(int i=0;i<8;i++){
+		if(i==2 || i==5)
+			VGAPutChar(vgaNextScreenBuff,x+8*i,y,':');
+		else{
+			VGAPutChar(vgaNextScreenBuff,x+8*i,y,timeChar[j]+'0');
+			j++;
+		}
+	}
+}
+
 #endif

@@ -19,5 +19,9 @@ void initVSYNC(void);
 void initSPI2(uint32_t buffSize);
 /*USART2*/
 void initUart2(uint32_t baudrate);
+/*RTC*/
+
+void initRTC(void);
+void getTime(char* time); // HH.MM.SS
 
 #endif

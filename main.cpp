@@ -20,21 +20,56 @@ int main(){
 			vgaFlag = 0;
 			VGABlankScreen(vgaNextScreenBuff);
 			VGACreateFrame(vgaNextScreenBuff);
-			
-			#if 1 //Clock
+			#if 1//Time
+			drawTime(200,150);
+			#endif
+			#if 0 //RotatingClock
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,8,0);
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,4,1);
 			const int N = 5;
 			Pt_t pts[N] = {} ;
 			static float tFast = 0;
 			static float tSlow = 0;
-			int a = 10.0;
-			int b = 125.0;
+			static float tVerySlow = 0;
+			int a = 0.0;
+			int b = 0.0;
 			float x = 0.0;
 			float y = 0.0;
 			
-			/* Long pin */
+			/* Hour pin */
 			{
+			a = 2.0;	
+			b = 125.0;	
+			pts[0].x = 0;
+			pts[0].y = -b;
+			pts[1].x = a;
+			pts[1].y = 0;
+			pts[2].x = 0;	
+			pts[2].y = b/2;
+			pts[3].x = -a;
+			pts[3].y = 	0;
+			pts[4].x = pts[0].x;
+			pts[4].y = pts[0].y;
+			}	
+			/* rotate losange */
+			for(int i = 0;i<N;i++){
+				
+				/* Apply rotation */
+				Pt_t ptRotated = applyRotation(pts[i],2*pi*tVerySlow);
+				
+				/* Offset */
+				ptRotated.x += float(BUFFER_BITSIZE_X)/2.0f;
+				ptRotated.y += float(BUFFER_SIZE_Y)/2.0f;
+				
+				/* Assign new point coordinates */
+				pts[i] = ptRotated;
+			}
+			
+			drawShape(pts,N);
+			/* Minute pin */
+			{
+			a = 8.0;	
+			b = 100.0;	
 			pts[0].x = 0;
 			pts[0].y = -b;
 			pts[1].x = a;
@@ -61,7 +96,7 @@ int main(){
 			}
 			
 			drawShape(pts,N);
-			/* short pin */
+			/* Second pin */
 			{
 			a = 5.0;
 			b = 50.0;
@@ -95,8 +130,10 @@ int main(){
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,125,0);
 			
 			/* Increment time */
+			const static float tVerySlowpp = 1.0f/(56.0f*60.0f*60.0f);
 			const static float tSlowpp = 1.0f/(56.0f*60.0f);
 			const static float tFastpp = 1.0/56.0f;
+			tVerySlow -= tVerySlowpp;
 			tSlow -= tSlowpp;
 			tFast -= tFastpp;
 			#endif
