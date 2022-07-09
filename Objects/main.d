@@ -50,6 +50,8 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\functional \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\bit \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__bits vga.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\math.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string_view \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__string \
@@ -62,6 +64,4 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\ctype.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\ctype.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\wctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wctype.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\math.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wctype.h

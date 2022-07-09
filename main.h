@@ -7,7 +7,7 @@ extern "C"{
 #include "comport.h"
 }
 #include "vgaObject.h"
-
+#include <math.h>
 /* Variables */
 volatile uint8_t uartRxFlag=0;
 volatile uint8_t vgaFlag=0;
@@ -25,9 +25,17 @@ typedef struct{
 
 /* Functions */
 void drawShape(Pt_t *pts, int size);
+Pt_t applyRotation(Pt_t pt, float th);
 
 void drawShape(Pt_t *pts, int size){
 	for(int i=0;i<(size-1);i++)
 		VGADrawLine(vgaNextScreenBuff,pts[i].x,pts[i].y,pts[i+1].x,pts[i+1].y);
+}
+Pt_t applyRotation(Pt_t pt, float th){
+	/* Apply rotation */
+	Pt_t ret;
+	ret.x = int(float(pt.x) * cos(th) + float(pt.y) * sin(th));
+	ret.y = int(float(pt.y) * cos(th) - float(pt.x) * sin(th));
+	return ret;
 }
 #endif
