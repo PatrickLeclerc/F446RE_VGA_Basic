@@ -36,7 +36,7 @@ int main(){
 			drawTime(BUFFER_BITSIZE_X-64,0,false);
 			VGADrawRect(vgaNextScreenBuff,BUFFER_BITSIZE_X-66,0,64,8,0);
 			#endif
-			#if 0 //Rotating clock
+			#if 1 //Rotating clock
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,8,0);
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,4,1);
 			const int N = 5;
@@ -48,7 +48,7 @@ int main(){
 			int b = 0.0;
 			float x = 0.0;
 			float y = 0.0;
-			
+			#if 0
 			/* Hour pin */
 			{
 			a = -4.0;	
@@ -77,7 +77,7 @@ int main(){
 				/* Assign new point coordinates */
 				pts[i] = ptRotated;
 			}
-			
+			#endif
 			drawShape(pts,N);
 			/* Minute pin */
 			{

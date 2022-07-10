@@ -63,7 +63,7 @@ void drawSmallClock(int x, int y){
 	/* frame */
 	//VGADrawCircle(vgaNextScreenBuff,x,y,r,0);
 	drawEllipse(x,y,r,r);
-		
+	#if 0
 	/* aiguilles */
 	float fr = float(r);
 	/* hours */
@@ -87,5 +87,5 @@ void drawSmallClock(int x, int y){
 	sec.x = frMod*sin(arg) + float(x);
 	sec.y = -frMod*cos(arg) + float(y);
 	VGApx(vgaNextScreenBuff,int(sec.x),int(sec.y),INV);
-		
+	#endif
 }

@@ -21,12 +21,16 @@ void TIM2_IRQHandler(){
 		/*Handling DMA1_STREAM7_CH0 stuff*/ //SPI3
 		DMA1->HIFCR |= DMA_HIFCR_CTCIF7 | DMA_HIFCR_CHTIF7;
 		DMA1_Stream7->M0AR = (uint32_t)vgaBuffNext;
-		
+		/*Handling DMA2_STREAM3_CH3 stuff*/ //SPI1
+		DMA2->LIFCR |= DMA_LIFCR_CTCIF3 | DMA_LIFCR_CHTIF3;
+		DMA2_Stream3->M0AR = (uint32_t)vgaBuffNext;
 		/* Start transfers */
-		RCC->AHB1ENR &= ~RCC_AHB1ENR_DMA1EN;
-		DMA1_Stream4->CR |= DMA_SxCR_EN;/*Start*/
 		DMA1_Stream7->CR |= DMA_SxCR_EN;/*Start*/
-		RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
+		DMA1_Stream4->CR |= DMA_SxCR_EN;/*Start*/
+		DMA2_Stream3->CR |= DMA_SxCR_EN;/*Start*/
+		RCC->AHB1ENR &= ~(RCC_AHB1ENR_DMA1EN|RCC_AHB1ENR_DMA2EN);
+		RCC->AHB1ENR |= (RCC_AHB1ENR_DMA1EN|RCC_AHB1ENR_DMA2EN);
+		
 		/*Reset UIF*/
 		TIM2->SR &= ~TIM_SR_UIF;
 		/*Evaluate next line*/

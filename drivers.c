@@ -7,6 +7,7 @@ void startup(uint32_t buffSize){
 	/* RTC */
 	initRTC();
 	/*VGA Initialisation*/
+	initSPI1(buffSize);
 	initSPI2(buffSize);/*VGAColor*/
 	initSPI3(buffSize);
 	initVSYNC();/*TIM2*/
@@ -53,7 +54,7 @@ void initHSYNC(){/*TIM2*/
 	
 	/* GPIO */
 	//RCC
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOBEN;
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;// | RCC_AHB1ENR_GPIOBEN;
 	
 	//HSYNC PWM
 	GPIOA->MODER |= GPIO_MODER_MODE0_1 | GPIO_MODER_MODE1_1;
@@ -62,9 +63,9 @@ void initHSYNC(){/*TIM2*/
 	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD0_0;//A0 PU
 	
 	//HSYNC Visible area
-	GPIOB->MODER |= GPIO_MODER_MODE10_1;
-	GPIOB->OTYPER |= GPIO_OTYPER_OT10_Msk;
-	GPIOB->AFR[1] |= GPIO_AFRH_AFRH2_0;	
+	//GPIOB->MODER |= GPIO_MODER_MODE10_1;
+	//GPIOB->OTYPER |= GPIO_OTYPER_OT10_Msk;
+	//GPIOB->AFR[1] |= GPIO_AFRH_AFRH2_0;	
 	
 	/*TIM*/
 	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
@@ -84,13 +85,13 @@ void initHSYNC(){/*TIM2*/
 	TIM2->CCR1 = 800U+24U+72U;
 	
 	//* CH3 visible area : SPI AND CH1 */
-	TIM2->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
-	TIM2->CCR3 = 800U+24;
+	//TIM2->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
+	//TIM2->CCR3 = 800U+24;
 	
 	//* Update preloaded registers and enable pwm outputs */
 	TIM2->EGR |= TIM_EGR_UG;
-	TIM2->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E | TIM_CCER_CC3E;
-	
+	TIM2->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E;
+	//TIM2->CCER |= TIM_CCER_CC3E;
 	/* NVIC */
 	TIM2->DIER |= TIM_DIER_UIE;
 	NVIC_SetPriority(TIM2_IRQn,1);
@@ -106,7 +107,7 @@ void initVSYNC(){/*TIM3*/
 		GPIO B0 for ch3
 	*/	
 	//RCC
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOBEN;
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;// | RCC_AHB1ENR_GPIOBEN;
 	
 	//VSYNC
 	GPIOA->MODER |= GPIO_MODER_MODE6_1 | GPIO_MODER_MODE7_1;
@@ -115,9 +116,9 @@ void initVSYNC(){/*TIM3*/
 	//GPIOA->PUPDR |= GPIO_PUPDR_PUPD6_0;//A6 PU
 	
 	//VSYNC Visible area
-	GPIOB->MODER |= GPIO_MODER_MODE0_1;
-	GPIOB->OTYPER |= GPIO_OTYPER_OT0_Msk;
-	GPIOB->AFR[0] |= GPIO_AFRL_AFRL0_1;	
+	//GPIOB->MODER |= GPIO_MODER_MODE0_1;
+	//GPIOB->OTYPER |= GPIO_OTYPER_OT0_Msk;
+	//GPIOB->AFR[0] |= GPIO_AFRL_AFRL0_1;	
 
 	/*TIM*/
 	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
@@ -136,14 +137,14 @@ void initVSYNC(){/*TIM3*/
 	TIM3->CCMR1 |= (6U<<TIM_CCMR1_OC1M_Pos)|TIM_CCMR1_OC1PE;
 	TIM3->CCR1 = 600U+1U+2U;
 	
-	//*CH3 visible area : SPI AND CH1*/
-	TIM3->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
-	TIM3->CCR3 = 600U+1;
+	//*CH3 visible area : SPI AND CH*/
+	//TIM3->CCMR2 = (6U<<TIM_CCMR2_OC3M_Pos)|TIM_CCMR2_OC3PE;
+	//TIM3->CCR3 = 600U+1;
 	
 	//*Update preloaded registers and enable timer*/
 	TIM3->EGR |= TIM_EGR_UG;
-	TIM3->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E | TIM_CCER_CC3E;
-	
+	TIM3->CCER |= TIM_CCER_CC1E | TIM_CCER_CC2E;
+	//TIM3->CCER |= TIM_CCER_CC3E;
 	//NVIC
 	TIM3->DIER |= TIM_DIER_UIE;
 	NVIC_EnableIRQ(TIM3_IRQn);
@@ -151,6 +152,35 @@ void initVSYNC(){/*TIM3*/
 	TIM3->CR1 |= TIM_CR1_CEN;
 }
 
+void initSPI1(uint32_t buffSize){/*GPIOB5AF5-DMA2Ch3Stream3ou5*/
+	/*RCC*/
+	RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN|RCC_AHB1ENR_DMA2EN;
+	
+	/*GPIO*/
+	GPIOB->MODER &= ~GPIO_MODER_MODE5_Msk;
+	GPIOB->MODER |= GPIO_MODER_MODE5_1;
+
+	GPIOB->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED5_Msk;
+	GPIOB->OSPEEDR |= GPIO_OSPEEDR_OSPEED5_0;
+	//GPIOB->OTYPER |= GPIO_OTYPER_OT5_Msk;
+	GPIOB->AFR[0] |= 5U<<GPIO_AFRL_AFSEL5_Pos;
+	
+	/*SPI2: Internal slave management (master) */
+	SPI1->CR1 = SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_MSTR | (1U<<SPI_CR1_BR_Pos);//|SPI_CR1_DFF  //18MHz
+	
+	/*DMA*/
+	DMA2_Stream3->CR = 0U;
+	while(DMA2_Stream3->CR != 0U){}
+	DMA2_Stream3->PAR = (uint32_t)&(SPI1->DR);
+	DMA2_Stream3->NDTR = buffSize;
+	DMA2_Stream3->CR |= (3U<<DMA_SxCR_CHSEL_Pos) | DMA_SxCR_PL_Msk | DMA_SxCR_DIR_0 | DMA_SxCR_MINC;//| DMA_SxCR_MSIZE_0 | DMA_SxCR_PSIZE_0
+	DMA2_Stream3->FCR = 0U;
+	//DMA2_Stream3->CR |= DMA_SxCR_EN;
+	/*Enable*/
+	SPI1->CR2 = SPI_CR2_TXDMAEN;
+	SPI1->CR1 |= SPI_CR1_SPE; 
+}
 void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	/*RCC*/
 	RCC->APB1ENR |= RCC_APB1ENR_SPI2EN;
@@ -162,7 +192,7 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	
 	GPIOC->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED3_Msk;
 	GPIOC->OSPEEDR |= GPIO_OSPEEDR_OSPEED3_0;
-	GPIOC->OTYPER |= GPIO_OTYPER_OT3_Msk;
+	//GPIOC->OTYPER |= GPIO_OTYPER_OT3_Msk;
 	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL3_Pos;
 	
 	/*SPI2: Internal slave management (master) */
@@ -191,7 +221,7 @@ void initSPI3(uint32_t buffSize){/*GPIOC1AF5-DMA1Ch0Stream7*/
 	
 	GPIOC->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED1_Msk;
 	GPIOC->OSPEEDR |= GPIO_OSPEEDR_OSPEED1_0;
-	GPIOC->OTYPER |= GPIO_OTYPER_OT1_Msk;
+	//GPIOC->OTYPER |= GPIO_OTYPER_OT1_Msk;
 	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL1_Pos;
 	
 	/*SPI2: Internal slave management (master) */
@@ -230,7 +260,7 @@ void initUart2(uint32_t baudrate){
 	/* Enable */
 	USART2->CR1 |= USART_CR1_UE;
 }
-
+/* RTC */
 void initRTC(){
 	/* PWR */
 	RCC->APB1ENR |= RCC_APB1ENR_PWREN;

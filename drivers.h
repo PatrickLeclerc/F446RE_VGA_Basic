@@ -16,6 +16,7 @@ void initHSYNC(void);
 */
 void initVSYNC(void); 
 /*Color*/
+void initSPI1(uint32_t buffSize);
 void initSPI2(uint32_t buffSize);
 void initSPI3(uint32_t buffSize);
 /*USART2*/
