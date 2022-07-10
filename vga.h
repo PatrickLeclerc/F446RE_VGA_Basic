@@ -8,10 +8,18 @@
 #define BUFFER_SIZE_X  50
 #define BUFFER_BITSIZE_X  (BUFFER_SIZE_X*8)
 
+/* Enums */
+typedef enum{
+	RESET=0,
+	SET,
+	INV
+}VGApxOp_t;
+
+
 /* Functions declaration */
 uint8_t* charToVga(char val);
 void VGABlankScreen(uint8_t* table);
-void VGApx(uint8_t* table, int x,int y);
+void VGApx(uint8_t* table, int x,int y,VGApxOp_t op);
 void VGACreateFrame(uint8_t* table);
 void VGADrawCircle(uint8_t* table, int x,int y,int r, int full);
 void VGADrawRect(uint8_t* table, int x,int y,int RX, int RY, int full);

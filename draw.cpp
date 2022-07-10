@@ -2,6 +2,7 @@
 extern "C"{
 #include "drivers.h"
 #include "vga.h"
+#include "arm_math.h"
 }
 #include <math.h>
 
@@ -42,13 +43,12 @@ void drawTime(int x, int y, bool small){
 void drawEllipse(int X, int Y,int RA, int RB){
 	float ra = float(RA);
 	float rb = float(RB);
-	for(int xi = -RA; xi <= RA; xi++){
-		float x = float(xi);
-		float y1 = rb*sqrt(1-(x*x/(ra*ra)))+float(Y);
-		float y2 = -rb*sqrt(1-(x*x/(ra*ra)))+float(Y);
-		
-		VGApx(vgaNextScreenBuff,xi+X,int(y1));
-		VGApx(vgaNextScreenBuff,xi+X,int(y2));
+	float dt = (ra+rb)*pi/(16.0*ra*rb);
+	for(float t = 0; t < pi; t+=dt){
+		float x = ra*arm_cos_f32(t);
+		float y = rb*arm_sin_f32(t);
+		VGApx(vgaNextScreenBuff,int(x)+X,Y+int(y),SET);
+		VGApx(vgaNextScreenBuff,int(x)+X,Y-int(y),SET);
 	}
 }
 void drawSmallClock(int x, int y){
@@ -61,8 +61,8 @@ void drawSmallClock(int x, int y){
 	getTimeNum(time);
 	
 	/* frame */
-	VGADrawCircle(vgaNextScreenBuff,x,y,r,0);
-	//drawEllipse(x,y,r,8);
+	//VGADrawCircle(vgaNextScreenBuff,x,y,r,0);
+	drawEllipse(x,y,r,r);
 		
 	/* aiguilles */
 	float fr = float(r);
@@ -72,20 +72,20 @@ void drawSmallClock(int x, int y){
 	float frMod = fr*1.1;
 	hour.x = frMod*sin(arg) + float(x);
 	hour.y = -frMod*cos(arg) + float(y);
-	VGApx(vgaNextScreenBuff,int(hour.x),int(hour.y));
+	VGApx(vgaNextScreenBuff,int(hour.x),int(hour.y),INV);
 	/* minutes */
 	Pt_t min;
 	arg = pi * float(time[1]) / 30.0;
 	frMod = fr*0.9;
 	min.x = frMod*sin(arg) + float(x);
 	min.y = -frMod*cos(arg) + float(y);
-	VGApx(vgaNextScreenBuff,int(min.x),int(min.y));
+	VGApx(vgaNextScreenBuff,int(min.x),int(min.y),INV);
 	
 	/* seconds */
 	Pt_t sec;
 	arg = pi * float(time[2]) / 30.0;
 	sec.x = frMod*sin(arg) + float(x);
 	sec.y = -frMod*cos(arg) + float(y);
-	VGApx(vgaNextScreenBuff,int(sec.x),int(sec.y));
+	VGApx(vgaNextScreenBuff,int(sec.x),int(sec.y),INV);
 		
 }

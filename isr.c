@@ -15,10 +15,18 @@ extern volatile uint8_t* vgaBuffNext;
 void TIM2_IRQHandler(){
 	static uint32_t line = 0U;
 	if(TIM2->SR & TIM_SR_UIF){
-		/*Handling DMA1_STREAM4_CH0 stuff*/
+		/*Handling DMA1_STREAM4_CH0 stuff*/	//SPI2
 		DMA1->HIFCR |= DMA_HIFCR_CTCIF4 | DMA_HIFCR_CHTIF4;
 		DMA1_Stream4->M0AR = (uint32_t)vgaBuffNext;
+		/*Handling DMA1_STREAM7_CH0 stuff*/ //SPI3
+		DMA1->HIFCR |= DMA_HIFCR_CTCIF7 | DMA_HIFCR_CHTIF7;
+		DMA1_Stream7->M0AR = (uint32_t)vgaBuffNext;
+		
+		/* Start transfers */
+		RCC->AHB1ENR &= ~RCC_AHB1ENR_DMA1EN;
 		DMA1_Stream4->CR |= DMA_SxCR_EN;/*Start*/
+		DMA1_Stream7->CR |= DMA_SxCR_EN;/*Start*/
+		RCC->AHB1ENR |= RCC_AHB1ENR_DMA1EN;
 		/*Reset UIF*/
 		TIM2->SR &= ~TIM_SR_UIF;
 		/*Evaluate next line*/

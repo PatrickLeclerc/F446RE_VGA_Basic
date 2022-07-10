@@ -8,14 +8,26 @@ uint8_t* charToVga(char val){
 
 void VGABlankScreen(uint8_t* table){
 	memset(table,0,BUFFER_SIZE_X*BUFFER_SIZE_Y);
-	//for(int y = 0; y < BUFFER_SIZE_Y; y++)
-	//	for(int x = 0; x < BUFFER_SIZE_X; x++)
-	//		table[y*BUFFER_SIZE_X+x] = 0;
 }
 
-void VGApx(uint8_t* table, int x,int y){
-	if(x>=0 && x<BUFFER_BITSIZE_X && y>=0 && y<BUFFER_SIZE_Y)
-		table[y*BUFFER_SIZE_X + (x/8)] ^= (1 << (7-(x%8)));
+
+void VGApx(uint8_t* table, int x,int y,VGApxOp_t op){
+	if((x>=0) && (x<BUFFER_BITSIZE_X) && (y>=0) && (y<BUFFER_SIZE_Y))
+		switch(op){
+			case RESET :{
+				table[y*BUFFER_SIZE_X + (x/8)] &= ~(1 << (7-(x%8)));
+				break;
+			}
+			case SET :{
+				table[y*BUFFER_SIZE_X + (x/8)] |= (1 << (7-(x%8)));
+				break;
+			}
+			case INV :{
+				table[y*BUFFER_SIZE_X + (x/8)] ^= (1 << (7-(x%8)));
+				break;
+			}
+		}
+		
 }
 
 void VGACreateFrame(uint8_t* table){
@@ -126,8 +138,8 @@ void VGAPutChar(uint8_t* table, int X,int Y,char alpha){
 			int px = (character[y] >>(7-x))&1;
 			
 			/* Pixel position */
-			int realX = (X+x);
-			table[(Y+y)*BUFFER_SIZE_X+realX/8] ^= (px<<(7-(realX%8)));
+			if(px)
+				VGApx(table,X+x,y+Y,INV);
 		}
 	}
 }

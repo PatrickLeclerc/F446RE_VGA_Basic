@@ -17,15 +17,26 @@ int main(){
 			vgaFlag = 0;
 			VGABlankScreen(vgaNextScreenBuff);
 			VGACreateFrame(vgaNextScreenBuff);
-			#if 1//SmallClock
-			int r = 32;
-			drawSmallClock(BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/4);
+			#if 0 //Ellipse
+			{
+				int RA = 32;
+				int RB = RA;
+				drawEllipse(BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,RA,RB/4);
+				drawEllipse(BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,RA/2,RB/8);
+				drawEllipse(BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,RA/4,RB/16);
+			}
 			#endif
-			#if 1//Time
+			#if 1 //Small clock		
+			drawSmallClock(BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/4);
+			//for(int y = 0; y<BUFFER_SIZE_Y/48;y+=2)
+			//	for(int x = 0; x<BUFFER_BITSIZE_X/48;x+=2)
+			//		drawSmallClock(24+x*48,24+y*48);
+			#endif
+			#if 1 //Time
 			drawTime(BUFFER_BITSIZE_X-64,0,false);
 			VGADrawRect(vgaNextScreenBuff,BUFFER_BITSIZE_X-66,0,64,8,0);
 			#endif
-			#if 0 //RotatingClock
+			#if 0 //Rotating clock
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,8,0);
 			VGADrawCircle(vgaNextScreenBuff,BUFFER_BITSIZE_X/2,BUFFER_SIZE_Y/2,4,1);
 			const int N = 5;
@@ -164,7 +175,7 @@ int main(){
 			t+=0.75;
 			#endif
 			
-			#if 1//Text
+			#if 1 //Program name
 			std::string message = "GIT::F446RE_VGA_Basic -- CPP";
 			for(unsigned int i=0;i<message.length();i++){
 				VGAPutChar(vgaNextScreenBuff, (BUFFER_BITSIZE_X>>1)+i*8U-message.length()*4,0,message[i]);
@@ -185,7 +196,7 @@ int main(){
 			}
 			t1+=0.01;
 			#endif
-			#if 1 //Balls
+			#if 0 //Balls
 			/* Space */
 			static const int rBalls = 16; 
 			static int x = 64;

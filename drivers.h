@@ -17,6 +17,7 @@ void initHSYNC(void);
 void initVSYNC(void); 
 /*Color*/
 void initSPI2(uint32_t buffSize);
+void initSPI3(uint32_t buffSize);
 /*USART2*/
 void initUart2(uint32_t baudrate);
 /*RTC*/

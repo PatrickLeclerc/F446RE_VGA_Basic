@@ -8,6 +8,7 @@ void startup(uint32_t buffSize){
 	initRTC();
 	/*VGA Initialisation*/
 	initSPI2(buffSize);/*VGAColor*/
+	initSPI3(buffSize);
 	initVSYNC();/*TIM2*/
 	initHSYNC();/*TIM3*/
 	/* RTC */
@@ -178,6 +179,35 @@ void initSPI2(uint32_t buffSize){/*GPIOC3AF5-DMA1Ch0Stream4*/
 	/*Enable*/
 	SPI2->CR2 = SPI_CR2_TXDMAEN;
 	SPI2->CR1 |= SPI_CR1_SPE; 
+}
+void initSPI3(uint32_t buffSize){/*GPIOC1AF5-DMA1Ch0Stream7*/
+	/*RCC*/
+	RCC->APB1ENR |= RCC_APB1ENR_SPI3EN;
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN|RCC_AHB1ENR_DMA1EN;
+	
+	/*GPIO*/
+	GPIOC->MODER &= ~GPIO_MODER_MODE1_Msk;
+	GPIOC->MODER |= GPIO_MODER_MODE1_1;
+	
+	GPIOC->OSPEEDR &= ~GPIO_OSPEEDR_OSPEED1_Msk;
+	GPIOC->OSPEEDR |= GPIO_OSPEEDR_OSPEED1_0;
+	GPIOC->OTYPER |= GPIO_OTYPER_OT1_Msk;
+	GPIOC->AFR[0] |= 5U<<GPIO_AFRL_AFSEL1_Pos;
+	
+	/*SPI2: Internal slave management (master) */
+	SPI3->CR1 = SPI_CR1_SSM | SPI_CR1_SSI | SPI_CR1_MSTR | (0U<<SPI_CR1_BR_Pos);//|SPI_CR1_DFF  //18MHz
+	
+	/*DMA*/
+	DMA1_Stream7->CR = 0U;
+	while(DMA1_Stream7->CR != 0U){}
+	DMA1_Stream7->PAR = (uint32_t)&(SPI3->DR);
+	DMA1_Stream7->NDTR = buffSize;
+	DMA1_Stream7->CR |= (0U<<DMA_SxCR_CHSEL_Pos) | DMA_SxCR_PL_Msk | DMA_SxCR_DIR_0 | DMA_SxCR_MINC;//| DMA_SxCR_MSIZE_0 | DMA_SxCR_PSIZE_0
+	DMA1_Stream7->FCR = 0U;
+	//DMA1_Stream7->CR |= DMA_SxCR_EN;
+	/*Enable*/
+	SPI3->CR2 = SPI_CR2_TXDMAEN;
+	SPI3->CR1 |= SPI_CR1_SPE; 
 }
 /* COMPORT */
 void initUart2(uint32_t baudrate){
