@@ -1,7 +1,7 @@
 #include "drivers.h"
 void startup(uint32_t buffSize){
 	/*General Initialisation*/
-	initClock(144);
+	initClock(180);
 	/*Comport*/
 	initUart2(115200);
 	/* RTC */

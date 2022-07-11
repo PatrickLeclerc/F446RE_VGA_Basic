@@ -5,11 +5,27 @@
 /* Extern */
 extern volatile uint8_t uartRxFlag;
 extern volatile uint8_t vgaFlag;
-extern uint8_t vgaScreenBuff[BUFFER_SIZE_Y*BUFFER_SIZE_X];
-extern uint8_t vgaScreenBuff2[BUFFER_SIZE_Y*BUFFER_SIZE_X];
-extern uint8_t* vgaCurrentScreenBuff;
-extern uint8_t* vgaNextScreenBuff;
-extern volatile uint8_t* vgaBuffNext;
+
+/* VGA Red */
+extern uint8_t vgaScreenBuffR[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern uint8_t vgaScreenBuffR2[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern volatile uint8_t* vgaBuffNextR;
+extern uint8_t* vgaCurrentScreenBuffR;
+extern uint8_t* vgaNextScreenBuffR;
+
+/* VGA Green */
+extern uint8_t vgaScreenBuffG[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern uint8_t vgaScreenBuffG2[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern volatile uint8_t* vgaBuffNextG;
+extern uint8_t* vgaCurrentScreenBuffG;
+extern uint8_t* vgaNextScreenBuffG;
+
+/* VGA Blue */
+extern uint8_t vgaScreenBuffB[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern uint8_t vgaScreenBuffB2[BUFFER_SIZE_Y*BUFFER_SIZE_X];
+extern volatile uint8_t* vgaBuffNextB;
+extern uint8_t* vgaCurrentScreenBuffB;
+extern uint8_t* vgaNextScreenBuffB;
 	
 /*Definitions*/
 void TIM2_IRQHandler(){
@@ -17,17 +33,19 @@ void TIM2_IRQHandler(){
 	if(TIM2->SR & TIM_SR_UIF){
 		/*Handling DMA1_STREAM4_CH0 stuff*/	//SPI2
 		DMA1->HIFCR |= DMA_HIFCR_CTCIF4 | DMA_HIFCR_CHTIF4;
-		DMA1_Stream4->M0AR = (uint32_t)vgaBuffNext;
+		DMA1_Stream4->M0AR = (uint32_t)vgaBuffNextR;
 		/*Handling DMA1_STREAM7_CH0 stuff*/ //SPI3
 		DMA1->HIFCR |= DMA_HIFCR_CTCIF7 | DMA_HIFCR_CHTIF7;
-		DMA1_Stream7->M0AR = (uint32_t)vgaBuffNext;
+		DMA1_Stream7->M0AR = (uint32_t)vgaBuffNextG;
 		/*Handling DMA2_STREAM3_CH3 stuff*/ //SPI1
 		DMA2->LIFCR |= DMA_LIFCR_CTCIF3 | DMA_LIFCR_CHTIF3;
-		DMA2_Stream3->M0AR = (uint32_t)vgaBuffNext;
+		DMA2_Stream3->M0AR = (uint32_t)vgaBuffNextB;
 		/* Start transfers */
 		DMA1_Stream7->CR |= DMA_SxCR_EN;/*Start*/
 		DMA1_Stream4->CR |= DMA_SxCR_EN;/*Start*/
 		DMA2_Stream3->CR |= DMA_SxCR_EN;/*Start*/
+		
+		/* Retart DMAs at the same time for better synch */
 		RCC->AHB1ENR &= ~(RCC_AHB1ENR_DMA1EN|RCC_AHB1ENR_DMA2EN);
 		RCC->AHB1ENR |= (RCC_AHB1ENR_DMA1EN|RCC_AHB1ENR_DMA2EN);
 		
@@ -42,11 +60,22 @@ void TIM2_IRQHandler(){
 		if((line&1)==0){
 			uint32_t newLine = line >>1;
 			if(newLine<BUFFER_SIZE_Y) {
-				if(vgaCurrentScreenBuff==vgaScreenBuff) vgaBuffNext = &vgaScreenBuff[newLine*BUFFER_SIZE_X];
-				else vgaBuffNext = &vgaScreenBuff2[newLine*BUFFER_SIZE_X];
+				if(vgaCurrentScreenBuffR==vgaScreenBuffR){
+					vgaBuffNextR = &vgaScreenBuffR[newLine*BUFFER_SIZE_X];
+					vgaBuffNextG = &vgaScreenBuffG[newLine*BUFFER_SIZE_X];
+					vgaBuffNextB = &vgaScreenBuffB[newLine*BUFFER_SIZE_X];
+				}
+				else{
+					vgaBuffNextR = &vgaScreenBuffR2[newLine*BUFFER_SIZE_X];
+					vgaBuffNextG = &vgaScreenBuffG2[newLine*BUFFER_SIZE_X];
+					vgaBuffNextB = &vgaScreenBuffB2[newLine*BUFFER_SIZE_X];
+				}
 			}
-			else vgaBuffNext = &vgaCurrentScreenBuff[0];
-			
+			else{
+				vgaBuffNextR = &vgaCurrentScreenBuffR[0];
+				vgaBuffNextG = &vgaCurrentScreenBuffG[0];
+				vgaBuffNextB = &vgaCurrentScreenBuffB[0];
+			}
 		}
 
 	}
@@ -62,13 +91,21 @@ void TIM3_IRQHandler(){
 		if(psc>=1U){
 			psc=0U;
 			vgaFlag = 1;
-			if(vgaCurrentScreenBuff==vgaScreenBuff) {
-				vgaCurrentScreenBuff = vgaScreenBuff2;
-				vgaNextScreenBuff = vgaScreenBuff;
+			if(vgaCurrentScreenBuffR==vgaScreenBuffR) {
+				vgaCurrentScreenBuffR = vgaScreenBuffR2;
+				vgaNextScreenBuffR = vgaScreenBuffR;
+				vgaCurrentScreenBuffG = vgaScreenBuffG2;
+				vgaNextScreenBuffG = vgaScreenBuffG;
+				vgaCurrentScreenBuffB = vgaScreenBuffB2;
+				vgaNextScreenBuffB = vgaScreenBuffB;
 			}
 			else {
-				vgaCurrentScreenBuff = vgaScreenBuff;
-				vgaNextScreenBuff = vgaScreenBuff2;
+				vgaCurrentScreenBuffR = vgaScreenBuffR;
+				vgaNextScreenBuffR = vgaScreenBuffR2;
+				vgaCurrentScreenBuffG = vgaScreenBuffG;
+				vgaNextScreenBuffG = vgaScreenBuffG2;
+				vgaCurrentScreenBuffB = vgaScreenBuffB;
+				vgaNextScreenBuffB = vgaScreenBuffB2;
 			}
 		}
 		psc++;
