@@ -21,9 +21,9 @@ Pt_t applyRotation(Pt_t pt, float th){
 
 void drawShape(Pt_t *pts, int size){
 	for(int i=0;i<(size-1);i++){
-		VGADrawLine(vgaNextScreenBuffR,pts[i].x,pts[i].y,pts[i+1].x,pts[i+1].y);
-		VGADrawLine(vgaNextScreenBuffG,pts[i].x,pts[i].y,pts[i+1].x,pts[i+1].y);
-		VGADrawLine(vgaNextScreenBuffB,pts[i].x,pts[i].y,pts[i+1].x,pts[i+1].y);
+		VGADrawLine(vgaNextScreenBuffR,int(pts[i].x),int(pts[i].y),int(pts[i+1].x),int(pts[i+1].y));
+		VGADrawLine(vgaNextScreenBuffG,int(pts[i].x),int(pts[i].y),int(pts[i+1].x),int(pts[i+1].y));
+		VGADrawLine(vgaNextScreenBuffB,int(pts[i].x),int(pts[i].y),int(pts[i+1].x),int(pts[i+1].y));
 	}	
 }
 void drawTime(int x, int y, bool small){

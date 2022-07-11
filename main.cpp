@@ -44,6 +44,68 @@ int main(){
 			VGADrawRect(vgaNextScreenBuffB,(BUFFER_BITSIZE_X>>1)-message.length()*4,0,message.length()*8, 8,0);
 			#endif
 			/* Movement */
+			#if 1 //Maschine
+			{
+				float X = 8;
+				float Y = 64;
+				float L = 256;
+				float H = 16;
+				float D = 100;
+				{//Sides
+					Pt_t ptsL[] = {
+						{X,Y},
+						{X+32,Y+32},
+						{X+32,Y+40},
+						{X+D+32,Y+D+40},
+						{X+D+32,Y+D+40+H},
+						{X,Y+8+H},
+						{X,Y}
+					};
+					drawShape(ptsL,sizeof(ptsL)/sizeof(Pt_t));
+					Pt_t ptsR[] = {
+						{ptsL[0].x+L,ptsL[0].y},
+						{ptsL[1].x+L,ptsL[1].y},
+						{ptsL[2].x+L,ptsL[2].y},
+						{ptsL[3].x+L,ptsL[3].y},
+						{ptsL[4].x+L,ptsL[4].y}
+					};
+					drawShape(ptsR,sizeof(ptsR)/sizeof(Pt_t));
+					Pt_t ptsHorizontal[] = {
+						ptsL[0],
+						ptsR[0],
+						ptsL[1],
+						ptsR[1],
+						ptsL[2],
+						ptsR[2],
+						ptsL[3],
+						ptsR[3],
+						ptsL[4],
+						ptsR[4]
+					};
+					for(int i = 0; i <10 ; i+=2)
+						drawShape(&ptsHorizontal[i],2);
+					
+					X += 128;
+					Y += 48;
+					for(int i = 0; i <4 ; i++){
+						for(int j = 0; j<4 ; j++)
+						{
+							int padL = 40;
+							Pt_t ptsPad[] = {
+								{X+padL*i+padL/2*j,Y+padL/2*j},
+								{X+padL*i+padL/2*j+16,Y+16+padL/2*j},
+								{X+padL*i+padL/2*j+48,Y+16+padL/2*j},
+								{X+padL*i+padL/2*j+32,Y+padL/2*j},
+								{X+padL*i+padL/2*j,Y+padL/2*j}
+							};
+							drawShape(ptsPad,sizeof(ptsPad)/sizeof(Pt_t));
+						}
+					}
+				}
+
+
+			}
+			#endif
 			#if 1 //RGB Showoff
 				int x = BUFFER_BITSIZE_X/3;
 				int y = BUFFER_SIZE_Y/3;

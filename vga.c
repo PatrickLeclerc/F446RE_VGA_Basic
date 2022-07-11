@@ -112,7 +112,12 @@ void VGADrawLine(uint8_t* table, int x1,int y1,int x2,int y2){
 	if(x1==x2){
 		int x = x1/8; 
 		int modX = x1%8;
-		for(int y = y1; y <= y2; y++){
+		if(y2<y1){
+			ya = y2;
+			yb = y1;
+		}
+
+		for(int y = ya; y <= yb; y++){
 		if(x<BUFFER_SIZE_X && y<BUFFER_SIZE_Y)
 			table[y*BUFFER_SIZE_X+x] ^= (1 << (7-modX));
 		}
